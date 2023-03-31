@@ -1,0 +1,12 @@
+{
+  "name": "susaas-approuter",
+  "dependencies": {
+    "@sap/approuter": "^13.1.1"
+  },
+  "engines": {
+    "node": "^16.x"
+  },
+  "scripts": {
+    "start": "node node_modules/@sap/approuter/approuter.js"
+  }
+}
