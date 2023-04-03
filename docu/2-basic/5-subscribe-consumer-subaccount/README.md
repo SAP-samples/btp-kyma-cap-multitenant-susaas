@@ -1,8 +1,8 @@
-# Subscribe a Tenant Subaccount (Refactored)
+# Subscribe a Tenant Subaccount
 
 In this part of the tutorial, you will learn how to subscribe your first Tenant Subaccount and how to create a first administrator user for your Subscriber Tenant.
 
-- [Subscribe a Tenant Subaccount (Refactored)](#subscribe-a-tenant-subaccount-refactored)
+- [Subscribe a Tenant Subaccount](#subscribe-a-tenant-subaccount)
   - [1. SaaS application subscription](#1-saas-application-subscription)
   - [2. API Service Broker instance](#2-api-service-broker-instance)
   - [3. Initialize the SaaS application](#3-initialize-the-saas-application)

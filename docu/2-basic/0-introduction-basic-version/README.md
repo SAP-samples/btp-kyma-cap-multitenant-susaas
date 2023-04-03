@@ -1,8 +1,8 @@
-# Introduction to the Basic Version (Refactored)
+# Introduction to the Basic Version
 
 The **Basic Version** of the sample application will provide you with the core elements required for a Software as a Service (SaaS) application on SAP Business Technology Platform (SAP BTP). 
 
-- [Introduction to the Basic Version (Refactored)](#introduction-to-the-basic-version-refactored)
+- [Introduction to the Basic Version](#introduction-to-the-basic-version)
   - [1. Step-by-Step](#1-step-by-step)
   - [2. Version Features](#2-version-features)
   - [3. Results](#3-results)

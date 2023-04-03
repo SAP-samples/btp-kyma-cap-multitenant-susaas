@@ -1,8 +1,8 @@
-# Helm Charts and Kyma resources (Refactored)
+# Helm Charts and Kyma resources
 
 While our next chapter will focus on the functional perspective of the different application components like Multitenancy in Application Router, this chapter will give you a deep-dive into the resources and technology used for the deployment of our sample scenario. For your convenience and a better structure, this chapter has been split up into three parts.
 
-- [Helm Charts and Kyma resources (Refactored)](#helm-charts-and-kyma-resources-refactored)
+- [Helm Charts and Kyma resources](#helm-charts-and-kyma-resources)
   - [Helm Charts](#helm-charts)
   - [Resource Overview](#resource-overview)
   - [Template Details](#template-details)

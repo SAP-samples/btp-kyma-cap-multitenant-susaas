@@ -1,4 +1,4 @@
-# Backup SAP HANA Cloud Database Containers (Refactored)
+# Backup SAP HANA Cloud Database Containers
 
 > **Hint** - This topic will be refactored! Some screenshots or features might appear different based on latest version updates. 
 
@@ -6,7 +6,7 @@ This part of the **Expert Features** explains how to export and import SAP HANA 
 
 Before approaching this part of the **Expert Features**, please make sure to set up a new HDI Container Group Administrator first as described in the following part of the Expert Features ([Manage Tenant Database Containers](../manage-tenant-containers/README.md)) and use the respective user for the steps below.
 
-- [Backup SAP HANA Cloud Database Containers (Refactored)](#backup-sap-hana-cloud-database-containers-refactored)
+- [Backup SAP HANA Cloud Database Containers](#backup-sap-hana-cloud-database-containers)
   - [1. Introduction](#1-introduction)
   - [2. Prerequisites](#2-prerequisites)
   - [3. Export an existing container](#3-export-an-existing-container)

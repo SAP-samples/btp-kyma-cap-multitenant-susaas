@@ -1,8 +1,8 @@
-# Build, Pack and Push your Docker Images (Refactored)
+# Build, Pack and Push your Docker Images
 
 As you might know, Kubernetes and therefore also Kyma is all about **containerization** of workloads. Our application is no exception from this pattern, so before you can deploy the SaaS sample application to your Kyma Cluster using **Helm**, you first need to build and **containerize** the various components (UI modules, CAP applications, Application Router aso.) by **packing** them into a **Docker Image** and **pushing** this Docker Image to a Container Registry of your choice like e.g., DockerHub. This is what the following chapter will be all about!
 
-- [Build, Pack and Push your Docker Images (Refactored)](#build-pack-and-push-your-docker-images-refactored)
+- [Build, Pack and Push your Docker Images](#build-pack-and-push-your-docker-images)
   - [1. Prerequisites](#1-prerequisites)
   - [2. Build your components](#2-build-your-components)
   - [3. Create your Docker Images](#3-create-your-docker-images)

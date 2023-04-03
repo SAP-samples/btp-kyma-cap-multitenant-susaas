@@ -1,8 +1,8 @@
-# Test the application (Refactored)
+# Test the application
 
 In this part of the tutorial (since you have already subscribed to the application) you will get some guidance on how to test the SaaS sample application from a Consumer perspective.
 
-- [Test the application (Refactored)](#test-the-application-refactored)
+- [Test the application](#test-the-application)
   - [1. Go to Application](#1-go-to-application)
   - [2. Create a new Project](#2-create-a-new-project)
   - [3. Create an Assessment](#3-create-an-assessment)

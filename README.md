@@ -129,11 +129,6 @@ The **Advanced Features** require some additional services and software componen
 > **\*\*\*** **SAP S/4HANA** - An SAP S/4HANA system is required if you want to test the automated data push feature from an existing SAP On-Premise solution. While we recommend to use at least the SAP S/4HANA 2021 release, with a bit of coding effort you should be able to also integrate older releases. This guide assumes you have access to an 2021 release. Feel free to check out the SAP Cloud Appliance Library (https://cal.sap.com/) to get yourself a free test license. 
 
 
-## Deployment
-
-The deployment to your SAP BTP Kyma environment is described in the **Basic Version** of the documentation ([click here](./docu/2-basic/3-build-deploy-saas-application/README.md)). 
-
-
 ## Known Issues
 **Open**
   - Consumer extension API issue (Workaround available - 2022/12/19)

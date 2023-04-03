@@ -1,9 +1,9 @@
-# Deploy the SaaS application (Refactored)
+# Deploy the SaaS application
 
 Before you deploy the sample application to your SAP BTP Kyma runtime, please make sure you completed the previous tutorial chapters. Your Docker Images have to be available in your Container Registry, so Helm can access and pull them during the upcoming deployment. 
 
 
-- [Deploy the SaaS application (Refactored)](#deploy-the-saas-application-refactored)
+- [Deploy the SaaS application](#deploy-the-saas-application)
   - [1. Introduction](#1-introduction)
   - [2. Create a new Kyma namespace](#2-create-a-new-kyma-namespace)
   - [3. Prepare the Helm deployment](#3-prepare-the-helm-deployment)

@@ -1,8 +1,8 @@
-# Prepare the Provider Subaccount (Refactored)
+# Prepare the Provider Subaccount
 
 In this chapter, you will learn how to prepare your SAP BTP Provider Subaccount for the deployment of the sample SaaS solution by assigning the required entitlements and setting up the foundational components. This includes a SAP HANA Cloud instance which you need to share with your Kyma Cluster or Kyma Namespace before deployment. 
 
-- [Prepare the Provider Subaccount (Refactored)](#prepare-the-provider-subaccount-refactored)
+- [Prepare the Provider Subaccount](#prepare-the-provider-subaccount)
   - [1. Prerequisites for Provider Subaccount](#1-prerequisites-for-provider-subaccount)
   - [2. Entitlements for Provider Subaccount](#2-entitlements-for-provider-subaccount)
   - [3. SAP HANA Cloud prerequisite](#3-sap-hana-cloud-prerequisite)

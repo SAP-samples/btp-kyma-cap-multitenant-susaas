@@ -1,4 +1,4 @@
-# Resource Overview (Refactored)
+# Resource Overview
 
 This SaaS sample application makes use of various Kubernetes as well as custom Kyma resource definitions. In this chapter, you will get a brief introduction to the various resources and links where to find further valuable information if required. 
 
@@ -16,7 +16,7 @@ Once you have gained some basic understanding of Kubernetes, we highly recommend
 
 So much for the introduction. Below you can find the alphabetical list of the most important resource types used in our sample application. Get your hands dirty and have fun! 
 
-- [Resource Overview (Refactored)](#resource-overview-refactored)
+- [Resource Overview](#resource-overview)
   - [API Rule](#api-rule)
   - [Cluster Role](#cluster-role)
   - [ConfigMap](#configmap)

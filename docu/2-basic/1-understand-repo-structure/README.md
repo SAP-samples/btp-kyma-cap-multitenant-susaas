@@ -1,8 +1,8 @@
-# Understand the Repository Structure (Refactored)
+# Understand the Repository Structure
 
 This part of the tutorial will briefly outline the structure of **code** directory, so you're comfortable navigating through the provided GitHub repository. 
 
-- [Understand the Repository Structure (Refactored)](#understand-the-repository-structure-refactored)
+- [Understand the Repository Structure](#understand-the-repository-structure)
   - [1. Overview](#1-overview)
   - [2. API Service](#2-api-service)
   - [3. Application](#3-application)
