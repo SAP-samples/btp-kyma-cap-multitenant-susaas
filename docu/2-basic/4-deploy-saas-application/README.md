@@ -41,7 +41,7 @@ The following Docker Images should be available in your Container Registry:
 
 Here a sample screenshot taken from Docker Hub. 
 
-[<img src="./images/ImageOverview.png" width="400"/>](./images/ImageOverview.png)
+[<img src="./images/ImageOverview.png" width="400"/>](./images/ImageOverview.png?raw=true)
 
 During Deployment, Helm will generate the required Kubernetes resources (manifest files) based on the provided Helm templates (again - feel free to check out our [Helm Introduction](../8-kyma-resources-helm/README.md)) and deploy them to your Kyma Cluster. This will result in various different objects like **Deployments**, **Jobs** or **SAP BTP Service Instances** or **Bindings**. 
 
@@ -49,7 +49,7 @@ During Deployment, Helm will generate the required Kubernetes resources (manifes
 
 **Kubernetes Deployments**
 
-[<img src="./images/Deployments.png" width="400"/>](./images/Deployments.png)
+[<img src="./images/Deployments.png" width="400"/>](./images/Deployments.png?raw=true)
 
 - susaas-srv
 - susaas-api 
@@ -61,7 +61,7 @@ These workloads are constantly running in your Cluster after deployment, as they
 
 **Kubernetes Jobs**
 
-[<img src="./images/JobsOverview.png" width="400"/>](./images/JobsOverview.png)
+[<img src="./images/JobsOverview.png" width="400"/>](./images/JobsOverview.png?raw=true)
 
 - susaas-hana-deployer
 - susaas-html5-apps-deployer
@@ -73,8 +73,8 @@ The deployment of the shared data model using the Node.js based HDI Deployer is 
 
 The Helm deployment will create a list of SAP BTP Service Instances and corresponding Service Bindings required by your workloads. While these Service Instances can also be seen from within the SAP BTP Cockpit, the Service Credentials can only be retrieved and accessed from your Kyma Dashboard.
 
-[<img src="./images/ServiceInstancesKyma.png" width="400"/>](./images/ServiceInstancesKyma.png)
-[<img src="./images/ServiceInstancesCf.png" width="360"/>](./images/ServiceInstancesCf.png)
+[<img src="./images/ServiceInstancesKyma.png" width="400"/>](./images/ServiceInstancesKyma.png?raw=true)
+[<img src="./images/ServiceInstancesCf.png" width="360"/>](./images/ServiceInstancesCf.png?raw=true)
 
 > **Hint** - SAP BTP Service Bindings will create corresponding Kyma Secrets, which are consumed by your Kubernetes workloads (Pods, Jobs) and allow your applications to communicate with the respective SAP BTP Service Instances like you know it from the Cloud Foundry context. Npm packages like @sap/xsenv ([see here](https://blogs.sap.com/2022/07/12/the-new-way-to-consume-service-bindings-on-kyma-runtime/)) natively support these kind of Service Bindings in Kyma and Cloud Foundry. Check out Max Streifeneder's blog post ([click here](https://blogs.sap.com/2023/03/07/surviving-and-thriving-with-the-sap-cloud-application-programming-model-deployment-to-sap-btp-kyma-runtime/)), who also provides a great summary of this concept (just search for "How does CAP know where to get the service binding information from?"). 
 
@@ -118,7 +118,7 @@ kubelogin version v1.26.0
 
 > **Important** - Do not share this file with anyone else and do not commit it to your GitHub repository.
 
-[<img src="./images/Kubeconfig.png" width="400"/>](./images/Kubeconfig.png)
+[<img src="./images/Kubeconfig.png" width="400"/>](./images/Kubeconfig.png?raw=true)
 
 
 2.5. Once you downloaded the *kubeconfig.yaml* file, please store it as a file named **config** (! without any file name extension !) in your hidden *$HOME/.kube* directory. Kubectl will check this **hidden** directory for an available configuration file named **config**. This is probably the most convenient way to provide your Cluster access details to kubectl. 
@@ -179,7 +179,7 @@ Labels:       istio-injection=enabled
               kubernetes.io/metadata.name=susaas
 ```
 
-[<img src="./images/IstioInjectionLabel.png" width="400"/>](./images/IstioInjectionLabel.png)
+[<img src="./images/IstioInjectionLabel.png" width="400"/>](./images/IstioInjectionLabel.png?raw=true)
 
 
 2.9. To delete a namespace, just execute the following **kubectl** command. Already getting an idea about how the kubectl commands are structured? Great! 
@@ -401,11 +401,11 @@ helm upgrade susaas ./charts/sustainable-saas --install --namespace <namespace> 
 
 > **Trivia** - We're kind of mixing up the terms Deployment/Installation/Release in this tutorial. 
 
-[<img src="./images/PodOverview.png" width="400"/>](./images/PodOverview.png)
+[<img src="./images/PodOverview.png" width="400"/>](./images/PodOverview.png?raw=true)
 
 4.6. You can also check the successful deployment of your application in the **Apps** section of the Kyma Dashboard. Here you can find all **Helm Releases**. 
 
-[<img src="./images/HelmOverview.png" width="400"/>](./images/HelmOverview.png)
+[<img src="./images/HelmOverview.png" width="400"/>](./images/HelmOverview.png?raw=true)
 
 4.7. For any further updates of the Helm Release, you must now use the *helm upgrade* command (already mentioned above).
 

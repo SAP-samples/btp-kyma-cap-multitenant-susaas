@@ -6,11 +6,11 @@ While you can find comprehensive details for all of these resources online, in t
 
 In the following visualizations, you can allocate most of the documented resources. Some of them, which are consumed most Pods in a similar fashion, have been removed from the high-level architecture diagram for readability purposes. Their usage is described in the secondary visualization.
 
-[<img src="./images/ResourceDetailsArch.png" width="700"/>](./images/ResourceDetailsArch.png)
+[<img src="./images/ResourceDetailsArch.png" width="700"/>](./images/ResourceDetailsArch.png?raw=true)
 
 Our assumption is the following - if you understand the basic ideas and concepts of all resources in the context of our sample scenario, this will make it much easier for you to understand the comprehensive but very generic official documentations. If you are new to the Kyma and Kubernetes ecosphere (as we were to the beginning of this project), an explanation focused on an exemplary sample use-case is often more beneficial than pages of generic resource documentation. If you have never worked with **Kubernetes** before, we suggest to equip yourself with at least some [basic concepts](https://kubernetes.io/docs/concepts/) before you continue. Learn about Clusters, Nodes, Pods and how the basic Kubernetes resources relate to each other. This will ease your upcoming trip through our content. 
 
-[<img src="./images/KymaObjectsGeneral.png" width="700"/>](./images/KymaObjectsGeneral.png)
+[<img src="./images/KymaObjectsGeneral.png" width="700"/>](./images/KymaObjectsGeneral.png?raw=true)
 
 Once you have gained some basic understanding of Kubernetes, we highly recommend getting started with the [**Deployment**](#deployment) resource type and continuing your journey with the [**Istio Service Mesh**](#istio-service-mesh), before deep-diving into topics like [**Service Accounts**](#service-account), [**Network Policies**](#network-policy) or [**Horizontal Pod Autoscalers**](#pod-autoscaler). Feel free to use the provided high-level architecture diagram, to follow along the path which an incoming request takes, when targeting the different components of the sample application.
 
@@ -235,7 +235,7 @@ A Cluster Role allows you to define a collection of custom permissions for your 
 
 > **Hint** - Check the */srv/utils/apiRule.js* coding to learn more. Additionally, the [Application Router documentation](https://www.npmjs.com/package/@sap/approuter#Configurations) provides further information on the EXTERNAL_REVERSE_PROXY flag, which is enabled for the reverse proxy feature. 
 
-[<img src="./images/KOCustomDomain.png" width="400"/>](./images/KOCustomDomain.png)
+[<img src="./images/KOCustomDomain.png" width="400"/>](./images/KOCustomDomain.png?raw=true)
 
 The required [Cluster Role](../../../../code/charts/sustainable-saas/charts/susaas-srv/templates/cluster-role.yaml) in oru sample scenario, contains permissions to create, delete and modify [API Rules](#api-rule). This Cluster Role is assigned to a dedicated [Service Account](#service-account) using a so-called [Role Binding](#role-binding). In our example, the Cluster Role is bound to a [Service Account](#service-account), which is (in turn) assigned to the SaaS Backend Application workload (Pod). At runtime, the Backend Application can interact with the Kyma Cluster on behalf of this [Service Account](#service-account), as the respective [Service Account](#service-account) token is so-called auto-mounted to the workload. 
 
@@ -544,7 +544,7 @@ So you might ask yourself, what is the benefit of this additional Proxy handling
 
 Besides handling [Service](#service) to [Service](#service) communication within your Cluster, Istio also simplifies workload exposure to external stakeholders. By positioning dedicated Envoy Proxy at the edge of your Cluster (called Gateway - [see details](https://istio.io/latest/docs/concepts/traffic-management/#gateways)), Istio supports you in making [Services](#service) reachable through the public internet in a secure manner. As a nice side-effect, it saves you from spending a lot of money on public IP addresses, as Load Balancer [Services](#service) are not required anymore to expose your workloads. The below screenshot shows a sample of using a tool called **Kiali** ([learn more](https://kiali.io/)), to monitor traffic flows managed by Istio. 
 
-[<img src="./images/KOKialiIstioIngress.png" width="700"/>](./images/KOKialiIstioIngress.png)<br>
+[<img src="./images/KOKialiIstioIngress.png" width="700"/>](./images/KOKialiIstioIngress.png?raw=true)<br>
 *Source: https://istio.io/latest/docs/examples/microservices-istio/istio-ingress-gateway/*
 
 The visualization contains a sample for such an (Ingress) Gateway, allowing external access to the [Services](#service) in your Service Mesh. Istio provides an extremely powerful toolset and within this sample scenario, we are only using it to a very reduced scope. For productive workloads, it is essential to acquaint yourself in detail with the comprehensive Istio Documentation ([click here](https://istio.io/latest/docs/)). 
@@ -553,7 +553,7 @@ The visualization contains a sample for such an (Ingress) Gateway, allowing exte
 
 To get a better understanding of how Istio manages the communication between your [Services](#service) or any incoming external traffic, let us have another brief look at the data flow visualization and some high-level details provided below. Feel free to swing along and learn more about the different Istio components used to secure the interaction of external stakeholders with your workloads. 
 
-[<img src="./images/ResourceDetailsArch.png" width="700"/>](./images/ResourceDetailsArch.png)
+[<img src="./images/ResourceDetailsArch.png" width="700"/>](./images/ResourceDetailsArch.png?raw=true)
 
 **Ingress Traffic**
 

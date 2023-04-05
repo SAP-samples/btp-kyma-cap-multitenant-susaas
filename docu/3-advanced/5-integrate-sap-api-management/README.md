@@ -26,14 +26,14 @@ In this part of the tutorial, you will learn how to ensure that each and every r
 
 SAP API Management is a new component in the central part of the **Advanced Version** architecture. While in the Basic Version, the API calls were directly accessing the Kyma API Service workloads, now all requests are passing through this additional component, giving you great flexibility in how to handle your in and outbound API traffic. See the relevant part of the solution architecture below (click to enlarge):
 
-[<img src="./images/API_Architecture.png" width="500" />](./images/API_Architecture.png)
+[<img src="./images/API_Architecture.png" width="500" />](./images/API_Architecture.png?raw=true)
 
 
 ## 2. Prerequisites
 
 For this setup, please make sure you have an SAP API Management tenant up and running. As SAP API Management is a capability of **SAP Integration Suite**, please subscribe to SAP Integration Suite and activate the respective **API Management** feature. Check the following SAP Help documentation to find a detailed step-by-step guide ([click here](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_API_MANAGEMENT/66d066d903c2473f81ec33acfe2ccdb4/f6eb4332cd5144ef91f4a84cc614ba1c.html?locale=en-US)). As part of this documentation, we cannot provide additional details on the setup process of SAP Integration Suite. 
 
-[<img src="./images/API_IntegrationSuite.png" width="500" />](./images/API_IntegrationSuite.png)
+[<img src="./images/API_IntegrationSuite.png" width="500" />](./images/API_IntegrationSuite.png?raw=true)
 
 
 ## 3. Integration Setup
@@ -80,7 +80,7 @@ api:
 
 Below you can see a screenshot of a sample Secret with the required values highlighted. 
 
-[<img src="./images/API_SecretDetails.png" width="500" />](./images/API_SecretDetails.png)
+[<img src="./images/API_SecretDetails.png" width="500" />](./images/API_SecretDetails.png?raw=true)
 
 3.2. After **enabling** the integration scenario in your **values.yaml** file, run another **helm upgrade** to apply the changes.
 
@@ -92,7 +92,7 @@ helm upgrade <ReleaseName> ./charts/sustainable-saas -n <Namespace>
 
 3.4. First of all, you need to store the respective XSUAA Client Credentials (part of the mentioned Kyma Secret) in SAP API Management. To do so, please open the **Configure** menu and select **APIs**. Switch to the **Key Value Maps** tab and click on **Create**.
 
-[<img src="./images/API_KeyValue01.png" width="500" />](./images/API_KeyValue01.png)
+[<img src="./images/API_KeyValue01.png" width="500" />](./images/API_KeyValue01.png?raw=true)
 
 3.5. Create a new Key Value Map named **susaas-api** containing the **Client Id** and **Token Endpoint** of your XSUAA Service Instance. You can find the required details in your **\<ReleaseName\>-api-xsuaa-apim** Kyma Secret. **Save** the Key Value Map. 
 
@@ -101,18 +101,18 @@ helm upgrade <ReleaseName> ./charts/sustainable-saas -n <Namespace>
 - tokenEndpoint: **url** property of Kyma Secret (**without https://**)
   > Example -> sap-demo.authentication.us20.hana.ondemand.com
 
-  [<img src="./images/API_KeyValue02.png" width="500" />](./images/API_KeyValue02.png)
+  [<img src="./images/API_KeyValue02.png" width="500" />](./images/API_KeyValue02.png?raw=true)
 
 3.6. Create a second **Key Value Map** named **susaas-api-key** containing the **Client Secret** of your XSUAA Service Instance. Enable encryption for this Key Value Map before you save it. 
 
 - clientSecret : **clientsecret** property of Kyma Secret
   > Example -> ac4f13bc-a1b2-c3d4-e5f6-38e067544oayNBjvt=
 
-  [<img src="./images/API_KeyValue03.png" width="500" />](./images/API_KeyValue03.png)
+  [<img src="./images/API_KeyValue03.png" width="500" />](./images/API_KeyValue03.png?raw=true)
 
 3.7. As the provided sample **API Proxy** contains an additional monitoring features (like tracking the XSUAA Zone ID of the client as well as the requested OData entity), please add those additional **Dimensions** in the **Monitoring** section of your SAP API Management instance. Therefore, please switch to the **APIs** section of the **Monitoring** menu and click on **+ Add**.
 
-[<img src="./images/API_Dimensions01.png" width="500" />](./images/API_Dimensions01.png)
+[<img src="./images/API_Dimensions01.png" width="500" />](./images/API_Dimensions01.png?raw=true)
 
 3.8. Create the following three **Dimensions**, which are being used by the sample API Proxy. Click on **OK** to save the changes.
 
@@ -120,29 +120,29 @@ helm upgrade <ReleaseName> ./charts/sustainable-saas -n <Namespace>
 - ODataPrimaryEntity
 - Zone
 
-[<img src="./images/API_Dimensions02.png" width="500" />](./images/API_Dimensions02.png)
+[<img src="./images/API_Dimensions02.png" width="500" />](./images/API_Dimensions02.png?raw=true)
 
 3.9. Return to the **Design** environment and upload the provided sample **APIProxy.zip** file, which you can find in the **files** subfolder ([click here](./files/)) of this tutorial.
 
-[<img src="./images/API_Upload01.png" width="500" />](./images/API_Upload01.png)
-[<img src="./images/API_Upload02.png" width="500" />](./images/API_Upload02.png)
+[<img src="./images/API_Upload01.png" width="500" />](./images/API_Upload01.png?raw=true)
+[<img src="./images/API_Upload02.png" width="500" />](./images/API_Upload02.png?raw=true)
 
 3.10. Once uploaded, please open the susaas-api **API Proxy** definition and update the **Target Endpoint** with your Kyma API Service URI (e.g., susaas-api-default.a1b2c3d4.kyma.ondemand.com) as you can see in the following screenshots. 
 
 > **Hint** - If you are using a **custom domain** in your Kyma environment, please also use in this context (e.g., susaas-api-default.sap-demo.com).
 
-[<img src="./images/API_Proxy01.png" width="300" />](./images/API_Proxy01.png)
-[<img src="./images/API_Proxy03.png" width="300" />](./images/API_Proxy03.png)
+[<img src="./images/API_Proxy01.png" width="300" />](./images/API_Proxy01.png?raw=true)
+[<img src="./images/API_Proxy03.png" width="300" />](./images/API_Proxy03.png?raw=true)
 
-[<img src="./images/API_Proxy04.png" width="300" />](./images/API_Proxy04.png)
-[<img src="./images/API_Proxy05.png" width="300" />](./images/API_Proxy05.png)
+[<img src="./images/API_Proxy04.png" width="300" />](./images/API_Proxy04.png?raw=true)
+[<img src="./images/API_Proxy05.png" width="300" />](./images/API_Proxy05.png?raw=true)
 
 3.11. Save your changes and deploy the **API Proxy** as shown in the following screenshots. 
 
-[<img src="./images/API_Proxy06.png" width="300" />](./images/API_Proxy06.png)
-[<img src="./images/API_Proxy07.png" width="300" />](./images/API_Proxy07.png)
+[<img src="./images/API_Proxy06.png" width="300" />](./images/API_Proxy06.png?raw=true)
+[<img src="./images/API_Proxy07.png" width="300" />](./images/API_Proxy07.png?raw=true)
 
-[<img src="./images/API_Proxy08.png" width="300" />](./images/API_Proxy08.png)
+[<img src="./images/API_Proxy08.png" width="300" />](./images/API_Proxy08.png?raw=true)
 
 This is it - From now on, all requests targeting your Kyma API Service workloads will be routed through SAP API Management to enforce policies like **Rate Limiting** or **Quotas**. If the policies checks are passed, the request is returning to Kyma and is served by our API Service **Target Endpoint**. In the next chapter, we will provide you with a sneak peak of what is happening under the hood of this architecture.
 
@@ -151,7 +151,7 @@ This is it - From now on, all requests targeting your Kyma API Service workloads
 
 As briefly touched in our [Template Details](../../2-basic/8-kyma-resources-helm/components/TemplateDetails.md) chapter, we make use of dedicated Istio resources to accomplish this integration path. Let us summarize the respective flow once again, so you get an idea of what's happening under the hood. As this approach can also be applied for any other kind of external service apart from SAP API Management, make sure you understand the basic concept. This will allow you a similar integration with iFlows of SAP Integration Suite. 
 
-[<img src="./images/API_KymaRouting.png" width="700" />](./images/API_KymaRouting.png)
+[<img src="./images/API_KymaRouting.png" width="700" />](./images/API_KymaRouting.png?raw=true)
 
 The general target should be clear by now. We need to ensure that no request can reach our Kyma API Service without passing through the policy checks in SAP API Management. As visualized above, respective Istio resources ensure, that a valid JWT token is part of any incoming request (**x-jwt-assertion** custom header). This JWT token header, is the core component of this integration, and is generated and injected by SAP API Management (see details in [API Policy Deep Dive](#5-api-policy-deep-dive)), based on dedicated Client Credentials of an XSUAA service instance.  
 
@@ -276,7 +276,7 @@ As a smart and knowledgeable security enthusiast, you will probably wonder about
 
 This is it, now you should be in the know about how the secure integration of SAP API Management is set up in our sample scenario. An alerted reader might probably ask the following additional question now. Why all the fuzz about a custom header? Couldn't we just use the **Authorization** header for this purpose? Excellent question and for a proper answer, let us check the visualization once again. 
 
-[<img src="./images/API_KymaRouting.png" width="700" />](./images/API_KymaRouting.png)
+[<img src="./images/API_KymaRouting.png" width="700" />](./images/API_KymaRouting.png?raw=true)
 
 While the Authorization header would obviously be the go-to place for such a JWT token, it is unfortunately already occupied by the initial request. It contains a JWT token issued by the XSUAA tenant of the  **Subscriber Subaccount** and is used by CAP to identify the Tenant in our multitenancy context. So we have to retain this token and loop it through the whole process. For that reason, we decided to store the additional JWT token (identifying a successful processing by API Management) in a custom header. 
 
@@ -291,11 +291,11 @@ The API Policies of our sample API Proxy are primarily based on SAP API Manageme
 
 To view and change the policies of an API Proxy, just click on **Policies** in the top right of your API Proxy.
 
-[<img src="./images/API_Policies.png" width="300" />](./images/API_Policies.png)
+[<img src="./images/API_Policies.png" width="300" />](./images/API_Policies.png?raw=true)
 
 Switch to edit mode by clicking on **Edit** in the Policy Editor. 
 
-[<img src="./images/API_EditMode.png" width="300" />](./images/API_EditMode.png)
+[<img src="./images/API_EditMode.png" width="300" />](./images/API_EditMode.png?raw=true)
 
 
 ### 5.1. Decode JWT Token Policy
@@ -304,15 +304,15 @@ Let us start with the **PreFlow** of our API Proxy, in which we place the **Rate
 
 5.1.1. In this use-case, we distinguish our API clients by their unique Client ID, which can be found in the JWT token of each request (! this time the JWT token in the default Authorization header !). Therefore if you decided to rebuild the API Policies from scratch, please add the API feature called **DecodeJWT**, allowing you to make use of the decoded JWT token in subsequent steps. 
 
-[<img src="./images/API_DecodeJWT01.png" width="500" />](./images/API_DecodeJWT01.png)
+[<img src="./images/API_DecodeJWT01.png" width="500" />](./images/API_DecodeJWT01.png?raw=true)
 
 5.1.2. If you are rebuilding the API Policies from scratch, rename the flow element **decodeJwt**. If you choose a different name, please keep track of it, as you will need it in one of the next steps. 
 
-[<img src="./images/API_DecodeJWT02.png" width="300" />](./images/API_DecodeJWT02.png)
+[<img src="./images/API_DecodeJWT02.png" width="300" />](./images/API_DecodeJWT02.png?raw=true)
 
 5.1.3. If you are rebuilding the API Policies from scratch, please remove the **`<Source>var.jwt</Source>`** line from the configuration. 
 
-[<img src="./images/API_DecodeJWT03.png" width="500" />](./images/API_DecodeJWT03.png)
+[<img src="./images/API_DecodeJWT03.png" width="500" />](./images/API_DecodeJWT03.png?raw=true)
 
 
 ### 5.2. Spike Arrest Policy
@@ -321,7 +321,7 @@ The Spike Arrest Policy allows you to throttle the number of requests processed 
 
 5.2.1. After decoding the JWT token, we can make use of the **Spike Arrest** feature in our policies toolbox. If you are rebuilding the API Policies from scratch, please add a new instance and rename the flow element **spikeArrest**. 
 
-[<img src="./images/API_SpikeArrest01.png" width="500" />](./images/API_SpikeArrest01.png)
+[<img src="./images/API_SpikeArrest01.png" width="500" />](./images/API_SpikeArrest01.png?raw=true)
 
 5.2.2. The Spike Arrest instance requires a Client identifier which is the Client Id in our scenario. The Client Id is origination from the previous flow element (used to decode the JWT token). If you are rebuilding the API Policies from scratch, you might need to change the **decodeJwt** value in case you named your initial flow element differently. 
 
@@ -335,7 +335,7 @@ The Spike Arrest Policy allows you to throttle the number of requests processed 
 <Rate>1ps</Rate> instead of <Rate>30pm</Rate>
 ```
 
-[<img src="./images/API_SpikeArrest02.png" width="600" />](./images/API_SpikeArrest02.png)
+[<img src="./images/API_SpikeArrest02.png" width="600" />](./images/API_SpikeArrest02.png?raw=true)
 
 
 ### 5.3. API Quota Policies
@@ -344,11 +344,11 @@ Besides an API Rate Limit (protecting our SaaS API from DoS attacks), we enhance
 
 5.3.1. To differentiate between the different API service plans, we are using **Subflows**. Those Subflows will be executed based on a certain condition, after the PreFlow was executed. If you are rebuilding the API Policies from scratch, just create a new Subflow for the **Proxy Endpoint**, by clicking on the **+** icon.
 
-[<img src="./images/API_Quota01.png" width="600" />](./images/API_Quota01.png)
+[<img src="./images/API_Quota01.png" width="600" />](./images/API_Quota01.png?raw=true)
 
 5.3.2. We use two Subflows called **standardPlanFlow** and **premiumPlanFlow**. These Subflows will be executed right after the generic PreFlow, depending on conditions you define. The PreFlow is executed for **all** requests. 
 
-[<img src="./images/API_Quota02.png" width="200" />](./images/API_Quota02.png)
+[<img src="./images/API_Quota02.png" width="200" />](./images/API_Quota02.png?raw=true)
 
 5.3.3. Once again, we differentiate our requests by using the decoded JWT token data. Our SaaS API Service Broker ensures, that the selected **service plan** is injected as a **scope** to all issued JWT tokens. This allows you to read the service plan details and to include it in the **Flow Condition** as follows: 
 
@@ -356,7 +356,7 @@ Besides an API Rate Limit (protecting our SaaS API from DoS attacks), we enhance
 
   ```jwt.decodeJwt.claim.scope ~ "*plan_standard"```
 
-[<img src="./images/API_Quota03.png" width="600" />](./images/API_Quota03.png)
+[<img src="./images/API_Quota03.png" width="600" />](./images/API_Quota03.png?raw=true)
 
 5.3.4. For the premiumPlanFlow the condition looks as follows.
 
@@ -366,7 +366,7 @@ Besides an API Rate Limit (protecting our SaaS API from DoS attacks), we enhance
 
 5.3.5. Now requests will be handled by the different Subflows depending on the consumer's service plan selection. In those Subflows, we can define different **Quota** allowances. To add a very simple **Quota limit** to the API, we use the **Quota** feature from the policies toolbox. If you are rebuilding the API Policies from scratch, name the new flow elements **quotaStandard** in the standard and **quotaPremium** in the premium flow. 
 
-[<img src="./images/API_Quota04.png" width="600" />](./images/API_Quota04.png)
+[<img src="./images/API_Quota04.png" width="600" />](./images/API_Quota04.png?raw=true)
 
 5.3.6. For our sample application, the **standard** quota is configure as below. This configuration allows API customers exactly 1200 daily requests to your API. The comprehensive configuration options of the **Quota** policy can be found in the respective documentation [click here](https://docs.apigee.com/api-platform/reference/policies/quota-policy). 
 
@@ -386,39 +386,39 @@ Besides an API Rate Limit (protecting our SaaS API from DoS attacks), we enhance
 
 > **Hint** - For the **premium plan**, you we double the number of daily requests to 2400, but feel free to update it to a configuration of your choice.  
 
-[<img src="./images/API_Quota05.png" width="600" />](./images/API_Quota05.png)
+[<img src="./images/API_Quota05.png" width="600" />](./images/API_Quota05.png?raw=true)
 
 
 ### 5.4. Kyma Authentication Policies
 
 The custom **x-jwt-assertion** header (which is used by Kyma to check whether a request has successfully passed the API Polices) is injected as part of the **TargetEndpoint - PreFlow**. Without going into further details, the respective elements in the **PreFlow** will request an **access token** from the XSUAA token endpoint stored within the **Key Value Maps** created in the beginning of this tutorial. For authentication, the associated **Client Id** and **Secret** (also stored in the Key Value Maps) are used. This JWT access token, is **cached** in SAP API Management based on its validity date and is automatically reused for further requests if applicable. 
 
-[<img src="./images/API_KymaAuth.png" width="600" />](./images/API_KymaAuth.png)
+[<img src="./images/API_KymaAuth.png" width="600" />](./images/API_KymaAuth.png?raw=true)
 
 
 ### 5.5. Statistics Collection Policies
 
 As part of the **TargetEndpoint - PostFlow**, the requested (or cached) XSUAA JWT access token will be added to the HTTP request as **x-jwt-assertion** custom header. As defined in our API Proxy settings, the **Target Endpoint** is finally again the API Service of our Kyma Cluster (e.g., susaas-api-default.a1b2c3d4.kyma.ondemand.com). If a successful response is returned from our API Service workload, some statistic details are stored before finally returning the response to the client. This includes the requested OData Entity and the XSUAA zone of the client. These details can later be visualized in a custom Monitoring dashboard. 
 
-[<img src="./images/API_Statistics.png" width="600" />](./images/API_Statistics.png)
+[<img src="./images/API_Statistics.png" width="600" />](./images/API_Statistics.png?raw=true)
 
 A very simple Monitoring dashboard using these dimensions could look as follows.
 
-[<img src="./images/API_StatisticDashboard.png" width="600" />](./images/API_StatisticDashboard.png)
+[<img src="./images/API_StatisticDashboard.png" width="600" />](./images/API_StatisticDashboard.png?raw=true)
 
 ### 5.6. Update API Proxy and deploy changes 
 
 5.6.1. If you are rebuilding the API Policies from scratch, or you changed any of the existing policies, please click on **Update** in the upper right of your **Policy Editor**. 
 
-[<img src="./images/API_Deploy01.png" width="300" />](./images/API_Deploy01.png)
+[<img src="./images/API_Deploy01.png" width="300" />](./images/API_Deploy01.png?raw=true)
 
 5.6.2. Save your API Proxy changes by clicking on **Save**. 
 
-[<img src="./images/API_Deploy02.png" width="200" />](./images/API_Deploy02.png)
+[<img src="./images/API_Deploy02.png" width="200" />](./images/API_Deploy02.png?raw=true)
 
 5.6.3. Make sure to **Deploy** the latest version of your API Proxy by selecting the respective option. 
 
-[<img src="./images/API_Deploy03.png" width="300" />](./images/API_Deploy03.png)
+[<img src="./images/API_Deploy03.png" width="300" />](./images/API_Deploy03.png?raw=true)
 
 
 ## 6. Test the setup
@@ -427,7 +427,7 @@ That's it, you've successfully integrated your Kyma-based SaaS API with SAP API 
 
 You will notice that calling the API more than once per second (e.g. using Postman or the HTTP files), will result in an error message sent by SAP API Management as the Spike Arrest (Rate Limit) policy will jump in. 
 
-[<img src="./images/API_SpikeArrest.png" width="600" />](./images/API_SpikeArrest.png)
+[<img src="./images/API_SpikeArrest.png" width="600" />](./images/API_SpikeArrest.png?raw=true)
 
 
 ## 7. Further Information

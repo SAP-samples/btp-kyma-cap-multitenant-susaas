@@ -13,11 +13,11 @@ You can set up the **Basic Version** in any **SAP BTP Kyma** environment using *
 
 Check the following architecture to get an idea of the Basic Version components:
 
-[<img src="./images/App_Architecture_Basic.png" width="500" />](./images/App_Architecture_Basic.png)
+[<img src="./images/App_Architecture_Basic.png" width="500" />](./images/App_Architecture_Basic.png?raw=true)
 
 Again, for our **Kubernetes** friends, a more detailed depiction including some of the used Kyma and native Kubernetes components:
 
-[<img src="./images/App_Architecture_BasicDetails.png" width="450" />](./images/App_Architecture_BasicDetails.png)
+[<img src="./images/App_Architecture_BasicDetails.png" width="450" />](./images/App_Architecture_BasicDetails.png?raw=true)
 
 
 ## 1. Step-by-Step
@@ -82,38 +82,38 @@ The results of this tutorial will be a sample SaaS application running in your o
 
 See the following screenshots will give you an idea of the basic application version (click to enlarge).
 
-| [<img src="./images/App_Sample01.png" width="300" alt="Main Menu"/>](./images/App_Sample01.png) | [<img src="./images/App_Sample02.png" width="300" alt="Project List"/>](./images/App_Sample02.png)
+| [<img src="./images/App_Sample01.png" width="300" alt="Main Menu"/>](./images/App_Sample01.png?raw=true) | [<img src="./images/App_Sample02.png" width="300" alt="Project List"/>](./images/App_Sample02.png?raw=true)
 |:----------: | :------------: |
 | *Main Menu* | *Project List* |
 
-| [<img src="./images/App_Sample03.png" width="300" alt="Project Details"/>](./images/App_Sample03.png) | [<img src="./images/App_Sample04.png" width="300" alt="Project Assessments"/>](./images/App_Sample04.png)
+| [<img src="./images/App_Sample03.png" width="300" alt="Project Details"/>](./images/App_Sample03.png?raw=true) | [<img src="./images/App_Sample04.png" width="300" alt="Project Assessments"/>](./images/App_Sample04.png?raw=true)
 |:----------------: | :-------------------: |
 | *Project Details* | *Project Assessments* |
 
-| [<img src="./images/App_Sample05.png" width="300" alt="Project Members"/>](./images/App_Sample05.png) | [<img src="./images/App_Sample06.png" width="300" alt="Add Project Member"/>](./images/App_Sample06.png)
+| [<img src="./images/App_Sample05.png" width="300" alt="Project Members"/>](./images/App_Sample05.png?raw=true) | [<img src="./images/App_Sample06.png" width="300" alt="Add Project Member"/>](./images/App_Sample06.png?raw=true)
 |:----------------: | :------------------: |
 | *Project Members* | *Add Project Member* |
 
-| [<img src="./images/App_Sample07.png" width="300" alt="User List"/>](./images/App_Sample07.png) | [<img src="./images/App_Sample08.png" width="300" alt="User Details"/>](./images/App_Sample08.png)
+| [<img src="./images/App_Sample07.png" width="300" alt="User List"/>](./images/App_Sample07.png?raw=true) | [<img src="./images/App_Sample08.png" width="300" alt="User Details"/>](./images/App_Sample08.png?raw=true)
 |:----------: | :------------: |
 | *User List* | *User Details* |
 
-| [<img src="./images/App_Sample09.png" width="300" alt="Assessment List"/>](./images/App_Sample09.png) | [<img src="./images/App_Sample10.png" width="300" alt="Assessment Details"/>](./images/App_Sample10.png)
+| [<img src="./images/App_Sample09.png" width="300" alt="Assessment List"/>](./images/App_Sample09.png?raw=true) | [<img src="./images/App_Sample10.png" width="300" alt="Assessment Details"/>](./images/App_Sample10.png?raw=true)
 |:----------------: | :------------------: |
 | *Assessment List* | *Assessment Details* |
 
-| [<img src="./images/App_Sample11.png" width="300" alt="Circularity Metrics"/>](./images/App_Sample11.png) | [<img src="./images/App_Sample12.png" width="300" alt="Circularity Charts"/>](./images/App_Sample12.png)
+| [<img src="./images/App_Sample11.png" width="300" alt="Circularity Metrics"/>](./images/App_Sample11.png?raw=true) | [<img src="./images/App_Sample12.png" width="300" alt="Circularity Charts"/>](./images/App_Sample12.png?raw=true)
 |:--------------------: | :------------------: |
 | *Circularity Metrics* | *Circularity Charts* |
 
-| [<img src="./images/App_Sample13.png" width="300" alt="Sales Splits"/>](./images/App_Sample13.png) | [<img src="./images/App_Sample14.png" width="300" alt="Prefill Sales Splits"/>](./images/App_Sample14.png)
+| [<img src="./images/App_Sample13.png" width="300" alt="Sales Splits"/>](./images/App_Sample13.png?raw=true) | [<img src="./images/App_Sample14.png" width="300" alt="Prefill Sales Splits"/>](./images/App_Sample14.png?raw=true)
 |:-------------: | :--------------------: |
 | *Sales Splits* | *Prefill Sales Splits* |
 
-| [<img src="./images/App_Sample15.png" width="300" alt="Material Splits"/>](./images/App_Sample15.png) | [<img src="./images/App_Sample16.png" width="300" alt="Modify Material Splits"/>](./images/App_Sample16.png)
+| [<img src="./images/App_Sample15.png" width="300" alt="Material Splits"/>](./images/App_Sample15.png?raw=true) | [<img src="./images/App_Sample16.png" width="300" alt="Modify Material Splits"/>](./images/App_Sample16.png?raw=true)
 |:----------------: | :----------------------: |
 | *Material Splits* | *Modify Material Splits* |
 
-| [<img src="./images/App_Sample17.png" width="300" alt="Material Splits"/>](./images/App_Sample17.png) 
+| [<img src="./images/App_Sample17.png" width="300" alt="Material Splits"/>](./images/App_Sample17.png?raw=true) 
 |:----------------: |
 | *Material Splits* |

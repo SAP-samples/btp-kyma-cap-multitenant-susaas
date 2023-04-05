@@ -68,7 +68,7 @@ For more detailed information, please refer to the official Helm documentation (
 
 As you might see from the repository, the chart directory looks as below.
 
-[<img src="./images/HELM_Chart_Dir.png" width="300"/>](./images/HELM_Chart_Dir.png)
+[<img src="./images/HELM_Chart_Dir.png" width="300"/>](./images/HELM_Chart_Dir.png?raw=true)
 
 In following sections you will be inspecting the files and their purposes in the [chart](../../../../code/charts/sustainable-saas/) directory.
 
@@ -223,7 +223,7 @@ Templates in Helm Charts are files that define how resources should be deployed 
 
 [./code/chart/templates](../../../../code/charts/sustainable-saas/templates/) directory contains the templates of the Helm Chart.
 
-[<img src="./images/HELM_Chart_Temp_Dir.png" width="500"/>](./images/HELM_Chart_Temp_Dir.png)
+[<img src="./images/HELM_Chart_Temp_Dir.png" width="500"/>](./images/HELM_Chart_Temp_Dir.png?raw=true)
 
 The [templates](../../../../code/charts/sustainable-saas/templates/) directory contains the template files, which will be converted to Kubernetes resource definitions when running *helm template* or *helm install*. 
 

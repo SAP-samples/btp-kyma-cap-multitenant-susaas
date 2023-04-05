@@ -8,23 +8,23 @@ The SaaS sample application is equipped with a built-in SaaS API, that your subs
 
 In the **Basic Version**, we will keep it short and simple and explain how to interact with the SaaS API using the HTTP sample files provided as part of the GitHub repository. You can also run similar requests using tools like Postman or Insomnia. 
 
-[<img src="./images/API_ArchDetails.png" width="600" />](./images/API_ArchDetails.png)
+[<img src="./images/API_ArchDetails.png" width="600" />](./images/API_ArchDetails.png?raw=true)
 
 
 ## 1. SaaS API access
 
 Below you can see the tables of the Tenant data model which can be maintained by subscribers using the SaaS API. Besides product master data, SaaS subscribers can also use the API for transactional data allowing them to prefill their Sustainability assessments.
 
-[<img src="./images/DM_Tables.png" width="500" />](./images/DM_Tables.png)
+[<img src="./images/DM_Tables.png" width="500" />](./images/DM_Tables.png?raw=true)
 
 The main entities like Products, Sales Orders and further Recycling data can be maintained using the API. As you can see, also some sample endpoints are provided for bulk inserts, updates, and upserts (implemented using a SAP HANA Stored Procedure or native CAP Upsert features). 
 
-[<img src="./images/API_Endpoints01.png" width="300" />](./images/API_Endpoints01.png)
-[<img src="./images/API_Endpoints02.png" width="300" />](./images/API_Endpoints02.png)
+[<img src="./images/API_Endpoints01.png" width="300" />](./images/API_Endpoints01.png?raw=true)
+[<img src="./images/API_Endpoints02.png" width="300" />](./images/API_Endpoints02.png?raw=true)
 
 To connect to the SaaS API as a subscriber, make sure you followed all steps described in **Subscribe a Consumer Subaccount** ([click here](../5-subscribe-consumer-subaccount/README.md)). You will need the service binding credentials which you created for the API Broker service instance in the Subscriber Subaccount. If you haven't created this service binding yet, please go back and do it now. 
 
-[<img src="./images/API_ServiceKey.png" width="400" />](./images/API_ServiceKey.png)
+[<img src="./images/API_ServiceKey.png" width="400" />](./images/API_ServiceKey.png?raw=true)
 
 1.1. Get started by switching to the **/code/http** directory. Here you will find sample API calls that you can use to push sample data to Tenant database containers using the multitenant SaaS API. In this sample we will push **Product** sample data (*apiProducts.http*) to the SaaS API which will be stored in the respective Tenant database container. Make sure you have the required plugin (e.g., for VS Code) installed to execute requests in HTTP files.  
 
@@ -32,7 +32,7 @@ To connect to the SaaS API as a subscriber, make sure you followed all steps des
 
 > **Important** - Make sure **not to commit** these details to GitHub! Either remove the credentials before saving or rename your HTTP files to **-private.http** (e.g., apiProducts-private.http), which are excluded by the *.gitignore* file. 
 
-[<img src="./images/API_HttpCreds.png" width="900" />](./images/API_HttpCreds.png)
+[<img src="./images/API_HttpCreds.png" width="900" />](./images/API_HttpCreds.png?raw=true)
 
 > **Hint** - The *xsuaaHostname* is equal to the *uaa.url* parameter. The *apiEndpointBtp* equals the *apiUrl* parameter.
 
@@ -117,7 +117,7 @@ Content-type: application/json
 
 1.7. After pushing all data provided in the HTTP files, you will be able to progress with the next part of this tutorial and test the SaaS sample application end-to-end. You can create Assessments for the uploaded products and even **prefill** Sales Orders, Materials, and Recycling sample values. Below you can see a sample Assessment which was created based on the provided data of product **HT-1000**.
 
-[<img src="./images/API_SampleHT1000.png" width="700" />](./images/API_SampleHT1000.png)
+[<img src="./images/API_SampleHT1000.png" width="700" />](./images/API_SampleHT1000.png?raw=true)
 
 1.8. Feel free to proceed with the next part of the tutorial and test the SaaS sample application end-to-end from a Subscriber perspective.
 

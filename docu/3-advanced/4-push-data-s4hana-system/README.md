@@ -30,7 +30,7 @@ While you already learned about the SaaS API in the Basic Version, the API calls
 
 See the relevant part of the solution architecture below:
 
-[<img src="./images/S4_Architecture.png" width="500" />](./images/S4_Architecture.png)
+[<img src="./images/S4_Architecture.png" width="500" />](./images/S4_Architecture.png?raw=true)
 
 
 ## 2. Prerequisites
@@ -54,17 +54,17 @@ Feel free to generate some first sample data values in your EPM model using the 
 
 To make sure your push setup is working properly, you might need to import additional SSL certificates to your ABAP backend. Depending on whether you're using a custom domain or a default SAP Kyma Subdomain for your API, please import the respective certificates to the **SSL client SSL Client (Anonymous)**  and **SSL client SSL Client (Standard)** PSE using the **STRUST** transaction. 
 
-[<img src="./images/S4_Certificates.png" width="500" />](./images/S4_Certificates.png)
+[<img src="./images/S4_Certificates.png" width="500" />](./images/S4_Certificates.png?raw=true)
 
 Especially in scenarios using a custom domain (e.g., with a CSR signed by Let's Encrypt) you might need to import additional certificates incl. missing Root certificates. This ensures secure and encrypted communication between your backend system and your API on SAP BTP. Check the detailed explanation in SAP Help ([click here](https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/916a7da9481e4265809f28010a113a6a/a5a3ae031c3042f293e72bf6c5c90620.html?locale=en-US))
 
 You as a SaaS provider, but also your consumers can download their respective certificate right from within the browser (like Chrome) as you can see in the following screenshots:
 
-[<img src="./images/CERT_01.png" width="330" />](./images/CERT_01.png)
-[<img src="./images/CERT_02.png" width="330" />](./images/CERT_02.png)
+[<img src="./images/CERT_01.png" width="330" />](./images/CERT_01.png?raw=true)
+[<img src="./images/CERT_02.png" width="330" />](./images/CERT_02.png?raw=true)
 
-[<img src="./images/CERT_03.png" width="300" />](./images/CERT_03.png)
-[<img src="./images/CERT_04.png" width="300" />](./images/CERT_04.png)
+[<img src="./images/CERT_03.png" width="300" />](./images/CERT_03.png?raw=true)
+[<img src="./images/CERT_04.png" width="300" />](./images/CERT_04.png?raw=true)
 
 
 Please use the trace files (Goto -> Trace File) in transaction **SMICM** to analyze certificate-related errors! 
@@ -79,22 +79,22 @@ Create a new development package in ABAP Development Tools for Eclipse or using 
 
 5.1. Create an OAuth Client Profile in your ABAP development package named **ZSUSAAS_PUSH_API** (click to enlarge). 
 
-[<img src="./images/S4_ClntProf01.png" width="300" />](./images/S4_ClntProf01.png)
+[<img src="./images/S4_ClntProf01.png" width="300" />](./images/S4_ClntProf01.png?raw=true)
 
 Select **DEFAULT** as the type. This Client Profile is required when setting up your OAuth Client in the next step. 
 
-[<img src="./images/S4_ClntProf02.png" width="300" />](./images/S4_ClntProf02.png)
+[<img src="./images/S4_ClntProf02.png" width="300" />](./images/S4_ClntProf02.png?raw=true)
 
 5.2. In the **Scopes** section please add the **uaa.resource** scope. 
 
-[<img src="./images/S4_ClntProfScope.png" width="400" />](./images/S4_ClntProfScope.png)
+[<img src="./images/S4_ClntProfScope.png" width="400" />](./images/S4_ClntProfScope.png?raw=true)
 
 
 ## 6. OAuth Client
 
 6.1. Create a new OAuth Client in the web-based transaction **OA2C_CONFIG**. The default path for the respective transaction is `https://<host_name>:<https_port>/sap/bc/webdynpro/sap/oa2c_config?sap-client=<client e.g. 100>`. Log in with a user authorized to create new OAuth Clients and click on **Create ...**.
 
-[<img src="./images/S4_OAuth01.png" width="400" />](./images/S4_OAuth01.png)
+[<img src="./images/S4_OAuth01.png" width="400" />](./images/S4_OAuth01.png?raw=true)
 
 6.2. Enter the following values and choose **OK**. 
 
@@ -102,7 +102,7 @@ Select **DEFAULT** as the type. This Client Profile is required when setting up 
 - Configuration Name: `SUSAAS_PUSH_API_S4` or another name of your choice
 - OAuth 2.0 Client ID: Enter the **clientid** of the service binding created for the API service instance ([click here](../../2-basic/5-subscribe-consumer-subaccount/README.md#2-api-service-broker-instance))
 
-  [<img src="./images/S4_OAuth02.png" width="400" />](./images/S4_OAuth02.png)
+  [<img src="./images/S4_OAuth02.png" width="400" />](./images/S4_OAuth02.png?raw=true)
 
 6.3. On the Administration tab enter the client secret of the service key.
 
@@ -122,7 +122,7 @@ Select **DEFAULT** as the type. This Client Profile is required when setting up 
 
 6.7. Your configuration should look similar to the following (click to enlarge).
 
-[<img src="./images/S4_OAuth03.png" width="500" />](./images/S4_OAuth03.png)
+[<img src="./images/S4_OAuth03.png" width="500" />](./images/S4_OAuth03.png?raw=true)
 
 
 ## 7. Destination configuration
@@ -139,7 +139,7 @@ The ABAP logic pushing the EPM sample data to the SaaS API will make use of a de
     - Target Host: apiUrl (not uaa.url!) parameter of your service key (**without https:// prefix!**)
     - Port: 443
 
-  [<img src="./images/S4_Dest01.png" width="500" />](./images/S4_Dest01.png)
+  [<img src="./images/S4_Dest01.png" width="500" />](./images/S4_Dest01.png?raw=true)
 
 
 7.5. On the Logon & Security tab provide the following settings:
@@ -148,7 +148,7 @@ The ABAP logic pushing the EPM sample data to the SaaS API will make use of a de
   - Set SSL to **Active**
   - Check **Do not use certificate for logon**
 
-  [<img src="./images/S4_Dest02.png" width="500" />](./images/S4_Dest02.png)
+  [<img src="./images/S4_Dest02.png" width="500" />](./images/S4_Dest02.png?raw=true)
 
 7.6. Select **OAuth Settings** and provide the profile and configuration as follows:
 
@@ -157,13 +157,13 @@ The ABAP logic pushing the EPM sample data to the SaaS API will make use of a de
   - Profile : ZSUSAAS_PUSH_API or the profile name you specified
   - Configuration: SUSAAS_PUSH_API_S4 or the configuration you specified
 
-  [<img src="./images/S4_Dest03.png" width="500" />](./images/S4_Dest03.png)
+  [<img src="./images/S4_Dest03.png" width="500" />](./images/S4_Dest03.png?raw=true)
 
 7.7. Save your entries and click on **Connection Test** in the top left.
 
 7.8. Make sure the test is successful and a code **200** is returned.
 
-  [<img src="./images/S4_Dest04.png" width="500" />](./images/S4_Dest04.png)
+  [<img src="./images/S4_Dest04.png" width="500" />](./images/S4_Dest04.png?raw=true)
 
 Your destination is now ready to be used from within the ABAP coding. 
 
@@ -179,12 +179,12 @@ Please go to your ABAP Development Tools in eclipse or use SE80 transaction in y
 
 > **Important** - Please double-check if the structure field names and types match with the corresponding target views **EPM_V_PROD** and **EPM_V_SALES_DATA**. We cannot guarantee consistency across all releases. 
 
-[<img src="./images/S4_Dev01.png" width="500" />](./images/S4_Dev01.png)
+[<img src="./images/S4_Dev01.png" width="500" />](./images/S4_Dev01.png?raw=true)
 
 **Structure ZSUSAAS_S_PRODUCTS_UPL**<br>
 Description - Susaas Products Upload Structure
 
- [<img src="./images/S4_Dev02.png" width="500" />](./images/S4_Dev02.png)
+ [<img src="./images/S4_Dev02.png" width="500" />](./images/S4_Dev02.png?raw=true)
 
 
 | Component | Typing Method | Component Type | Data Type | Length | Decimals | Coordinate | Short Description | 
@@ -204,7 +204,7 @@ Description - Susaas Products Upload Structure
 
 Please also map the required Currency/quantity fields mapping as shown below.
 
-[<img src="./images/S4_StrCurQan01.png" width="700" />](./images/S4_StrCurQan01.png)
+[<img src="./images/S4_StrCurQan01.png" width="700" />](./images/S4_StrCurQan01.png?raw=true)
 
 **Structure ZSUSAAS_S_SO_UPL**<br>
 Description - Susaas Sales Order Upload Structure
@@ -238,7 +238,7 @@ Description - Susaas Sales Order Upload Structure
 
 Please also map the required Currency/quantity fields mapping as shown below.
 
-[<img src="./images/S4_StrCurQan02.png" width="700" />](./images/S4_StrCurQan02.png)
+[<img src="./images/S4_StrCurQan02.png" width="700" />](./images/S4_StrCurQan02.png?raw=true)
 
 ### 8.2. ABAP Objects Class
 
@@ -249,7 +249,7 @@ Create a new ABAP Objects class in your ZSUAAS development package. You can find
 **Class ZSUSAAS_CL_UPLOAD** <br>
 ([click here](./code/ZSUSAAS_CL_UPLOAD.CLAS) for the code)
 
-[<img src="./images/S4_Dev03.png" width="500" />](./images/S4_Dev03.png)
+[<img src="./images/S4_Dev03.png" width="500" />](./images/S4_Dev03.png?raw=true)
 
 The class provides a method **GET_HTTP_CLIENT** used to create an instance of the default ABAP HTTP Client feature, which allows you to send HTTP requests to the SaaS API using the connection defined in SM59. The **POST_DATA_TO_API** method is responsible for sending the dataset to the respective API endpoints using the HTTP client instance. The method implementation in this sample is very lean and can be enhanced based on your requirements to introduce features like packaging larger-scale datasets or proper error handling in case of erroneous requests. The **CLOSE_CONNECTION** method ensures that the API connection is closed again after sending the data to your SaaS APIs. 
 
@@ -265,26 +265,26 @@ For the data push implementation, please create two programs in your ZSUSAAS dev
 **Program ZSUSAAS_R_UPLOAD_PRODUCTS** <br>
 ([click here](./code/ZSUSAAS_R_UPLOAD_PRODUCTS.PROG) for the code)
 
- [<img src="./images/S4_Dev04.png" width="500" />](./images/S4_Dev04.png)
+ [<img src="./images/S4_Dev04.png" width="500" />](./images/S4_Dev04.png?raw=true)
 
 
 **Program ZSUSAAS_R_UPLOAD_SO** <br>
 ([click here](./code/ZSUSAAS_R_UPLOAD_SO.PROG) for the code)
 
- [<img src="./images/S4_Dev05.png" width="500" />](./images/S4_Dev05.png)
+ [<img src="./images/S4_Dev05.png" width="500" />](./images/S4_Dev05.png?raw=true)
 
 Feel free to scroll through the implementation to get a better understanding which EPM views are read, how the data is converted into the required JSON payload, and finally send to the SaaS API. The code is not very complex but please be aware, this is a very simple scenario, which is not supposed to handle scenarios like mass uploads or proper error handling (e.g. in case of duplicate key issues or connection problems). 
 
 Of special importance are the following lines of the coding. This is where the name of your SM59 destination is defined and the relevant endpoint for the respective dataset is declared. Please modify your code accordingly if you didn't follow the names proposed in this tutorial. 
 
-[<img src="./images/S4_Dev06.png" width="700" />](./images/S4_Dev06.png)
+[<img src="./images/S4_Dev06.png" width="700" />](./images/S4_Dev06.png?raw=true)
 
 
 ## 9. Program test
 
 To test the SaaS Push API end-to-end, you can just simply execute the programs which you created in the previous step. 
 
- [<img src="./images/S4_Dev07.png" width="800" />](./images/S4_Dev07.png)
+ [<img src="./images/S4_Dev07.png" width="800" />](./images/S4_Dev07.png?raw=true)
 
 If you're not facing any error messages, your upload was probably successful. To check whether the data was successfully uploaded to the Tenant database container, you can log in to the respective Tenant of your SaaS application and check the available products (when creating a new assessment) or refer to the logs of the API service application instance in the Provider Subaccount.
 
@@ -295,51 +295,51 @@ To automate the push process of the latest EPM data, you can use the programs wh
 
 10.1. Define a name for your background job like **ZSUSAAS_UPLOAD_PRODUCTS**. Set the priority to C and select the target application server. 
 
-[<img src="./images/S4_Job01.png" width="500" />](./images/S4_Job01.png)
+[<img src="./images/S4_Job01.png" width="500" />](./images/S4_Job01.png?raw=true)
 
 10.2. By hitting **Enter**, you can define the first **Step** of your job. Select **ABAP program** and enter the name of your program like **ZSUSAAS_R_UPLOAD_PRODUCTS**. After clicking on **Check**, please save the step. 
 
-[<img src="./images/S4_Job02.png" width="500" />](./images/S4_Job02.png)
+[<img src="./images/S4_Job02.png" width="500" />](./images/S4_Job02.png?raw=true)
 
 10.3. Go back to your job details.
 
-[<img src="./images/S4_Job03.png" width="500" />](./images/S4_Job03.png)
+[<img src="./images/S4_Job03.png" width="500" />](./images/S4_Job03.png?raw=true)
 
 10.4. Next you have to define a **Start Condition** for your job, which allows you to set up the scheduling. 
 
-[<img src="./images/S4_Job04.png" width="500" />](./images/S4_Job04.png)
+[<img src="./images/S4_Job04.png" width="500" />](./images/S4_Job04.png?raw=true)
 
 10.5. As condition type select **Date/Time** and enter the first start date and time of your background job. Ensure the checkbox for **Periodic Job** is checked and then select **Period Values** to set up the schedule. 
 
-[<img src="./images/S4_Job05.png" width="400" />](./images/S4_Job05.png)
+[<img src="./images/S4_Job05.png" width="400" />](./images/S4_Job05.png?raw=true)
 
 10.6. Decide in which repeated schedule you want to run your job. Click on **Check** and then save the settings. 
 
-[<img src="./images/S4_Job06.png" width="300" />](./images/S4_Job06.png)
+[<img src="./images/S4_Job06.png" width="300" />](./images/S4_Job06.png?raw=true)
 
 10.7. Review and save your start condition to return to your job details. 
 
-[<img src="./images/S4_Job07.png" width="300" />](./images/S4_Job07.png)
+[<img src="./images/S4_Job07.png" width="300" />](./images/S4_Job07.png?raw=true)
 
 10.8. You should now see that your job is properly configured. 
 
-[<img src="./images/S4_Job08.png" width="300" />](./images/S4_Job08.png)
+[<img src="./images/S4_Job08.png" width="300" />](./images/S4_Job08.png?raw=true)
 
 10.9. Save the job to release and enable it.
 
-[<img src="./images/S4_Job09.png" width="300" />](./images/S4_Job09.png)
+[<img src="./images/S4_Job09.png" width="300" />](./images/S4_Job09.png?raw=true)
 
 10.10. You should see a success message confirming your job is released. 
 
-[<img src="./images/S4_Job10.png" width="300" />](./images/S4_Job10.png)
+[<img src="./images/S4_Job10.png" width="300" />](./images/S4_Job10.png?raw=true)
 
 10.11. You can check the status of your job in the **Job Selection**. Make sure to set the correct filters, especially for the start date. 
 
-[<img src="./images/S4_Job11.png" width="300" />](./images/S4_Job11.png)
+[<img src="./images/S4_Job11.png" width="300" />](./images/S4_Job11.png?raw=true)
 
 10.12. You will see the job in status **Released** in the Job Overview screen. 
 
-[<img src="./images/S4_Job12.png" width="400" />](./images/S4_Job12.png)
+[<img src="./images/S4_Job12.png" width="400" />](./images/S4_Job12.png?raw=true)
 
 
 ## 11. Further Information

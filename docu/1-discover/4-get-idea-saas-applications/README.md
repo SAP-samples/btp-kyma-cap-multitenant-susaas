@@ -4,7 +4,7 @@ This part of the tutorial is to explain the ideas and advantages of **Software a
 
 SaaS applications are part of our daily life and not just in a B2B world but also in B2C environments. If you think of subscription services like Office365 which is used by a lot of private customers, this is a perfect example of Software as a Service in which Microsoft provides you the well-known Microsoft Office tools as web applications (and as a desktop version if you like). All you need to do is sign up for an account and you're ready to go. No installation, configuration, or updates are required. So let's see how the idea of SaaS evolved throughout the last years. 
 
-[<img src="./images/SaaS_IaaSPaaSSaaS.png" width="500" />](./images/SaaS_IaaSPaaSSaaS.png)
+[<img src="./images/SaaS_IaaSPaaSSaaS.png" width="500" />](./images/SaaS_IaaSPaaSSaaS.png?raw=true)
 
 While 15 years ago, most SAP customers hosted ECC systems on their servers, this paradigm is shifting. Especially with affordable offerings of hyperscaler companies like Amazon, Microsoft, or Google, it becomes more and more lucrative for businesses to outsource the hosting of their systems like SAP S/4HANA to infrastructure providers. These **Infrastructure as a Service** providers can offer cheap alternatives by hosting thousands of servers in their data centers, and also taking away the pain of handling low-level infrastructure tasks like Network or Storage requirements. While IaaS is a huge business and gives companies across the globe great flexibility in designing their IT landscape, it still requires a comparable high effort for a lot of scenarios that can be standardized. 
 
@@ -25,13 +25,13 @@ So you might now ask yourself, okay sounds good but still as a SaaS provider I n
 
 For sure there are a lot of examples in which it makes sense to provide a Software as a Service application in a single-tenant setup, which would mean that you deploy a separate application instance to a dedicated landscape, which is not being shared with other Consumer tenants. This means for example a dedicated database or dedicated runtime memory for your SaaS consumers. 
 
-[<img src="./images/SaaS_SingleTenant.png" width="300" />](./images/SaaS_SingleTenant.png)
+[<img src="./images/SaaS_SingleTenant.png" width="300" />](./images/SaaS_SingleTenant.png?raw=true)
 
 > The single consumer in this scenario pays 500\$ per year for the SaaS subscription. The SaaS provider is charged 300\$ for the dedicated SAP HANA Cloud instance and some GBs of runtime. All in all, the provider is left with a profit of 200\$.  
 
 While such a setup might be required for certain scenarios (e.g. high-risk customers) in most scenarios it makes sense to share resources (like an SAP HANA Cloud database) between multiple consumer tenants. If you design your SaaS application to support multitenancy, this means a great advantage for your TCO as a SaaS provider. While the SaaS consumer doesn't even notice that resources are shared in the background, you can for example safely store the data of 1000 consumer Tenants on the same database. In case of an SAP HANA Cloud database, this will reduce the costs of a powerful in-memory system to a minimum for each of the 1000 consumers making the concept very profitable for both sides. 
 
-[<img src="./images/SaaS_MultiTenant.png" width="330" />](./images/SaaS_MultiTenant.png)
+[<img src="./images/SaaS_MultiTenant.png" width="330" />](./images/SaaS_MultiTenant.png?raw=true)
 
 > In this scenario, 100 consumers pay 100$ per year for the SaaS subscription (= 10.000\$). The SaaS provider is charged 3.000\$ for a large SAP HANA Cloud instance and the necessary runtime memory. All in all, the provider is left with a profit of 7.000\$.  
 

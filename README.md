@@ -15,7 +15,7 @@ Due to the technical and theoretical complexity of the topic, the sample applica
 
 Below you can find a solution architecture diagram of the sample application. As you can see, the app contains a lot of services and tools which you will use in this tutorial (click to enlarge).
 
-[<img src="./docu/4-expert/0-introduction-expert-features/images/App_Architecture_Expert.png" width="600" />](./docu/4-expert/0-introduction-expert-features/images/App_Architecture_Expert.png)
+[<img src="./docu/4-expert/0-introduction-expert-features/images/App_Architecture_Expert.png" width="600" />](./docu/4-expert/0-introduction-expert-features/images/App_Architecture_Expert.png?raw=true)
 
 
 ## Content

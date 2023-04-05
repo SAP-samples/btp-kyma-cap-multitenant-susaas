@@ -26,7 +26,7 @@ The **code** directory of our GitHub repository consists of several sub-director
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_All.png" width="350"/>](./images/Repo_Structure_All.png) | <br> <br> **api -** CAP-based API service <br> **app -** SAP Fiori Elements UI modules <br> **broker -** API Service Broker <br> **charts -** Helm charts <br> **db -** Tenant data model <br> **db-com -** Shared/Common data model <br> **ext -** CAP-based SaaS extension <br> **http -** HTTP files for testing purposes <br> **router -** Application Router <br> **srv -** CAP-based Business Application service <br> **test -** Unit tests and sample data <br> <br> **.cdscr-private.sample.json -** K8S binding samples for local testing <br> **default-env.sample.json -** Environment variables for local testing  <br> **package.json -** CDS configs and dependencies for local testing |
+| [<img src="./images/Repo_Structure_All.png" width="350"/>](./images/Repo_Structure_All.png?raw=true) | <br> <br> **api -** CAP-based API service <br> **app -** SAP Fiori Elements UI modules <br> **broker -** API Service Broker <br> **charts -** Helm charts <br> **db -** Tenant data model <br> **db-com -** Shared/Common data model <br> **ext -** CAP-based SaaS extension <br> **http -** HTTP files for testing purposes <br> **router -** Application Router <br> **srv -** CAP-based Business Application service <br> **test -** Unit tests and sample data <br> <br> **.cdscr-private.sample.json -** K8S binding samples for local testing <br> **default-env.sample.json -** Environment variables for local testing  <br> **package.json -** CDS configs and dependencies for local testing |
 
 > **Hint** - Each of our CAP-based application components like the SaaS Backend Service or the API Service contain a dedicated *package.json* file. Instead of using the root-level *package.json* file we decided to provide component specific dependencies and CDS production profile configurations.
 
@@ -38,7 +38,7 @@ The **api** directory contains the implementation of the **CAP-based** API Servi
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_API.png" width="350"/>](./images/Repo_Structure_API.png) |  **api-service.cds -** CAP-based API Service definition <br> **api-service.js -** CAP-based API Service handler  <br> **package.json -** Node.js dependencies and start script <br> **server.js -** Custom server.js for health-check endpoints |
+| [<img src="./images/Repo_Structure_API.png" width="350"/>](./images/Repo_Structure_API.png?raw=true) |  **api-service.cds -** CAP-based API Service definition <br> **api-service.js -** CAP-based API Service handler  <br> **package.json -** Node.js dependencies and start script <br> **server.js -** Custom server.js for health-check endpoints |
 
 
 ## 3. Application
@@ -49,7 +49,7 @@ Besides the **html5-deployer** directory (containing the **HTML5 Application Dep
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_App.png" width="350"/>](./images/Repo_Structure_App.png) |  **html5-deployer -** HTML5 Application Deployer configuration <p style='padding-left:1em'> **.dockerignore -** Ignores package.json for docker build <br> **Dockerfile -** Docker image based on sapse/html5-app-deployer <br> **package.json -** Required for local testing only </p> **ui-admin-projects -** Admin UI for project management <p style='padding-left:1em'> **webapp -** UI5 applicaton resources <br><p style='padding-left:2em'>**ext -** Fiori Elements extensions <br> **i18n -** Translation files <br> **utils -** Reusable coding <br> **Component.js -** Component coding <br> **index.html -** For standalone usage  <br> **manifest.json -** SAPUI5 manifest file  </p><p style='padding-left:1em'> **package.json -** Required for build process <br> **ui5-deploy.yaml -** Required for build process <br> **xs-app.json -** HTML5 App Repository routes <br>(copied to webapp folder during UI build) </p> **ui-admin-users -** Admin UI for user management <br> **ui-public-assessments -** UI for assessment management <br> **ui-public-flp -** UI for sandbox launchpad  <br> **ui-public-projects -** UI for viewing project details <br> <br> **index.html** - Sandbox launchpad for cds watch |
+| [<img src="./images/Repo_Structure_App.png" width="350"/>](./images/Repo_Structure_App.png?raw=true) |  **html5-deployer -** HTML5 Application Deployer configuration <p style='padding-left:1em'> **.dockerignore -** Ignores package.json for docker build <br> **Dockerfile -** Docker image based on sapse/html5-app-deployer <br> **package.json -** Required for local testing only </p> **ui-admin-projects -** Admin UI for project management <p style='padding-left:1em'> **webapp -** UI5 applicaton resources <br><p style='padding-left:2em'>**ext -** Fiori Elements extensions <br> **i18n -** Translation files <br> **utils -** Reusable coding <br> **Component.js -** Component coding <br> **index.html -** For standalone usage  <br> **manifest.json -** SAPUI5 manifest file  </p><p style='padding-left:1em'> **package.json -** Required for build process <br> **ui5-deploy.yaml -** Required for build process <br> **xs-app.json -** HTML5 App Repository routes <br>(copied to webapp folder during UI build) </p> **ui-admin-users -** Admin UI for user management <br> **ui-public-assessments -** UI for assessment management <br> **ui-public-flp -** UI for sandbox launchpad  <br> **ui-public-projects -** UI for viewing project details <br> <br> **index.html** - Sandbox launchpad for cds watch |
 
 The **ui-public-flp** UI module contains a Sandbox Launchpad. The [Application Router](#10-application-router) **welcomeFile** property is routing to this module stored in the HTML5 Application Repository. Keep in mind, that when using UI5 applications in a Launchpad context, always the UI5 release defined for the actual Launchpad is being used for your SAPUI5 applications. 
 
@@ -62,7 +62,7 @@ The **broker** directory contains the API Service Broker implementation. The cat
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_Broker.png" width="350"/>](./images/Repo_Structure_Broker.png) | **package.json -** Node.js dependencies and start script <br> **start.js -** Custom start script for API Service Broker <br> (reading credentials from env variables) |
+| [<img src="./images/Repo_Structure_Broker.png" width="350"/>](./images/Repo_Structure_Broker.png?raw=true) | **package.json -** Node.js dependencies and start script <br> **start.js -** Custom start script for API Service Broker <br> (reading credentials from env variables) |
 
 
 ## 5. Helm Charts
@@ -80,7 +80,7 @@ The **Sustainable SaaS** sample application itself is based on a a so-called **U
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_Chart.png" width="350"/>](./images/Repo_Structure_Chart.png) |  **alert-notification -** Alert Notification Service <br> <p style='padding-left:1em'> **templates -** Templates to generate Kubernetes manifest files <br> **Chart.yaml -** YAML file containing information about the chart <br> **values.yaml -** Default configuration values for this chart </p> <br> **sustainable-saas -** Sustainable SaaS Application <br> <p style='padding-left:1em'> **charts -** Umbrella Chart (Sub-) Charts <p style='padding-left:2em'> **susaas-api -** API Service Helm (Sub-)Chart <p style='padding-left:3em'> **templates -** Templates to generate Kubernetes manifest files <br> **Chart.yaml -** YAML file containing information about the chart <br> **values.yaml -** Default configuration values for this chart </p> <p style='padding-left:2em'> **susaas-broker -** Service Broker Helm (Sub-)Chart <br> **susaas-router -** Application Router Helm (Sub-)Chart <br> **susaas-srv -** Backend Service Helm (Sub-)Chart </p><p style='padding-left:1em'>**templates -** Templates to generate Kubernetes manifest files <br> (Kubernetes Jobs and shared SAP BTP Service Instances) <br> **Chart.yaml -** YAML file containing information about the umbrella chart <br> **values.schema.json -** JSON Schema structure definition for values.yaml <br> **values.yaml -** Default configuration values for the umbrella chart <br><br> **xs-security.json -** xsuaa service configuration  |
+| [<img src="./images/Repo_Structure_Chart.png" width="350"/>](./images/Repo_Structure_Chart.png?raw=true) |  **alert-notification -** Alert Notification Service <br> <p style='padding-left:1em'> **templates -** Templates to generate Kubernetes manifest files <br> **Chart.yaml -** YAML file containing information about the chart <br> **values.yaml -** Default configuration values for this chart </p> <br> **sustainable-saas -** Sustainable SaaS Application <br> <p style='padding-left:1em'> **charts -** Umbrella Chart (Sub-) Charts <p style='padding-left:2em'> **susaas-api -** API Service Helm (Sub-)Chart <p style='padding-left:3em'> **templates -** Templates to generate Kubernetes manifest files <br> **Chart.yaml -** YAML file containing information about the chart <br> **values.yaml -** Default configuration values for this chart </p> <p style='padding-left:2em'> **susaas-broker -** Service Broker Helm (Sub-)Chart <br> **susaas-router -** Application Router Helm (Sub-)Chart <br> **susaas-srv -** Backend Service Helm (Sub-)Chart </p><p style='padding-left:1em'>**templates -** Templates to generate Kubernetes manifest files <br> (Kubernetes Jobs and shared SAP BTP Service Instances) <br> **Chart.yaml -** YAML file containing information about the umbrella chart <br> **values.schema.json -** JSON Schema structure definition for values.yaml <br> **values.yaml -** Default configuration values for the umbrella chart <br><br> **xs-security.json -** xsuaa service configuration  |
 
 > **Hint** - Learn more about Helm Charts in the official [Helm documentation](https://helm.sh/docs/topics/charts/).
 
@@ -95,7 +95,7 @@ The **db** directory contains the definition of our Tenant data model, which is 
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_Tenant_Db.png" width="350"/>](./images/Repo_Structure_Tenant_Db.png) | <br><br> **cfg -** Configuration for shared container access <br> **hana -** Data model extension for production build <br> **sqlite -** Data model extension for local testing <br> **src -** Native SAP HANA database objects <br><p style='padding-left:1em'> **functions -** Sample function <br> **procedures -** Sample stored procedure <br> **roles -** Sample schema roles <br> **synonyms -** Synonyms for SYS and shared container </p> **data-models.cds -** CAP Tenant data model <br> **data-types.cds -** CAP data model types <br> **undeploy.json -** Undeploy configuration |
+| [<img src="./images/Repo_Structure_Tenant_Db.png" width="350"/>](./images/Repo_Structure_Tenant_Db.png?raw=true) | <br><br> **cfg -** Configuration for shared container access <br> **hana -** Data model extension for production build <br> **sqlite -** Data model extension for local testing <br> **src -** Native SAP HANA database objects <br><p style='padding-left:1em'> **functions -** Sample function <br> **procedures -** Sample stored procedure <br> **roles -** Sample schema roles <br> **synonyms -** Synonyms for SYS and shared container </p> **data-models.cds -** CAP Tenant data model <br> **data-types.cds -** CAP data model types <br> **undeploy.json -** Undeploy configuration |
  
 
 ## 7. Shared data model
@@ -116,7 +116,7 @@ The shared data model has to be deployed separately into a dedicated SAP HANA Cl
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_Shared_Db.png" width="300" />](./images/Repo_Structure_Shared_Db.png) | **src -** Native SAP HANA database objects <br> <p style='padding-left:1em'>  **\*_ACCESS.hdbrole -** Roles for access from Tenant containers </p>  **data-model.cds -** Shared CAP data model <br> **undeploy.json -** Undeploy configuration |
+| [<img src="./images/Repo_Structure_Shared_Db.png" width="300" />](./images/Repo_Structure_Shared_Db.png?raw=true) | **src -** Native SAP HANA database objects <br> <p style='padding-left:1em'>  **\*_ACCESS.hdbrole -** Roles for access from Tenant containers </p>  **data-model.cds -** Shared CAP data model <br> **undeploy.json -** Undeploy configuration |
 
 
 ## 8. Extension Files
@@ -134,7 +134,7 @@ The **http** directory contains HTTP files allowing you to test the SaaS API end
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_Http.png" width="350"/>](./images/Repo_Structure_Http.png) |  **api\*.http -** HTTP files for API testing <br> **tenantUpgrade.http -** Sample HTTP call for Tenant upgrades |
+| [<img src="./images/Repo_Structure_Http.png" width="350"/>](./images/Repo_Structure_Http.png?raw=true) |  **api\*.http -** HTTP files for API testing <br> **tenantUpgrade.http -** Sample HTTP call for Tenant upgrades |
 
 
 ## 10. Application Router
@@ -156,7 +156,7 @@ The **annotations** folder in the **srv** directory contains all service annotat
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_Annotations.png" width="350"/>](./images/Repo_Structure_Annotations.png) |  **admin -** Admin Service annotations <br> **public -** User Service annotations <br><p style='padding-left:1em'> **capabilities.cds -** Service capability annotations <br>**fieldControls.cds -** Service field control annotations <br>**layouts_\*.cds -** Fiori Elements layout annotations </p> **labels.cds -** Label annotations <br> **valueHelp.cds -** Value help annotations  <br> |
+| [<img src="./images/Repo_Structure_Annotations.png" width="350"/>](./images/Repo_Structure_Annotations.png?raw=true) |  **admin -** Admin Service annotations <br> **public -** User Service annotations <br><p style='padding-left:1em'> **capabilities.cds -** Service capability annotations <br>**fieldControls.cds -** Service field control annotations <br>**layouts_\*.cds -** Fiori Elements layout annotations </p> **labels.cds -** Label annotations <br> **valueHelp.cds -** Value help annotations  <br> |
 
 > **Hint** - Yes, these annotation files can also be part of your UI modules as you can see in other tutorials. Feel free to move them around if you feel more comfortable storing the annotations among your actual UI components. 
 
@@ -181,7 +181,7 @@ A lot of the Tenant onboarding steps have been automated using platform APIs and
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_Service.png" width="350"/>](./images/Repo_Structure_Service.png) | **i18n -** Language files <br> **utils -** Utilities (mainly for automation purposes) <br><p style='padding-left:1em'> **alertNotification.js -** Alert Notification utilities <br> **apiRule.js -** Kyma API Rule utilities <br> **automator.js -** Tenant onboarding automation <br>**cis-central.js -** Cloud Management Service utilities <br>**destination.js -** Destination Service utilities <br>**service-manager.js -** Service Manager utilities <br>**token-utils.js -** Token handler utilities <br>**user-management.js -** User management utilities </p> **admin-service.cds -** CAP Admin Service definition <br>**admin-service.js -** CAP Admin Service handler <br> **annotations.cds -** Annotation CDS file references <br>**provisioning.js -** Tenant provisioning handler <br> **public-service.cds -** CAP User Service definition <br> **public-service.js -** CAP User Service handler <br> **server.js -** Health endpoints and custom provisioning  |
+| [<img src="./images/Repo_Structure_Service.png" width="350"/>](./images/Repo_Structure_Service.png?raw=true) | **i18n -** Language files <br> **utils -** Utilities (mainly for automation purposes) <br><p style='padding-left:1em'> **alertNotification.js -** Alert Notification utilities <br> **apiRule.js -** Kyma API Rule utilities <br> **automator.js -** Tenant onboarding automation <br>**cis-central.js -** Cloud Management Service utilities <br>**destination.js -** Destination Service utilities <br>**service-manager.js -** Service Manager utilities <br>**token-utils.js -** Token handler utilities <br>**user-management.js -** User management utilities </p> **admin-service.cds -** CAP Admin Service definition <br>**admin-service.js -** CAP Admin Service handler <br> **annotations.cds -** Annotation CDS file references <br>**provisioning.js -** Tenant provisioning handler <br> **public-service.cds -** CAP User Service definition <br> **public-service.js -** CAP User Service handler <br> **server.js -** Health endpoints and custom provisioning  |
 
 
 ## 13. Test objects
@@ -192,4 +192,4 @@ The **test** directory contains sample data for local development and testing pu
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_Test.png" width="350"/>](./images/Repo_Structure_API.png) | **data -** Sample data for Tenant data model <br><br> **index.cds -** CDS file for builder <br> **test.js -** Sample unit tests <br> |
+| [<img src="./images/Repo_Structure_Test.png" width="350"/>](./images/Repo_Structure_API.png?raw=true) | **data -** Sample data for Tenant data model <br><br> **index.cds -** CDS file for builder <br> **test.js -** Sample unit tests <br> |

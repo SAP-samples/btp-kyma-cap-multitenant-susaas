@@ -31,7 +31,7 @@ The SAP BTP Kyma Runtime allows developers to use a variety of native Kubernetes
 
 The following visualization shows a range of resources used by our SaaS application, and briefly summarizes the provided capabilities in context our sample use case. 
 
-[<img src="./images/KymaObjectsGeneral.png" width="600"/>](./images/KymaObjectsGeneral.png)
+[<img src="./images/KymaObjectsGeneral.png" width="600"/>](./images/KymaObjectsGeneral.png?raw=true)
 
 Find more details in the [Resource Overview](./components/ResourceOverview.md) documentation!
 
@@ -43,6 +43,6 @@ Once you have gained some experience with Helm and you learned about the various
 
 Therefore, feel free to follow along and to learn more about selected Helm templates, providing you with an even better understanding of what is going on under the hood, once you deployed the sample application to your Kyma Cluster. 
 
-[<img src="./images/ResourceDetailsArch.png" width="600"/>](./images/ResourceDetailsArch.png)
+[<img src="./images/ResourceDetailsArch.png" width="600"/>](./images/ResourceDetailsArch.png?raw=true)
 
 Find more details in the [Template Details](./components/TemplateDetails.md) documentation!

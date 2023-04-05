@@ -16,7 +16,7 @@ This part of the tutorial will provide deeper insights for the different compone
 
 > **Hint** - While the Basic Version of the application can also be deployed to **Trial** accounts, we highly recommend to use one of the SAP BTP account types mentioned above. 
 
-[<img src="./images/basic-arch1.png" width="700"/>](./images/basic-arch1.png)
+[<img src="./images/basic-arch1.png" width="700"/>](./images/basic-arch1.png?raw=true)
 
 
 ## 1. Application Router 
@@ -54,7 +54,7 @@ For consumers that want to push data to their database container instances, a CA
 
 Below you can see the available entities of the SaaS API like Product details and Sales Orders.
 
-[<img src="./images/API_Endpoints.png" width="700"/>](./images/API_Endpoints.png)
+[<img src="./images/API_Endpoints.png" width="700"/>](./images/API_Endpoints.png?raw=true)
 
 Besides the default CRUD methods for entity maintenance, also sample actions are provided allowing bulk upload (UPSERT, UPDATE, DELETE & INSERT) for the main application entities. Finally, you can find a great sample of an OData action allowing you to UPSERT Sales Orders using a SAP HANA Stored procedure.
 
@@ -76,7 +76,7 @@ As CAP is a great backing service for the usage of SAP Fiori Elements providing 
 
 Below you can see an overview of the tables deployed into Tenant database containers upon subscription.
 
-[<img src="./images/DM_Tables.png" width="700"/>](./images/DM_Tables.png)
+[<img src="./images/DM_Tables.png" width="700"/>](./images/DM_Tables.png?raw=true)
 
 > **Hint** - The **Roles** table is only used for local development scenarios. If running the app in SAP BTP, the roles are automatically fetched from SAP XSUAA and no separate storage is required. 
 

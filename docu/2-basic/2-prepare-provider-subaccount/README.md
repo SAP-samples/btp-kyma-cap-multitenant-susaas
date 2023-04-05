@@ -59,7 +59,7 @@ Any SAP HANA Cloud instance in the same region as your Kyma Cluster, can be enab
 
 > **Important** - Please make sure to use the new **SAP HANA Cloud Tools** service (service plan **tools**) for this purpose! The instance mapping feature for Kyma is not available in the SAP HANA Cloud Central UI. The **SAP HANA Cloud Tools** are not yet available in the Trial environment! 
 
-[<img src="./images/HanaCloudKyma.png" width="600"/>](./images/HanaCloudKyma.png)
+[<img src="./images/HanaCloudKyma.png" width="600"/>](./images/HanaCloudKyma.png?raw=true)
 
 > **Important** - In **SAP BTP Trial** landscapes, you cannot share a SAP HANA Cloud Instance with your Kyma Cluster. The required SAP HANA Cloud Tools are not available yet. In this case (which won't be covered in detail), please follow the official CAP documentation (https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma#hana-cloud-instance). It will explain in detail, how to create the required Service Key in the Cloud Foundry context and how to map to to a corresponding Secret in your Kyma Cluster. 
 

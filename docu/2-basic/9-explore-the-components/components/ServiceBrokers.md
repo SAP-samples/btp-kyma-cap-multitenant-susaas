@@ -410,7 +410,7 @@ Please refer to the official documentation of @sap/sbf for further information.
 
 After all the theoretical background on service brokers, you will learn how we implemented the multitenant API of our sample app using the service broker approach. Before going into all details let us remember the flow again. 
 
-[<img src="./images/sbflow.png" width="400"/>](./images/sbflow.png)
+[<img src="./images/sbflow.png" width="400"/>](./images/sbflow.png?raw=true)
 
 As you can see in the diagram above,
  - Our backing service is the **Sustainable SaaS API** and is hosted in the Provider Subaccount.
@@ -430,36 +430,36 @@ Let us check how does that look like.
 #### Catalog Before Subscribing to the Sustainable SaaS application 
 As you can see, before the subscription process, only the Sustainable SaaS multitenant business application is available in the catalog. This is because the multitenant business application automatically registers the **Sustainable SaaS API Service Broker** during the subscription.
 
-[<img src="./images/catalog-before-subscription.png" width="400"/>](./images/catalog-before-subscription.png)
+[<img src="./images/catalog-before-subscription.png" width="400"/>](./images/catalog-before-subscription.png?raw=true)
 
 #### Catalog After Subscribing to the Sustainable SaaS application
 See below that after subscribing, the Sustainable SaaS API is there and available.
 
-[<img src="./images/catalog-after-subscription.png" width="400"/>](./images/catalog-after-subscription.png)
+[<img src="./images/catalog-after-subscription.png" width="400"/>](./images/catalog-after-subscription.png?raw=true)
 
 
 ### 5.2. Request Number 2
 This request is sent by SAP BTP to your service broker to see which plans your service offers before service creation. For instance, default plan, premium plan, etc. This is the screenshot of request number 2 from SAP BTP to our **Sustainable SaaS API Broker**. The response is basically **default** and **premium** as configured in the respective [catalog.json](https://github.com/SAP-samples/btp-kyma-cap-multitenant-susaas/blob/basic/broker/catalog.json) file.
 
-[<img src="./images/catalog-plans.png" width="400"/>](./images/catalog-plans.png)
+[<img src="./images/catalog-plans.png" width="400"/>](./images/catalog-plans.png?raw=true)
 
 
 ### 5.3. Request Number 3
 This request creates your service instance and triggers the provisioning event on your @sap/sbf module. You should handle this request accordingly. For example, if you offer a database service, you might go and create a new DB instance when this request is triggered. Please see below to understand how SAP BTP sends the service creation request to the **Sustainable SaaS API Service Broker**.
 
-[<img src="./images/create-instance.png" width="400"/>](./images/create-instance.png)
+[<img src="./images/create-instance.png" width="400"/>](./images/create-instance.png?raw=true)
 
 
 ### 5.4. Request Number 4
 This request is sent when the platform needs to create credentials that are valid for your service instance and/or bind your service instance to an application. Since @sap/sbf and the XSUAA broker plan are used by the service broker, this is automatically handled in our case. Whenever a binding request comes in, it first reaches the **Sustainable SaaS API Service Broker** @sap/sbf instance then which automatically creates credentials for the specific subaccount which sent the binding request by talking with XSUAA using the broker plan instance. These credentials will be valid since we have also bound the same XSUAA instance to our backing service (API).
 
-[<img src="./images/create-binding.png" width="400"/>](./images/create-binding.png)
+[<img src="./images/create-binding.png" width="400"/>](./images/create-binding.png?raw=true)
 
 
 ### 5.5. Request Number 5
 Having the credentials, a Tenant is now ready to call the backing service **Sustainable SaaS API** from their subaccount, from their SAP S/4HANA system, or any other third-party system. Since the JWT token contains the subaccount id, our CAP-based API will identify the incoming Tenant and upload the data directly to the correct Tenant database container with the help of the SAP Service Manager *container plan*. Using the service binding credentials like the ones below, the Sustainable SaaS API (reachable by the **apiUrl**) can be called. The API itself is a CAP-based OData API .
 
-[<img src="./images/binding.png" width="400"/>](./images/binding.png)
+[<img src="./images/binding.png" width="400"/>](./images/binding.png?raw=true)
 
 
 # 6. Further learnings

@@ -31,16 +31,16 @@ After the login go to your *Network Services* and Click *DNS Zones* as shown bel
 
 Click the *Create Zone* button, if you do not have already a DNS Zone for your domain.
 
-[<img src="./images/gcp-dns-zone-overview.png" width="500" />](./images/gcp-dns-zone-overview.png)
+[<img src="./images/gcp-dns-zone-overview.png" width="500" />](./images/gcp-dns-zone-overview.png?raw=true)
 
 After that, fill the fields as shown below and hit create.
 
-[<img src="./images/cr-zone.png" width="500" />](./images/cr-zone.png)
+[<img src="./images/cr-zone.png" width="500" />](./images/cr-zone.png?raw=true)
 
 After the creation you should see two records has been automatically created as shown below.
 One is the **SOA** record and the other one is **NS** record.
 
-[<img src="./images/cr-zone.png" width="500" />](./images/cr-zone.png)
+[<img src="./images/cr-zone.png" width="500" />](./images/cr-zone.png?raw=true)
 
 
 The **SOA** (Start of Authority) DNS record is a fundamental DNS resource record type used to indicate authoritative information about a DNS zone. 
@@ -48,7 +48,7 @@ The **NS** (Nameservers) records shows the nameservers responsible to respond in
 
 Open the NS record as shown below and save your nameservers, you will need them in the next step
 
-[<img src="./images/ns-servers.png" width="500" />](./images/ns-servers.png)
+[<img src="./images/ns-servers.png" width="500" />](./images/ns-servers.png?raw=true)
 
 
 ## 3. Go to your domain registrar and adopt your nameservers (DNS Propagation)
@@ -71,34 +71,34 @@ In this section, you will create a service account in your , which will be used 
 Go to IAM & Admin section on your .
 Then click the service accounts as shown below. 
 
-[<img src="./images/sa-entry.png" width="500" />](./images/sa-entry.png)
+[<img src="./images/sa-entry.png" width="500" />](./images/sa-entry.png?raw=true)
 
 After that click create service account.
 
-[<img src="./images/sa-create-click.png" width="500" />](./images/sa-create-click.png)
+[<img src="./images/sa-create-click.png" width="500" />](./images/sa-create-click.png?raw=true)
 
 Fill the form as shown below, and click "Create and Continue".
 
-[<img src="./images/sa-create-continue.png" width="500" />](./images/sa-create-continue.png)
+[<img src="./images/sa-create-continue.png" width="500" />](./images/sa-create-continue.png?raw=true)
 
 Assign DNS Administrator role to and click "Continue".
 
-[<img src="./images/assign-role-sa.png" width="500" />](./images/assign-role-sa.png).
+[<img src="./images/assign-role-sa.png" width="500" />](./images/assign-role-sa.png?raw=true).
 
 Then click "Done".
 
-[<img src="./images/sa-complete.png" width="500" />](./images/sa-complete.png).
+[<img src="./images/sa-complete.png" width="500" />](./images/sa-complete.png?raw=true).
 
 After that you should see that your service account is created.
 Now you should click on your service account and go to "Keys" tab.
 Create a key as shown below.
 
-[<img src="./images/sa-create-key.png" width="500" />](./images/sa-create-key.png).
+[<img src="./images/sa-create-key.png" width="500" />](./images/sa-create-key.png?raw=true).
 
 You should now choose JSON, and hit "Create".
 After that your key will be downloaded in your local computer. Please rename it as **serviceaccount.json** and store it securely.
 
-[<img src="./images/sa-create-key-json.png" width="500" />](./images/sa-create-key-json.png).
+[<img src="./images/sa-create-key-json.png" width="500" />](./images/sa-create-key-json.png?raw=true).
 
 
 ## 5. Create secret with your GCP Service Account for GCP interaction
@@ -168,7 +168,7 @@ kubectl apply -f ./dns-provider.yaml -n gcp-gateway
 
 You should now see in your *gcp-gateway* namespace a DNS provider has been created for you as below.
 
-[<img src="./images/dns-provider.png" width="500" />](./images/dns-provider.png).
+[<img src="./images/dns-provider.png" width="500" />](./images/dns-provider.png?raw=true).
 
 
 ### 6.2. Create DNS Entry 

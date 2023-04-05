@@ -13,11 +13,11 @@ Once again, you might find the following visualizations useful, as you will be a
 
 **Architecture Diagram**
 
-[<img src="./images/ResourceDetailsArch.png" width="600"/>](./images/ResourceDetailsArch.png)
+[<img src="./images/ResourceDetailsArch.png" width="600"/>](./images/ResourceDetailsArch.png?raw=true)
 
 **Component Details**
 
-[<img src="./images/KymaObjectsGeneral.png" width="600"/>](./images/KymaObjectsGeneral.png)
+[<img src="./images/KymaObjectsGeneral.png" width="600"/>](./images/KymaObjectsGeneral.png?raw=true)
 
 
 The recommended way to deploy our Sustainable SaaS sample application is the usage of the provided Helm Umbrella Chart. Doing so, you can maintain all environment specific settings in one place (values.yaml) and deploy all Helm Subcharts using one single Helm installation. 
@@ -285,7 +285,7 @@ istio-virtual-service.yaml # Virtual Service for routing to SAP API Management o
 
 To guarantee that no request can reach the API Service workloads without passing through SAP API Management, respective Istio resources ensure, that a valid JWT token is part of an incoming request. This JWT token is generated and injected by SAP API Management, based on Client Credentials of an XSUAA service instance. Below you can see a visualization, depicting how a request arriving through Istio Ingress Gateway is being processed.
 
-[<img src="./images/APIManagementArch.png" width="800"/>](./images/APIManagementArch.png)
+[<img src="./images/APIManagementArch.png" width="800"/>](./images/APIManagementArch.png?raw=true)
 
 - First of all, a so-called  **Service Entry** makes SAP API Management known as an external service to the Service Mesh. This allows us to it e.g., as destination target of Virtual Services. 
 

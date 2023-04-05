@@ -23,7 +23,7 @@ Most of your SaaS consumers (especially in B2B scenarios) will have their own us
 
 In the following, we will discuss different approaches to how such an integration can be achieved. These scenarios are also depicted in the following architecture diagram. 
 
-[<img src="./images/CIAS_Architecture.png" width="500" />](./images/CIAS_Architecture.png)
+[<img src="./images/CIAS_Architecture.png" width="500" />](./images/CIAS_Architecture.png?raw=true)
 
 > **Important** - All approaches will require coding changes in the application logic, as the current implementation relies on the In-App User Management to create users in SAP IAS and/or Shadow Users in SAP XSUAA. 
 
@@ -41,7 +41,7 @@ A convenient integration pattern makes use of so-called **Corporate Identity Pro
 
 As the SaaS users will no longer be maintained in the In-App User Management, the role assignments need to be handled via Group Mappings. This means, once consumers authenticated using their own IdPs, they will pass through SAP IAS (acting as a proxy) and are automatically created as shadow users in SAP XSUAA. If configured correctly, you will find required **Group** assignments in the SAML metadata. These Group assignments are done by your SaaS consumers in their own IdPs. The groups need to be mapped to SAP XSUAA role collections. For Azure Active Directory Groups (using GUIDs), this looks like the following. 
 
-[<img src="./images/CIAS_RolColMap.png" width="400" />](./images/CIAS_RolColMap.png)
+[<img src="./images/CIAS_RolColMap.png" width="400" />](./images/CIAS_RolColMap.png?raw=true)
 
 Instead of an In-App User Management, you can e.g., provide your consumers an option to maintain Group Mappings between SAP XSUAA Role Collections and their Active Directory Groups from within the SaaS application. Furthermore, you have to think about a logic to assign **Member** users to projects properly. As users are not maintained within the SaaS application anymore, you can e.g., pass the project assignment as an additional attribute in the SAML assertion. Alternatively, you can still maintain the assignments in a separate table and offer administrators an option to select from all available SAP XSUAA Shadow Users. 
 
@@ -55,16 +55,16 @@ Below you can find screenshots showing a respective setup process and a sample G
 
 |  |  |  |
 |:----------: | :---------: | :---------: |
-| [<img src="./images/IAS_AD01.png" width="250"/>](./images/IAS_AD01.png) | [<img src="./images/IAS_AD02.png" width="250"/>](./images/IAS_AD02.png) | [<img src="./images/IAS_AD03.png" width="250"/>](./images/IAS_AD03.png) |
-| [<img src="./images/IAS_AD04.png" width="250"/>](./images/IAS_AD04.png) | [<img src="./images/IAS_AD05.png" width="250"/>](./images/IAS_AD05.png) | [<img src="./images/IAS_AD06.png" width="250"/>](./images/IAS_AD06.png) |
-| [<img src="./images/IAS_AD07.png" width="250"/>](./images/IAS_AD07.png) | [<img src="./images/IAS_AD08.png" width="250"/>](./images/IAS_AD08.png) | [<img src="./images/IAS_AD09.png" width="250"/>](./images/IAS_AD09.png) |
-| [<img src="./images/IAS_AD10.png" width="250"/>](./images/IAS_AD10.png) | [<img src="./images/IAS_AD11.png" width="250"/>](./images/IAS_AD11.png) | [<img src="./images/IAS_AD12.png" width="250"/>](./images/IAS_AD12.png) |
-| [<img src="./images/IAS_AD13.png" width="250"/>](./images/IAS_AD13.png) | [<img src="./images/IAS_AD14.png" width="250"/>](./images/IAS_AD14.png) | [<img src="./images/IAS_AD15.png" width="250"/>](./images/IAS_AD15.png) |
-| [<img src="./images/IAS_AD16.png" width="250"/>](./images/IAS_AD16.png) | [<img src="./images/IAS_AD17.png" width="250"/>](./images/IAS_AD17.png) | [<img src="./images/IAS_AD18.png" width="250"/>](./images/IAS_AD18.png) |
-| [<img src="./images/IAS_AD19.png" width="250"/>](./images/IAS_AD19.png) | [<img src="./images/IAS_AD20.png" width="250"/>](./images/IAS_AD20.png) | [<img src="./images/IAS_AD21.png" width="250"/>](./images/IAS_AD21.png) |
-| [<img src="./images/IAS_AD22.png" width="250"/>](./images/IAS_AD22.png) | [<img src="./images/IAS_AD23.png" width="250"/>](./images/IAS_AD23.png) | [<img src="./images/IAS_AD23.png" width="250"/>](./images/IAS_AD23.png) |
-| [<img src="./images/IAS_AD25.png" width="250"/>](./images/IAS_AD25.png) | [<img src="./images/IAS_AD26.png" width="250"/>](./images/IAS_AD26.png) | [<img src="./images/IAS_AD27.png" width="250"/>](./images/IAS_AD27.png) |
-| [<img src="./images/IAS_AD28.png" width="250"/>](./images/IAS_AD28.png) | [<img src="./images/IAS_AD29.png" width="250"/>](./images/IAS_AD29.png) |  |
+| [<img src="./images/IAS_AD01.png" width="250"/>](./images/IAS_AD01.png?raw=true) | [<img src="./images/IAS_AD02.png" width="250"/>](./images/IAS_AD02.png?raw=true) | [<img src="./images/IAS_AD03.png" width="250"/>](./images/IAS_AD03.png?raw=true) |
+| [<img src="./images/IAS_AD04.png" width="250"/>](./images/IAS_AD04.png?raw=true) | [<img src="./images/IAS_AD05.png" width="250"/>](./images/IAS_AD05.png?raw=true) | [<img src="./images/IAS_AD06.png" width="250"/>](./images/IAS_AD06.png?raw=true) |
+| [<img src="./images/IAS_AD07.png" width="250"/>](./images/IAS_AD07.png?raw=true) | [<img src="./images/IAS_AD08.png" width="250"/>](./images/IAS_AD08.png?raw=true) | [<img src="./images/IAS_AD09.png" width="250"/>](./images/IAS_AD09.png?raw=true) |
+| [<img src="./images/IAS_AD10.png" width="250"/>](./images/IAS_AD10.png?raw=true) | [<img src="./images/IAS_AD11.png" width="250"/>](./images/IAS_AD11.png?raw=true) | [<img src="./images/IAS_AD12.png" width="250"/>](./images/IAS_AD12.png?raw=true) |
+| [<img src="./images/IAS_AD13.png" width="250"/>](./images/IAS_AD13.png?raw=true) | [<img src="./images/IAS_AD14.png" width="250"/>](./images/IAS_AD14.png?raw=true) | [<img src="./images/IAS_AD15.png" width="250"/>](./images/IAS_AD15.png?raw=true) |
+| [<img src="./images/IAS_AD16.png" width="250"/>](./images/IAS_AD16.png?raw=true) | [<img src="./images/IAS_AD17.png" width="250"/>](./images/IAS_AD17.png?raw=true) | [<img src="./images/IAS_AD18.png" width="250"/>](./images/IAS_AD18.png?raw=true) |
+| [<img src="./images/IAS_AD19.png" width="250"/>](./images/IAS_AD19.png?raw=true) | [<img src="./images/IAS_AD20.png" width="250"/>](./images/IAS_AD20.png?raw=true) | [<img src="./images/IAS_AD21.png" width="250"/>](./images/IAS_AD21.png?raw=true) |
+| [<img src="./images/IAS_AD22.png" width="250"/>](./images/IAS_AD22.png?raw=true) | [<img src="./images/IAS_AD23.png" width="250"/>](./images/IAS_AD23.png?raw=true) | [<img src="./images/IAS_AD23.png" width="250"/>](./images/IAS_AD23.png?raw=true) |
+| [<img src="./images/IAS_AD25.png" width="250"/>](./images/IAS_AD25.png?raw=true) | [<img src="./images/IAS_AD26.png" width="250"/>](./images/IAS_AD26.png?raw=true) | [<img src="./images/IAS_AD27.png" width="250"/>](./images/IAS_AD27.png?raw=true) |
+| [<img src="./images/IAS_AD28.png" width="250"/>](./images/IAS_AD28.png?raw=true) | [<img src="./images/IAS_AD29.png" width="250"/>](./images/IAS_AD29.png?raw=true) |  |
 
 
 ### 2b. Consumer SAP IAS tenant
@@ -106,9 +106,9 @@ Below you can find screenshots showing a respective trust setup and sample Group
 
 |  |  |  |
 |:----------: | :---------: | :---------: |
-| [<img src="./images/XSUAA_AD01.png" width="250"/>](./images/XSUAA_AD01.png) | [<img src="./images/XSUAA_AD02.png" width="250"/>](./images/XSUAA_AD02.png) | [<img src="./images/XSUAA_AD03.png" width="250"/>](./images/XSUAA_AD03.png) |
-| [<img src="./images/XSUAA_AD04.png" width="250"/>](./images/XSUAA_AD04.png) | [<img src="./images/XSUAA_AD05.png" width="250"/>](./images/XSUAA_AD05.png) | [<img src="./images/XSUAA_AD06.png" width="250"/>](./images/XSUAA_AD06.png) |
-| [<img src="./images/XSUAA_AD07.png" width="250"/>](./images/XSUAA_AD07.png) | [<img src="./images/XSUAA_AD08.png" width="250"/>](./images/XSUAA_AD08.png) | [<img src="./images/XSUAA_AD09.png" width="250"/>](./images/XSUAA_AD09.png) |
+| [<img src="./images/XSUAA_AD01.png" width="250"/>](./images/XSUAA_AD01.png?raw=true) | [<img src="./images/XSUAA_AD02.png" width="250"/>](./images/XSUAA_AD02.png?raw=true) | [<img src="./images/XSUAA_AD03.png" width="250"/>](./images/XSUAA_AD03.png?raw=true) |
+| [<img src="./images/XSUAA_AD04.png" width="250"/>](./images/XSUAA_AD04.png?raw=true) | [<img src="./images/XSUAA_AD05.png" width="250"/>](./images/XSUAA_AD05.png?raw=true) | [<img src="./images/XSUAA_AD06.png" width="250"/>](./images/XSUAA_AD06.png?raw=true) |
+| [<img src="./images/XSUAA_AD07.png" width="250"/>](./images/XSUAA_AD07.png?raw=true) | [<img src="./images/XSUAA_AD08.png" width="250"/>](./images/XSUAA_AD08.png?raw=true) | [<img src="./images/XSUAA_AD09.png" width="250"/>](./images/XSUAA_AD09.png?raw=true) |
 
 
 ## 4. Further Information

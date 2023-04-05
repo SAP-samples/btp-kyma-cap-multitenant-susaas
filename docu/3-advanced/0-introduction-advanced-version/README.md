@@ -13,7 +13,7 @@ Please note that the **SAP Identity Authentication Service** is only available f
 
 Take a look at the following screenshot to get an idea of the Advanced Version architecture.
 
-[<img src="./images/App_Architecture_Advanced.png" width="700"/>](./images/App_Architecture_Advanced.png)
+[<img src="./images/App_Architecture_Advanced.png" width="700"/>](./images/App_Architecture_Advanced.png?raw=true)
 
 
 ## 1. Step-by-Step Guide
@@ -74,10 +74,10 @@ As a result of this Advanced tutorial, you have a SaaS application running in a 
 
 While the user interface of the SaaS application remains the same as in the Basic Version, the following screenshots will give you an idea of the additional Advanced Version features like the usage of SAP IAS or SAP API Management.
 
-| [<img src="./images/IAS_Overview.png" width="300" alt="SAP IAS Overview"/>](./images/IAS_Overview.png) |  [<img src="./images/API_SpikeArrest.png" width="300" alt="SAP API Management Spike Arrest"/>](./images/API_SpikeArrest.png)
+| [<img src="./images/IAS_Overview.png" width="300" alt="SAP IAS Overview"/>](./images/IAS_Overview.png?raw=true) |  [<img src="./images/API_SpikeArrest.png" width="300" alt="SAP API Management Spike Arrest"/>](./images/API_SpikeArrest.png?raw=true)
 |:----------------: | :----------------: | 
 | *SAP IAS Overview* | *SAP API Management Rate Limiter* | 
 
-| [<img src="./images/S4_Push.png" width="300" alt="SAP S/4HANA Push with ABAP"/>](./images/S4_Push.png) |
+| [<img src="./images/S4_Push.png" width="300" alt="SAP S/4HANA Push with ABAP"/>](./images/S4_Push.png?raw=true) |
 |:----------------: | 
 | *SAP S/4HANA Push with ABAP* | 

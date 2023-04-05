@@ -49,55 +49,55 @@ Especially for the last prerequisite, please check the [Dependencies and privile
 
 3.1. Find the ID of the Consumer Tenant of which you want to export using the Subscription Management Dashboard.
 
-[<img src="./images/export_010.png" width="500" />](./images/export_010.png)
+[<img src="./images/export_010.png" width="500" />](./images/export_010.png?raw=true)
 
-[<img src="./images/export_020.png" width="500" />](./images/export_020.png)
+[<img src="./images/export_020.png" width="500" />](./images/export_020.png?raw=true)
 
 3.2. Find the related Tenant database container within your Service Manager instance by checking the labels. 
 
-[<img src="./images/export_030.png" width="500" />](./images/export_030.png)
+[<img src="./images/export_030.png" width="500" />](./images/export_030.png?raw=true)
 
 3.3. Open the existing service key, to identify the schema name of the container you want to export. 
 
-[<img src="./images/export_040.png" width="500" />](./images/export_040.png)
+[<img src="./images/export_040.png" width="500" />](./images/export_040.png?raw=true)
 
 3.4. Go to SAP HANA Database Explorer and log in with an HDI Container (Group) Admin of the database container you want to export (see Prerequisites section). 
 
-[<img src="./images/export_050.png" width="500" />](./images/export_050.png)
+[<img src="./images/export_050.png" width="500" />](./images/export_050.png?raw=true)
 
 3.5. Right-click the root of this user's database connection and select **Export HDI Container**. 
 
-[<img src="./images/export_060.png" width="500" />](./images/export_060.png)
+[<img src="./images/export_060.png" width="500" />](./images/export_060.png?raw=true)
 
 3.6. Search for the schema name which you identified in the service key of the corresponding Service Manager container instance. 
 
-[<img src="./images/export_070.png" width="500" />](./images/export_070.png)
+[<img src="./images/export_070.png" width="500" />](./images/export_070.png?raw=true)
 
 3.7. Select the schema from the result list and click on **Prepare HDI Container for Download** to start the process. 
 
-[<img src="./images/export_090.png" width="500" />](./images/export_090.png)
+[<img src="./images/export_090.png" width="500" />](./images/export_090.png?raw=true)
 
 3.8. Select **Prepare** in the next popup.
 
-[<img src="./images/export_100.png" width="500" />](./images/export_100.png)
+[<img src="./images/export_100.png" width="500" />](./images/export_100.png?raw=true)
 
 3.9. Click the refresh button in the Background Activities pane, until your export job is in status **SUCCESS**.
 
-[<img src="./images/export_110.png" width="500" />](./images/export_110.png)
+[<img src="./images/export_110.png" width="500" />](./images/export_110.png?raw=true)
 
 3.10. **Double-click** on your export job, to open the download popup and download your exported container content. 
 
-[<img src="./images/export_120.png" width="500" />](./images/export_120.png)
+[<img src="./images/export_120.png" width="500" />](./images/export_120.png?raw=true)
 
 3.11. After downloading, you can delete the temporary database table again which was created for the export. 
 
 3.12. Therefore, select your export job by clicking on the checkbox and hitting the **trash icon**. 
 
-[<img src="./images/export_130.png" width="500" />](./images/export_130.png)
+[<img src="./images/export_130.png" width="500" />](./images/export_130.png?raw=true)
 
 3.13. You can now delete the background activity and/or the temporary table by selecting the option of your choice. 
 
-[<img src="./images/export_140.png" width="500" />](./images/export_140.png)
+[<img src="./images/export_140.png" width="500" />](./images/export_140.png?raw=true)
 
 
 ## 4. Import into an existing container
@@ -106,51 +106,51 @@ Especially for the last prerequisite, please check the [Dependencies and privile
 
 > **Important** - The database container in which you want to restore your backup, already has to exist before doing the following steps! Also, check the next chapter to learn about pre-import prerequisites in case of cross-container-access scenarios!
 
-[<img src="./images/import_005.png" width="500" />](./images/import_005.png)
+[<img src="./images/import_005.png" width="500" />](./images/import_005.png?raw=true)
 
 4.2. Right-click the root of this user's database connection and select **Import HDI Container**. 
 
-[<img src="./images/import_010.png" width="500" />](./images/import_010.png)
+[<img src="./images/import_010.png" width="500" />](./images/import_010.png?raw=true)
 
 4.3. Click on **Browse** to select the archived database container content from your hard disk.
 
-[<img src="./images/import_020.png" width="500" />](./images/import_020.png)
+[<img src="./images/import_020.png" width="500" />](./images/import_020.png?raw=true)
 
 4.4. Select the archive file which you previously exported. 
 
-[<img src="./images/import_030.png" width="500" />](./images/import_030.png)
+[<img src="./images/import_030.png" width="500" />](./images/import_030.png?raw=true)
 
 4.5. Click on **Upload File**.
 
-[<img src="./images/import_040.png" width="500" />](./images/import_040.png)
+[<img src="./images/import_040.png" width="500" />](./images/import_040.png?raw=true)
 
 4.6. Confirm the upload in the popup window. 
 
-[<img src="./images/import_050.png" width="500" />](./images/import_050.png)
+[<img src="./images/import_050.png" width="500" />](./images/import_050.png?raw=true)
 
 4.7. Wait until the upload has finished.
 
 > **Hint** - As of today, you can only import to a new database container using the user interface, but it's not possible to import data into an existing database container. Therefore, an SQL command needs to be executed instead of clicking on **Import HDI Container**. 
 
-[<img src="./images/import_060.png" width="500" />](./images/import_060.png)
+[<img src="./images/import_060.png" width="500" />](./images/import_060.png?raw=true)
 
 4.8. Refresh the schema content of your HDI Container Group Admin. 
 
-[<img src="./images/import_070.png" width="500" />](./images/import_070.png)
+[<img src="./images/import_070.png" width="500" />](./images/import_070.png?raw=true)
 
 4.9. Check the tables for the database container backup stored in a temporary table.  
 
-[<img src="./images/import_080.png" width="500" />](./images/import_080.png)
+[<img src="./images/import_080.png" width="500" />](./images/import_080.png?raw=true)
 
 4.10. Open a new SQL console using the HDI Container Admin of the targeted import container.
 
-[<img src="./images/import_090.png" width="500" />](./images/import_090.png)
+[<img src="./images/import_090.png" width="500" />](./images/import_090.png?raw=true)
 
 4.11. Copy and paste the following SQL command and change the parameters as described. Then click on **Run** or hit **F8**. 
 
 > Just pull the table into your SQL command window to make your life a bit easier. 
 
-[<img src="./images/import_100.png" width="500" />](./images/import_100.png)
+[<img src="./images/import_100.png" width="500" />](./images/import_100.png?raw=true)
 
 **SQL Code**
 
@@ -178,11 +178,11 @@ CALL _SYS_DI#BROKER_CG.IMPORT_CONTAINER_FOR_COPY(
 
 4.12. Check the logs to see if the import was successful. 
 
-[<img src="./images/import_110.png" width="500" />](./images/import_110.png)
+[<img src="./images/import_110.png" width="500" />](./images/import_110.png?raw=true)
 
 4.13. You can now delete the temporary container backup table from your HDI Container Group Admin schema. Do a right-click on your table and choose **Delete**. 
 
-[<img src="./images/import_120.png" width="500" />](./images/import_120.png)
+[<img src="./images/import_120.png" width="500" />](./images/import_120.png?raw=true)
 
 
 ## 5. Dependencies and privileges

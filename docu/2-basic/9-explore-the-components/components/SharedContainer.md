@@ -9,22 +9,22 @@ To have the ability to share data among your Consumer tenants, a shared database
 
 This concept is building on the cross-container-access capabilities of SAP HANA Cloud HDI database containers. In this sample scenario, the shared database container is used to share a sample table and master data along the Tenant database containers.
 
-[<img src="./images/CD_Flow.png" width="500"/>](./images/CD_Flow.png)
+[<img src="./images/CD_Flow.png" width="500"/>](./images/CD_Flow.png?raw=true)
 
 
 ## 1. Deployment descriptor
 
 The HDI container required for the shared data is defined in the mta.yaml file and created during the deployment of the SaaS application to the Provider Subaccount. For the Tenant database container instances, SAP Service Manager (container plan) takes care of the container lifecycle. For that reason, there is no need to specify any resources for these tenant-specific containers in the mta.yaml file. 
 
-[<img src="./images/CD_MtaRes.png" width="500"/>](./images/CD_MtaRes.png)
+[<img src="./images/CD_MtaRes.png" width="500"/>](./images/CD_MtaRes.png?raw=true)
 
 To deploy content (like tables and views) to your shared database container, an additional module definition is required resulting in a Node.js application responsible for the deployment of your shared database artifacts.
 
-[<img src="./images/CD_MtaMod.png" width="500"/>](./images/CD_MtaMod.png)
+[<img src="./images/CD_MtaMod.png" width="500"/>](./images/CD_MtaMod.png?raw=true)
 
 To allow access from your tenant-specific database containers to the shared database container, it needs to be added as a dependency to the SaaS service module. This is a prerequisite as the required dependency between new Tenant database containers and the shared database container needs to be resolved upon subscription of each new Consumer Tenant. As the subscription is handled by the SaaS Service module, it is essential to provide the binding in form of a so/called **Service Replacement**. 
 
-[<img src="./images/CD_MtaReq.png" width="500"/>](./images/CD_MtaReq.png)
+[<img src="./images/CD_MtaReq.png" width="500"/>](./images/CD_MtaReq.png?raw=true)
 
 
 ## 2. Tenant Database Container

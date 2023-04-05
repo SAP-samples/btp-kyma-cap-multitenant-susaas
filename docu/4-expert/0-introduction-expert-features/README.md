@@ -5,7 +5,7 @@
 
 In the [Basic Version](../../2-basic/0-introduction-basic-version/README.md) we have provided you the core elements required for a Software as a Service (SaaS) application based on the **SAP BTP Kyma Runtime**. In the [Advanced Version](../../3-advanced/0-introduction-advanced-version/README.md) we covered further highly relevant topics when it comes to enterprise-readiness of your SaaS application going beyond a test scenario usage. The idea of **Expert Feature** tutorials builds on momentum of the Basic and Advanced Version and showcase a variety of additional SaaS Provider and Subscriber requirements.
 
-[<img src="./images/App_Architecture_Expert.png" width="600" />](./images/App_Architecture_Expert.png)
+[<img src="./images/App_Architecture_Expert.png" width="600" />](./images/App_Architecture_Expert.png?raw=true)
 
 The **Expert Features** will cover topics from backups of Tenant database containers to custom domain usage for your SaaS application. Below you can find the current list of topics covered. You can set up most of the **Expert Feature** topics using **Free (Tier) service plans** of your **Pay-as-you-Go** (PAYG) or **CPEA** account. A tutorial how to setup a PAYG account (allowing you to use all Free Tier service plans) can be found in the [Tutorial Navigator](https://developers.sap.com/tutorials/btp-free-tier-account.html).
 

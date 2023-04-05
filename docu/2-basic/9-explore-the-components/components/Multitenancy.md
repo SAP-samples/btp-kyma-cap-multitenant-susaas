@@ -38,7 +38,7 @@ If you have multiple routes to the same application, for example `tenant1.<appli
 
 This URL-based method of identifying a Tenant by handling consumer-specific authentication requirements is also depicted in the following visualization. Together with the steps described below, you should get a good idea of how multitenancy in SAP BTP is implemented. 
 
-[<img src="./images/AR_Flow.png" width="800"/>](./images/AR_Flow.png)
+[<img src="./images/AR_Flow.png" width="800"/>](./images/AR_Flow.png?raw=true)
 
 1) The application router derives the identity zone identifier from the URL using the `TENANT_HOST_PATTERN` approach described above. Each Consumer Subaccount maps to a unique identity zone and a unique subdomain associated with this identity zone. 
 
@@ -77,11 +77,11 @@ Below you can see two screenshots of the provider service credentials and a toke
 
 **Client Credentials** (Provider subaccount)
 
-[<img src="./images/AR_ProvCred.png" width="400"/>](./images/AR_ProvCred.png)
+[<img src="./images/AR_ProvCred.png" width="400"/>](./images/AR_ProvCred.png?raw=true)
 
 **Authorization Token** (Tenant subaccount)
 
-[<img src="./images/AR_SubscrToken.png" width="400"/>](./images/AR_SubscrToken.png)
+[<img src="./images/AR_SubscrToken.png" width="400"/>](./images/AR_SubscrToken.png?raw=true)
 
 
 ### 2.2. Authorization & Trust management service - **application** plan

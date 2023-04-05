@@ -48,7 +48,7 @@ This is the process of onboarding new consumers to the multitenant SaaS solution
 
 Putting together the general account model of an SAP BTP SaaS solution results in the following structure:
 
-[<img src="./images/account-model.png" width="500" />](./images/account-model.png)
+[<img src="./images/account-model.png" width="500" />](./images/account-model.png?raw=true)
 
 
 ## SAP CAP (MTXS)

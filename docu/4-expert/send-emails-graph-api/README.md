@@ -50,21 +50,21 @@ Having a valid license (including the Exchange Online feature) assigned to your 
 
 In the below sample, we created two shared mailboxes. One is for automated messages sent by the application, which is not supposed to receive any response messages (**donotreply@susaas.com**). The other shared mailbox is the contact e-mail address of our SaaS application (**info@susaas.com**) accessible by one or multiple delegate users. This contact mailbox can also receive messages. 
 
-[<img src="./images/Mail_SharedMailbox.png" width="500" />](./images/Mail_SharedMailbox.png)
+[<img src="./images/Mail_SharedMailbox.png" width="500" />](./images/Mail_SharedMailbox.png?raw=true)
 
 > **Hint** - In this case, susaas.com was registered as a custom Domain in the respective Admin Center settings. For test scenarios, you can also go with the default *.onmicrosoft.com domain assigned to your account. 
 
 The Exchange Admin Center provides a lot of options that we cannot cover in this tutorial like the rule used in our DoNotReply mailbox which automatically deletes all messages arriving in the mailbox. Feel free to explore further options of Exchange Online.
 
-[<img src="./images/Mail_DoNotReply.png" width="500" />](./images/Mail_DoNotReply.png)
+[<img src="./images/Mail_DoNotReply.png" width="500" />](./images/Mail_DoNotReply.png?raw=true)
 
 While the DoNotReply mailbox does not need any delegate access permissions as it is only used to send e-mails from within the SaaS application, the regular contact mailbox requires delegate access. You can add multiple users responsible for maintaining the contact mailbox. 
 
-[<img src="./images/Mail_DelegateAccess.png" width="500" />](./images/Mail_DelegateAccess.png)
+[<img src="./images/Mail_DelegateAccess.png" width="500" />](./images/Mail_DelegateAccess.png?raw=true)
 
 Each delegate user needs to have a valid license assigned that contains Exchange Online access (like Office 365 F3). If the user does not appear in the list of available users in the Exchange Admin Center, please switch back to the [Microsoft 365 Admin Center](https://admin.microsoft.com/#/homepage), select the user, and switch to the **Mail** tab. This should initialize the Exchange Online usage within a few minutes. 
 
-[<img src="./images/Mail_ActivateMail.png" width="500" />](./images/Mail_ActivateMail.png)
+[<img src="./images/Mail_ActivateMail.png" width="500" />](./images/Mail_ActivateMail.png?raw=true)
 
 > **Important** - Each shared mailbox results in a new user in your Microsoft 365 Admin Center. This user is not supposed to be used for logins and the password must not be changed! Furthermore, you don't need to assign any licenses to the shared mailbox users. 
 
@@ -75,47 +75,47 @@ You can use a standard Azure Active Directory **Application Registration** to se
 
 4.1. Go to the [Azure Portal](https://portal.azure.com/#home) and access your Azure Active Directory instance.
 
-[<img src="./images/Azure_AppReg01.png" width="500" />](./images/Azure_AppReg01.png)
+[<img src="./images/Azure_AppReg01.png" width="500" />](./images/Azure_AppReg01.png?raw=true)
 
 4.2. Switch to **App registrations** and click on **New registration**. 
 
-[<img src="./images/Azure_AppReg02.png" width="500" />](./images/Azure_AppReg02.png)
+[<img src="./images/Azure_AppReg02.png" width="500" />](./images/Azure_AppReg02.png?raw=true)
 
 4.3. Define a name of your choice, select the Single Tenant mode and click on **Register**.
 
-[<img src="./images/Azure_AppReg03.png" width="500" />](./images/Azure_AppReg03.png)
+[<img src="./images/Azure_AppReg03.png" width="500" />](./images/Azure_AppReg03.png?raw=true)
 
 4.4. Your Application Registration is created and you are redirected to the Overview page. 
 
 > **Hint** - Note the **Application (client) ID** and the **Directory (tenant) ID**. You will need these values for authentication in your sample application.
 
-[<img src="./images/Azure_AppReg04.png" width="500" />](./images/Azure_AppReg04.png)
+[<img src="./images/Azure_AppReg04.png" width="500" />](./images/Azure_AppReg04.png?raw=true)
 
 4.5. Switch to **API permissions** and click on **Add a permission**.
 
-[<img src="./images/Azure_AppReg05.png" width="500" />](./images/Azure_AppReg05.png)
+[<img src="./images/Azure_AppReg05.png" width="500" />](./images/Azure_AppReg05.png?raw=true)
 
 4.6. Select **Microsoft Graph** from the available APIs, click on **Application permissions** and search for the **Mail.Send** permission. Select it and click on **Add permissions**. 
 
-[<img src="./images/Azure_AppReg06.png" width="500" />](./images/Azure_AppReg06.png)
+[<img src="./images/Azure_AppReg06.png" width="500" />](./images/Azure_AppReg06.png?raw=true)
 
 4.7. This is a very powerful permission, as it is set on Application-level and allows you to send e-mails on behalf of any user in your directory. For that reason, **admin consent** has to be given for this permission. 
 
 > **Important** - Please check the official [Microsoft documentation](https://docs.microsoft.com/en-us/graph/auth-limit-mailbox-access) to learn more about how to restrict the application's access permissions to certain mailboxes! 
 
-[<img src="./images/Azure_AppReg07.png" width="500" />](./images/Azure_AppReg07.png)
+[<img src="./images/Azure_AppReg07.png" width="500" />](./images/Azure_AppReg07.png?raw=true)
 
 4.8. You can remove the **User.Read** permission and admin consent from the API permissions list as you can see in the below screenshots. 
 
-[<img src="./images/Azure_AppReg08.png" width="500" />](./images/Azure_AppReg08.png)
+[<img src="./images/Azure_AppReg08.png" width="500" />](./images/Azure_AppReg08.png?raw=true)
 
-[<img src="./images/Azure_AppReg09.png" width="500" />](./images/Azure_AppReg09.png)
+[<img src="./images/Azure_AppReg09.png" width="500" />](./images/Azure_AppReg09.png?raw=true)
 
 4.9. Switch to the **Certificates & secrets** section and create a new **Client Secret**. Please copy the Secret value as you won't be able to see it again once you leave the page. 
 
-[<img src="./images/Azure_AppReg10.png" width="500" />](./images/Azure_AppReg10.png)
+[<img src="./images/Azure_AppReg10.png" width="500" />](./images/Azure_AppReg10.png?raw=true)
 
-[<img src="./images/Azure_AppReg11.png" width="500" />](./images/Azure_AppReg11.png)
+[<img src="./images/Azure_AppReg11.png" width="500" />](./images/Azure_AppReg11.png?raw=true)
 
 
 ## 5. Test the sample application
@@ -170,11 +170,11 @@ client.api('/users/<<mail.address@of.mailbox>>/sendMail')   // Shared mailbox e-
 
 5.4. Save the index.js file and run **npm run start** in your terminal. If you see a result like below, your e-mail was sent successfully. 
 
-[<img src="./images/Azure_SendMail.png" width="500" />](./images/Azure_SendMail.png)
+[<img src="./images/Azure_SendMail.png" width="500" />](./images/Azure_SendMail.png?raw=true)
 
 5.5. Check the inbox of your recipient's e-mail address where the message should have arrived. 
 
-[<img src="./images/Azure_SendMail01.png" width="500" />](./images/Azure_SendMail01.png)
+[<img src="./images/Azure_SendMail01.png" width="500" />](./images/Azure_SendMail01.png?raw=true)
 
 5.7. You can now integrate the above coding into your application by using e.g., a new helper class in your Business Application Service. 
 
@@ -184,9 +184,9 @@ client.api('/users/<<mail.address@of.mailbox>>/sendMail')   // Shared mailbox e-
 
 Although Microsoft does not recommend the usage of the following alternative approach ([see here](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth-ropc)), we still want to quickly mention it here. Instead of using the Client Credentials Flow in combination with permissions on Application-level, you can also make use of the Resource Owner Password Flow, combined with Delegate permissions. 
 
-[<img src="./images/Azure_AppPwFlow01.png" width="500" />](./images/Azure_AppPwFlow01.png)
+[<img src="./images/Azure_AppPwFlow01.png" width="500" />](./images/Azure_AppPwFlow01.png?raw=true)
 
-[<img src="./images/Azure_AppPwFlow02.png" width="500" />](./images/Azure_AppPwFlow02.png)
+[<img src="./images/Azure_AppPwFlow02.png" width="500" />](./images/Azure_AppPwFlow02.png?raw=true)
 
 This approach comes with the drawback, that the Application Registration has to be configured for Public Client access, and you need to store the password of a dedicated Directory user in your SAP Credential Store. As said, this approach is not recommended by Microsoft and should only be used if the Client Credentials Flow (combined with a mailbox restriction) cannot be used for any reason. 
 
