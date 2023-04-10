@@ -5,7 +5,7 @@ global:
 alert_notification:
   fullnameOverride: alert-notification
   serviceOfferingName: alert-notification
-  servicePlanName: standard
+  servicePlanName: free
   parameters:
     configuration:
       actions:
