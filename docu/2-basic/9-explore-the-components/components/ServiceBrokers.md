@@ -401,7 +401,7 @@ Then the question arises: *Can we avoid the effort of implementing OSBAPI for al
 The answer is: *Yes, you can!*
 
 The Service Broker Framework ([@sap/sbf](https://www.npmjs.com/package/@sap/sbf?activeTab=readme#additional-service-configuration)) 
-is a Node.js framework that implements the Open Service Broker API. It can be used in the Cloud Foundry environment of SAP Business Technology Platform or on-premise in SAP HANA XS Advanced model. Therefore, when you deploy this npm module as explained in the official documentation, you will have a service broker which implements OSBAPI out-of-the-box.
+is a Node.js framework that implements the Open Service Broker API. It can be used in the SAP Business Technology Platform or on-premise as part of the SAP HANA XS Advanced model. Therefore, when you deploy this npm module as explained in the official documentation, you will have a service broker which implements OSBAPI out-of-the-box.
 
 Please refer to the official documentation of @sap/sbf for further information.
 

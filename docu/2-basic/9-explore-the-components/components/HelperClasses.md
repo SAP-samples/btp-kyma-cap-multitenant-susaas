@@ -48,7 +48,7 @@ When a Tenant subscribes to the Sustainable SaaS app,
 1. A new Cloud Management Service instance (central plan) will be created in the Provider Subaccount. 
 2. A new Service Manager instance will be created in the Consumer Subaccount using the Cloud Management Service instance.
 3. The API Broker will be registered by the Service Manager instance created in step 2.
-4. A sample destination called **SUSAAS_S4HANA_CLOUD** will be created.
+4. A sample destination called **\*_S4HANA_CLOUD** will be created.
 5. The Service Manager instance created in step 2 will be deleted again.
 6. The Cloud Management Service instance created in step 1 will be deleted again.
 
@@ -56,7 +56,7 @@ When a Tenant unsubscribes from the Sustainable SaaS app,
 1. A new Cloud Management Service instance (central plan) will be created in the Provider Subaccount. 
 2. A new Service Manager instance will be created in the Consumer Subaccount using the Cloud Management Service instance.
 3. The API Broker will be unregistered by the Service Manager instance created in Step 2.
-4. The **SUSAAS_S4HANA_CLOUD** destination will be deleted.
+4. The **\*_S4HANA_CLOUD** destination will be deleted.
 5. The Service Manager instance created in Step 2 will be deleted.
 6. The Cloud Management Service instance created in step 1 will be deleted again.
 
@@ -66,7 +66,7 @@ When a Tenant unsubscribes from the Sustainable SaaS app,
 
 In this Sustainable SaaS application context, we are using **SAP BTP Cloud Management Service** to create and delete Service Manager instances in Consumer Subaccounts. To be able to do this, the Cloud Management helper class also contains functions to create and to delete a new Cloud Management Service instance (central plan) on runtime within the Provider Subaccount.
 
-Only a Cloud Management Service instance of plan "central" and grant type "clientCredentials" can be used to create service instances in other subaccounts (like in this case a service manager instance). This special type of Cloud Management Service cannot be created during deployment, but has to be created and deleted during runtime, using a dedicated service manager instance of plan "subaccount-admin". The default service manager instance used by Kyma (plan service-operator-access) cannot be used to create such an instance. 
+Only a Cloud Management Service instance of plan "central" and grant type **clientCredentials** can be used to create service instances in other subaccounts (like in this case a service manager instance). This special type of Cloud Management Service cannot be created during deployment, but has to be created and deleted during runtime, using a dedicated service manager instance of plan "subaccount-admin". The default service manager instance used by Kyma (plan service-operator-access) cannot be used to create such an instance. 
 
 
 ## 4. Service Manager Helper

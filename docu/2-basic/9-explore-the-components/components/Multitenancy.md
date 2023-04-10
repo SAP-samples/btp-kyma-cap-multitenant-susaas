@@ -88,7 +88,7 @@ Below you can see two screenshots of the provider service credentials and a toke
 
 The service plan **application** requires that the xsappname (specified in the xs-security.json or mta.yaml file) is unique in each Tenant (SAP BTP subaccount) to which the application is deployed. This means that an application may be deployed in several SAP BTP subaccounts at the same time but not twice in the same Tenant (unless you modify the xsappname). You would get an error message during the second deployment. 
 
-> **Hint** - In the sample application, the xsappname is dynamically combined with the current Cloud Foundry Space name so you can deploy the application to multiple Spaces in the same subaccount if you like. 
+> **Hint** - In the sample application, the xsappname is dynamically combined with the current Kyma namespace so you can deploy the application to multiple namespaces in the same cluster if you like. 
 
 The xsappname that is written into the credentials section of the environment is enhanced with a suffix and has the format `<xsappname>!t<tenant index>`. A Tenant index is a running number that the UAA maintains internally. It differs from subaccount to subaccount. 
 
@@ -99,7 +99,6 @@ In a multitenant scenario, the actual application instances only exist in the Pr
 
 Please use the following links to find further information on the topics above:
 
-* [Cloud Foundry Documentation - UAA Concepts](https://docs.cloudfoundry.org/uaa/uaa-concepts.html)
 * [SAP Help - Multitenancy Configure the approuter Application](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/5af9067322214e8dbf354daae44cef08.html?locale=en-US)
 * [SAP Blog - Fundamentals of Multitenancy in SAP BTP](https://blogs.sap.com/2022/08/27/fundamentals-of-multitenancy-in-sap-btp/)
 * [SAP Help - Tenant Mode: Shared](https://help.sap.com/docs/HANA_CLOUD_DATABASE/b9902c314aef4afb8f7a29bf8c5b37b3/6d3ed64092f748cbac691abc5fe52985.html#tenant-mode)
