@@ -1,0 +1,16 @@
+{
+    "welcomeFile": "/sapsusaasuihome/",
+    "authenticationMethod": "route",
+    "routes": [
+      {
+        "source": "^(/sapsusaasuihome/.*)$",
+        "service": "html5-apps-repo-rt",
+        "authenticationType": "none"
+      },
+      {
+        "source": "^(/.*)$",
+        "service": "html5-apps-repo-rt",
+        "authenticationType": "ias"
+      }
+    ]
+  }
