@@ -9,4 +9,4 @@ WORKDIR /app
 # Bundle app source
 COPY . .
 
-CMD [ "npm", "start" ]
+CMD [ "node", "index.js" ]

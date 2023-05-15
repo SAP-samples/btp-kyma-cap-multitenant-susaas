@@ -5,6 +5,7 @@ default-*.json
 coverage/
 gen/
 dist/
+local/
 manifest-bundle.zip
 connection.properties
 *-private.http
@@ -22,6 +23,7 @@ _out
 .DS_Store
 *.sqlite
 *.private.*
+
 # exclude sample file
 !default-*.sample.json
 !APIProxy*.zip

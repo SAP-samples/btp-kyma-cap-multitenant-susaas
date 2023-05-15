@@ -6,12 +6,6 @@
     },
     "routes": [
       {
-        "source": "^/healthz$",
-        "localDir": "./",
-        "target": "/health.html",
-        "authenticationType": "none"
-      },
-      {
         "source": "^/user-api(.*)",
         "target": "$1",
         "service": "sap-approuter-userapi",
