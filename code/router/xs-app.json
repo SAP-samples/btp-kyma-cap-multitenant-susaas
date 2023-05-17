@@ -2,15 +2,9 @@
     "welcomeFile": "/sapsusaasuipublicflp/",
     "authenticationMethod": "route",
     "logout": {
-      "logoutEndpoint": "/do/logout"
+      "logoutEndpoint": "/logout"
     },
     "routes": [
-      {
-        "source": "^/healthz$",
-        "localDir": "./",
-        "target": "/health.html",
-        "authenticationType": "none"
-      },
       {
         "source": "^/user-api(.*)",
         "target": "$1",
