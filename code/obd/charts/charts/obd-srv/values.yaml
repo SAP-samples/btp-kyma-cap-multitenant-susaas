@@ -5,7 +5,9 @@ global:
   component: srv
   domain: 
   gateway: 
-  saasRelease:
+  router:
+    name: 
+    fullName: 
   
 port: 8080
 

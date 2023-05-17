@@ -1,0 +1,66 @@
+{{ if .Values.expose.enabled}}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ printf "%s-%s" ( default "susaas" .Values.global.saasRelease ) ( uuidv4 | trunc 5) }}
+  labels: {{- include "obd-router.labels" . | nindent 4 }}
+spec:
+  gateways:
+    - {{ .Values.global.gateway | default "kyma-system/kyma-gateway"  }}
+  hosts:
+    - {{ printf "%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace $.Values.global.domain }}
+  http:
+    - match:
+        - uri:
+            regex: ^.*(sapsusaasuipublic).*$
+          headers:
+            Cookie:
+              regex: ^.*(x-custom-host=).*$
+        - uri:
+            regex: ^.*(sapsusaasuiadmin).*$
+          headers:
+            Cookie:
+              regex: ^.*(x-custom-host=).*$
+        - queryParams:
+            authType:
+              exact: xsuaa
+          uri:
+            regex: ^.*(login).*$
+      route:
+        - destination:
+            host: {{ printf "%s.%s.svc.cluster.local" ( printf "%s-%s" ( default "susaas" .Values.global.saasRelease ) (default "router" .Values.global.saasRouter)) .Release.Namespace  }}
+            port:
+              number: 5000
+          weight: 100
+      timeout: 10s
+    - match:
+        - uri:
+            exact: /
+        - uri:
+            regex: ^.*(login).*$
+        - uri:
+            regex: ^.*(sapsusaasuionboarding).*$
+        - uri:
+            regex: ^.*(sapsusaasuihome).*$
+      route:
+        - destination:
+            host: {{ printf "%s.%s.svc.cluster.local" ( default ( printf "%s-%s" .Release.Name "router" ) .Values.global.router.fullName ) .Release.Namespace  }} 
+            port:
+              number: 5000
+          weight: 100
+      timeout: 10s
+    - match:
+        - uri:
+            regex: ^.*(sapsusaasuipublic).*$
+        - uri:
+            regex: ^.*(sapsusaasuiadmin).*$
+      rewrite:
+        uri: " "
+      route:
+        - destination:
+            host: {{ printf "%s.%s.svc.cluster.local" ( default ( printf "%s-%s" .Release.Name "router" ) .Values.global.router.fullName ) .Release.Namespace  }} 
+            port:
+              number: 5000
+          weight: 100
+      timeout: 10s
+{{ end }}

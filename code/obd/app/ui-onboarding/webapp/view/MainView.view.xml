@@ -15,7 +15,11 @@
                 <content>
                     <List id="list" items="{ path: 'viewModel>/aTenants', templateShareable: false }" noDataText="No tenant available yet!" >
                         <items>
-                            <StandardListItem title="{viewModel>tenantSubdomain}"/>
+                            <CustomListItem>
+                                <HBox>
+                                    <Button text="Tenant Login" type="Emphasized" press="onPressLogin" class="sapUiResponsiveMargin"/>
+                                </HBox>
+                            </CustomListItem>
                         </items>
                     </List>
                 </content>

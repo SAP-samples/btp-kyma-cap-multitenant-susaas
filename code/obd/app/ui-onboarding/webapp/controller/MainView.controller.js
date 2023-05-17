@@ -1,9 +1,11 @@
 sap.ui.define([
     "./BaseController",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageToast"
-],function (Controller, JSONModel, MessageToast) {
+    "sap/m/MessageToast",
+    'sap/m/library'
+],function (Controller, JSONModel, MessageToast, mobileLibrary) {
         "use strict";
+        const URLHelper = mobileLibrary.URLHelper;
 
         return Controller.extend("sap.susaas.ui.onboarding.controller.MainView", {
 
@@ -23,6 +25,9 @@ sap.ui.define([
                 this._updateStatus();
             },
 
+            onPressLogin: function(){
+                URLHelper.redirect(window.location.protocol + "//" + window.location.host + '/login', false);
+            },
 
             onPressOnboarding: function(){
                 this.oModel.callFunction("/onboardTenant", {

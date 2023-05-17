@@ -16,6 +16,37 @@ const saasHelmRelease = process.env["SAAS_HELM_RELEASE"];
 
 module.exports = cds.service.impl(async function () {
 
+    this.on("login", async (req)=> {
+        try {
+            if (!req.user) { return req.error(404, 'Error: Missing User Details') };
+            if (!req.user.attr?.scim_id) { return req.error(404, 'Error: Missing User Details') };
+
+            const scimId = req.user.attr.scim_id;
+
+            const tenantId = crypto.createHash('shake256', { outputLength: 10 }).update(`${saasHelmRelease}-${kymaNamespace}-${clusterShootname}-${scimId}`).digest('hex');
+            const result = await k8sCustObjApi.listNamespacedCustomObject('gateway.kyma-project.io','v1beta1',kymaNamespace,'apirules','',false,'','','app.sap.com/subdomain=' + encodeURI(tenantId));
+
+            if (!result.body.items || result.body.items?.length == 0){ 
+                return req._.res.redirect('/sapsusaasuionboarding/') 
+            }
+
+            const cookie = req._.req.cookies ? req._.req.cookies["x-custom-host"] : undefined;
+
+            if (cookie === undefined) { 
+                req._.res.cookie('x-custom-host', tenantId, { maxAge: 1*24*60*60*1000, httpOnly: false });
+                console.log('Info: Cookie x-custom-host created successfully');
+            } else {
+                console.log('Info: Cookie x-custom-host already exists', cookie);
+            } 
+
+            req._.res.redirect('/sapsusaasuipublicflp/');
+
+        } catch(error) {
+            console.error(`Error: Error during post-login process: ${JSON.stringify(error)}`);
+            return req.error(500, `Error during post-login process: ${error.message}`);
+        };
+    });
+
     this.on("tenant", async (req)=> {
         try {
             if (!req.user) { return req.error(404, 'Error: Missing User Details') };

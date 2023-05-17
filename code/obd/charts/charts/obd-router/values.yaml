@@ -5,9 +5,11 @@ global:
   component: router
   domain: 
   gateway: 
-  obd:
+  srv:
     fullName: 
     port: 
+  saasRelease:
+  saasRouter:
 
 port: 5000
 

@@ -6,19 +6,22 @@ global:
   # If necessary, override essential dependencies required in subcharts
   # Required in case you e.g., provide a fullNameOverride or a custom exposed host
   srv:
-    fullName: # leave empty to apply default logic - $Release.Name-srv-$Release.Namespace (e.g. onboarding-srv-default)
+    fullName: # leave empty to apply default logic - $Release.Name-srv
     port: # leave empty to apply default value - 8080
   router:
-    name: # leave empty to apply default logic - router (e.g. router)
-    fullName: # leave empty to apply default logic - $Release.Name-obd (e.g. onboarding-router)
+    name: # leave empty to apply default logic - router
+    fullName: # leave empty to apply default logic - $Release.Name-router
   # Provide details auf SaaS application to be deployed
-  saasRelease: # leave empty to apply default value - susaas (e.g. susaas-dev)
+  saasRelease: # leave empty to apply default value - susaas
+  saasRouter: # leave empty to apply default value - router
 
 # Onboarding Service Workload
 srv:
   port: 8080
   bindings:
     identity:
+      # Only enable if Cloud Identity Service instance is enabled in Umbrella Chart 
+      enabled: true 
       serviceInstanceName: identity
       # SAP IAS binding requires X.509 certificate based credentials
       parameters:
@@ -87,7 +90,6 @@ html5_apps_deployer:
       cpu: 300m
       memory: 500M
 
-
 # SAP HTML5 Application Repository
 # Storing the SaaS application UI modules
 html5_repo_host:
@@ -96,7 +98,7 @@ html5_repo_host:
 
 
 # SAP HTML5 Application Repository
-# Allows access to the SaaS application UI modules 
+# Allows access to the SaaS applicaiton UI modules 
 html5_repo_runtime:
   serviceOfferingName: html5-apps-repo
   servicePlanName: app-runtime
@@ -113,9 +115,9 @@ identity:
     oauth2-configuration:
       # Redirect and logout URIs filled with dummy values as not required for authentication
       redirect-uris:
-        - 'https://{{ include "cap.deploymentHostFull" ( merge ( dict "name" "router" "deployment" .Values.router ) . ) }}/login/callback?authType=ias'
+        - 'https://{{ printf "%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace $.Values.global.domain }}/login/callback?authType=ias'
       post-logout-redirect-uris: 
-        - 'https://{{ include "cap.deploymentHostFull" ( merge ( dict "name" "router" "deployment" .Values.router ) . ) }}/logout/**'
+        - 'https://{{ printf "%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace $.Values.global.domain }}/logout/**'
       grant-types: ["authorization_code"]
       credential-types: ["binding-secret", "x509"]
     xsuaa-cross-consumption: false

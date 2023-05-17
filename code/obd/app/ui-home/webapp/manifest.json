@@ -71,7 +71,10 @@
         "viewPath": "sap.susaas.ui.home.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "clearControlAggregation": false
+        "clearControlAggregation": false,
+        "bypassed": {
+          "target": "TargetMainView"
+        }
       },
       "routes": [
         {

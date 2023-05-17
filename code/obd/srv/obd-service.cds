@@ -5,6 +5,7 @@ service OnboardService @(path : '/catalog/OnboardService', requires: 'authentica
 
     function tenant() returns String;
     function status() returns String; 
+    function login() returns String; 
 
     function onboardTenant() returns String;
     function offboardTenant() returns String;
