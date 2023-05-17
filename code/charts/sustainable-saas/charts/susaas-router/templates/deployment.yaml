@@ -63,6 +63,8 @@ spec:
         - name: KYMA_NAMESPACE
           value: {{ .Release.Namespace }}
         {{- end }}
+        - name: EXPOSED_HOST
+          value: {{ include "susaas-srv.exposeHost" . }}
         livenessProbe:
         {{- if .Values.health_check.liveness.path }}
           httpGet:

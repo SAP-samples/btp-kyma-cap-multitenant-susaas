@@ -5,6 +5,7 @@ default-*.json
 coverage/
 gen/
 dist/
+local/
 manifest-bundle.zip
 connection.properties
 *-private.http
