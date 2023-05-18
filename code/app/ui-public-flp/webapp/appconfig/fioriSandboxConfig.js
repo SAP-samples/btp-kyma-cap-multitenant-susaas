@@ -70,7 +70,7 @@
                 id: "SusaasAdmin",
                 title: "Susaas Admin",
                 isPreset: false,
-                isVisible: true,
+                isVisible: !customHost,
                 isGroupLocked: false,
                 tiles: [
                   {
@@ -94,12 +94,21 @@
                 ]
               },
               {
-                id: "TenantAdmin",
-                title: "Tenant Admin",
+                id: "SusaasAdmin",
+                title: "Susaas Admin",
                 isPreset: false,
                 isVisible: !!customHost,
                 isGroupLocked: false,
                 tiles: [
+                  {
+                    id: "ManageProjects",
+                    tileType: "sap.ushell.ui.tile.StaticTile",
+                    properties: {
+                      title: "Manage Projects",
+                      targetURL: "#Projects-manage",
+                      icon: "sap-icon://manager"
+                    }
+                  },
                   {
                     id: "ManageTenant",
                     tileType: "sap.ushell.ui.tile.StaticTile",

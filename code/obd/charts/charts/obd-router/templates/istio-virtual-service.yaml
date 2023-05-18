@@ -32,7 +32,7 @@ spec:
             port:
               number: 5000
           weight: 100
-      timeout: 10s
+      timeout: 30s
     - match:
         - uri:
             exact: /
@@ -48,7 +48,7 @@ spec:
             port:
               number: 5000
           weight: 100
-      timeout: 10s
+      timeout: 30s
     - match:
         - uri:
             regex: ^.*(sapsusaasuipublic).*$
@@ -62,5 +62,5 @@ spec:
             port:
               number: 5000
           weight: 100
-      timeout: 10s
+      timeout: 30s
 {{ end }}
