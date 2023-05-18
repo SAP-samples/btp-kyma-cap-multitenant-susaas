@@ -3,6 +3,9 @@ global:
   domain: # see domain in Config Map kube-system/shoot-info or custom domain (e.g. sap-demo.com) 
   shootName: # see shootName in Config Map kube-system/shoot-info
   gateway: # use default value (kyma-system/kyma-gateway) or custom gateway (e.g. onboarding/demo-gateway)
+  platformIdp: # provide the platform IdP details
+    origin: # provide the origin key of the platform Idp
+    url: # # provide the host of the platform Idp
   # If necessary, override essential dependencies required in subcharts
   # Required in case you e.g., provide a fullNameOverride or a custom exposed host
   srv:

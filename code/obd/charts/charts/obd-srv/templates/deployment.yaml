@@ -37,6 +37,14 @@ spec:
         - name: SERVICE_BINDING_ROOT
           value: /bindings
         {{- end }}
+        {{- if .Values.global.platformIdp.origin }}
+        - name: PLATFORMIDP_ORIGIN
+          value: {{ .Values.global.platformIdp.origin }}
+        {{- end }}
+        {{- if .Values.global.platformIdp.url }}
+        - name: PLATFORMIDP_URL
+          value: {{ .Values.global.platformIdp.url }}
+        {{- end }}
         - name: SAAS_HELM_RELEASE
           value: {{ default "susaas" .Values.global.saasRelease }}
         - name: CLUSTER_SHOOTNAME

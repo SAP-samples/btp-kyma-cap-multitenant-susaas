@@ -25,8 +25,12 @@ sap.ui.define([
                 this._updateStatus();
             },
 
-            onPressLogin: function(){
+            onPressLoginTenant: function(){
                 URLHelper.redirect(window.location.protocol + "//" + window.location.host + '/login', false);
+            },
+
+            onPressLoginPlatform: function(){
+                URLHelper.redirect("https://emea.cockpit.btp.cloud.sap/cockpit/?idp=" + this.getModel('viewModel').getProperty('/aTenants/0/platformIdpUrl'), true);
             },
 
             onPressOnboarding: function(){

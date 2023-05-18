@@ -5,6 +5,9 @@ global:
   component: router
   domain: 
   gateway: 
+  platformIdp: 
+    origin:
+    url: 
   srv:
     fullName: 
     port: 

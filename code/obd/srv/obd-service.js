@@ -10,6 +10,8 @@ const k8sCustObjApi = kc.makeApiClient(k8s.CustomObjectsApi);
 
 const kymaNamespace = process.env["KYMA_NAMESPACE"];
 const clusterShootname = process.env["CLUSTER_SHOOTNAME"];
+const platformIdpOrigin = process.env["PLATFORMIDP_ORIGIN"];
+const platformIdpUrl = process.env["PLATFORMIDP_URL"];
 
 // Release name of SaaS app to be onboarded
 const saasHelmRelease = process.env["SAAS_HELM_RELEASE"];
@@ -59,7 +61,7 @@ module.exports = cds.service.impl(async function () {
             if (!result.body.items || result.body.items?.length == 0){ return req.reply() }
 
             console.log(`Tenants: ${JSON.stringify(result.body)}`);
-            return req.reply({ tenantSubdomain : result.body.items[0]?.spec?.host });
+            return req.reply({ tenantSubdomain : result.body.items[0]?.spec?.host, platformIdpUrl : platformIdpUrl });
 
         } catch(error) {
             console.error(`Error: Error reading tenants: ${JSON.stringify(error)}`);
@@ -196,6 +198,8 @@ module.exports = cds.service.impl(async function () {
             }
 
             console.log("Info: Start tenant onboarding")
+
+            const idp = platformIdpOrigin ?? 'sap.custom';
             const jobResult = await k8sBatchV1Api.createNamespacedJob(kymaNamespace, {
                 apiVersion: 'batch/v1',
                 kind: 'Job',
@@ -230,13 +234,16 @@ module.exports = cds.service.impl(async function () {
                                                 "requiredrolecollections": [ { "name": "Susaas Administrator (` + saasHelmRelease + '-' + kymaNamespace + `)", "assignedUserGroupsFromParameterFile": [ "SusaaS_Admins" ], "idp": "sap.custom" } ] 
                                             }], 
                                             "assignrolecollections": [ 
+                                                { "name": "Subaccount Viewer", "type": "account", "level": "sub account", "assignedUserGroupsFromParameterFile": [ "SusaaS_Admins" ], "idp": "` + idp  + `" },
                                                 { "name": "Subaccount Administrator", "type": "account", "level": "sub account", "assignedUserGroupsFromParameterFile": [ "admins" ], "idp": "sap.default" }, 
-                                                { "name": "Subaccount Service Administrator", "type": "account", "level": "sub account", "assignedUserGroupsFromParameterFile": [ "admins" ], "idp": "sap.default" } 
+                                                { "name": "Subaccount Service Administrator", "type": "account", "level": "sub account", "assignedUserGroupsFromParameterFile": [ "admins" ], "idp": "sap.default" }
                                             ], 
                                             "executeAfterAccountSetup": [  
                                                 {  "description": "Setup SAP IAS trust", "command": "btp create security/trust --idp $(IASHOST) --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --name sap-ias "  }, 
-                                                {  "description": "Disable Shadow User Creation",  "command": "btp update security/trust sap.custom --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --auto-create-shadow-users false "  }, 
-                                                {  "description": "Disable SAP IdP Login",  "command": "btp update security/trust sap.default --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --available-for-user-logon false "  } 
+                                                {  "description": "Disable Shadow User Creation", "command": "btp update security/trust sap.custom --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --auto-create-shadow-users false "  }, 
+                                                {  "description": "Disable SAP IdP Login", "command": "btp update security/trust sap.default --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --available-for-user-logon false "  },
+                                                {  "description": "Create API Service Instance", "command": "btp create services/instance --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --offering-name '`+ saasHelmRelease + `-api-` + kymaNamespace + '-' + clusterShootname + `' --service '` + saasHelmRelease + `-api-` + kymaNamespace + `-` + clusterShootname + `' --plan-name 'default' " },
+                                                {  "description": "Create API Service Binding", "command": "btp create services/binding --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --instance-name '`+ saasHelmRelease + `-api-` + kymaNamespace + `-` + clusterShootname + `' --binding 'default' " }
                                             ]  
                                         }' > 'obdusecase.json' \
                                     && echo '{ 

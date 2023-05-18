@@ -17,7 +17,8 @@
                         <items>
                             <CustomListItem>
                                 <HBox>
-                                    <Button text="Tenant Login" type="Emphasized" press="onPressLogin" class="sapUiResponsiveMargin"/>
+                                    <Button text="Tenant Login" type="Emphasized" press="onPressLoginTenant" class="sapUiResponsiveMargin"/>
+                                    <Button visible="{= ${viewModel>platformIdpUrl} ? true : false }" text="Platform Login" type="Emphasized" press="onPressLoginPlatform" class="sapUiResponsiveMargin"/>
                                 </HBox>
                             </CustomListItem>
                         </items>

@@ -55,6 +55,14 @@ spec:
         - name: APPLICATION_URI
           value: {{ include "obd-router.applicationUri" . }}
         {{- end }}
+        {{- if .Values.global.platformIdp.origin }}
+        - name: PLATFORMIDP_ORIGIN
+          value: {{ .Values.global.platformIdp.origin }}
+        {{- end }}
+        {{- if .Values.global.platformIdp.url }}
+        - name: PLATFORMIDP_URL
+          value: {{ .Values.global.platformIdp.url }}
+        {{- end }}
         {{- if .Release.Namespace }}
         - name: KYMA_NAMESPACE
           value: {{ .Release.Namespace }}
