@@ -165,7 +165,12 @@ broker:
         description: Premium Plan
         # Leave empty to generate new ID on Helm installation
         # ! Should be static in productive scenarios !
-        planId:    
+        planId:
+      - name: trial
+        description: Trial Plan
+        # Leave empty to generate new ID on Helm installation
+        # ! Should be static in productive scenarios !
+        planId:
 
 
 # Shared Database Container Deployer Job
