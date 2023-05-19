@@ -8,9 +8,7 @@
         <content>
             <VBox alignContent="Center" justifyContent="Center" alignItems="Center" width="100%" height="100%">
                 <Title level="H1" text="Sustainable SaaS" textAlign="Center" titleStyle="H1" class="sapUiMediumMarginBottom susaasHomeTitle" wrapping="true"/>
-                <Button visible="{= !${viewModel>/sCustomHost} ? true : false }" text="Login or Register" press="onPressLoginRegister"/>
-                <Button visible="{= ${viewModel>/sCustomHost} ? true : false }" text="Access Tenant" press="onPressAccessTenant" class="sapUiSmallMarginBottom"/>
-                <Button visible="{= ${viewModel>/sCustomHost} ? true : false }" text="Manage Tenant" press="onPressManageTenant" />
+                <Button text="Login or Register" press="onPressLoginRegister"/>
             </VBox>
         </content>
     </Page>

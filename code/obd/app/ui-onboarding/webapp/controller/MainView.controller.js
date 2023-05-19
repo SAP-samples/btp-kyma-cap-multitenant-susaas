@@ -72,7 +72,9 @@ sap.ui.define([
                         this.getModel('viewModel').setProperty('/oStatus', { sProcess: oData.status.process, sStatus: null } );
                         
                         // If process is running, start automatic refresh
-                        if(oData.status.process && !this.intStatus){ this.intStatus = setInterval(() => this._updateStatus(), 10000) }
+                        if(oData.status.process && !this.intStatus){ 
+                            this.intStatus = setInterval(() => this._updateStatus(), 10000) 
+                        }
 
                         // If no (more) process is running, update the tenant details and stop refresh (if necessary)
                         if(!oData.status.process){ 

@@ -29,6 +29,9 @@ module.exports = cds.service.impl(async function () {
             const result = await k8sCustObjApi.listNamespacedCustomObject('gateway.kyma-project.io','v1beta1',kymaNamespace,'apirules','',false,'','','app.sap.com/subdomain=' + encodeURI(tenantId));
 
             if (!result.body.items || result.body.items?.length == 0){ 
+                if (req._.req.cookies["x-custom-host"]){
+                    req._.res.clearCookie("x-custom-host", { httpOnly: false })
+                }
                 return req._.res.redirect('/sapsusaasuionboarding/') 
             }
 
