@@ -15,6 +15,11 @@
         "source": "^(/sapsusaasuihome/.*)$",
         "service": "html5-apps-repo-rt",
         "authenticationType": "none"
+      },
+      {
+        "source": "^(/sapsusaasuionboarding/.*)$",
+        "service": "html5-apps-repo-rt",
+        "authenticationType": "ias"
       }
     ]
   }

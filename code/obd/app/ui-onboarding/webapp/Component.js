@@ -4,24 +4,16 @@
 
 sap.ui.define([
         "sap/ui/core/UIComponent",
-        "sap/susaas/ui/onboarding/model/models",
-        "sap/m/library",
-        "sap/m/Dialog",
-        "sap/m/Button",
-        "sap/m/Text"
+        "sap/susaas/ui/onboarding/model/models"
     ],
-    function (UIComponent, models, mobileLibrary, Dialog, Button, Text) {
+    function (UIComponent, models) {
         "use strict";
-
-        const URLHelper = mobileLibrary.URLHelper;
-
         return UIComponent.extend("sap.susaas.ui.onboarding.Component", {
             metadata: {
                 manifest: "json"
             },
 
             init: function () {
-                
                 UIComponent.prototype.init.apply(this, arguments);
                 
                 this.getRouter().initialize();
