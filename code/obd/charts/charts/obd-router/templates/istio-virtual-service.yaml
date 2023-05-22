@@ -15,20 +15,25 @@ spec:
     # Onboarding domain like onboarding-susaas.sap-demo.com
     - {{ printf "onboarding-%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}
   http:
-
-    # Handler for all requests targeting the SaaS application
+    # Handler for all requests targeting the mulitenant SaaS application
+    # Requests require the x-custom-host cookie to determine the tenant host
     - match:
       - uri:
           regex: ^.*(sapsusaasuipublic|sapsusaasuiadmin).*$
         headers:
           Cookie:
             regex: ^.*(x-custom-host=).*$
+      # Handle all xsuaa logins via the mulitenant SaaS application router
       - uri:
           regex: ^.*(login).*$
         queryParams:
           authType:
             exact: xsuaa
+        headers:
+          Cookie:
+            regex: ^.*(x-custom-host=).*$
       route:
+        # Route targeting the mulitenant SaaS application router 
         - destination:
             host: {{ $applicationHost }} 
             port:
@@ -37,6 +42,7 @@ spec:
       timeout: 30s
     
     # Handler for the onboarding application ensuring a domain switch
+    # Onboarding UI has to be handled by a different 
     - match:
       - uri:
           regex: ^.*(sapsusaasuionboarding).*$
