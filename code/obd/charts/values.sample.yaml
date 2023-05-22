@@ -118,8 +118,10 @@ identity:
     oauth2-configuration:
       # Redirect and logout URIs filled with dummy values as not required for authentication
       redirect-uris:
+        - 'https://{{ printf "onboarding-%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace $.Values.global.domain }}/login/callback?authType=ias'
         - 'https://{{ printf "%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace $.Values.global.domain }}/login/callback?authType=ias'
       post-logout-redirect-uris: 
+        - 'https://{{ printf "onboarding-%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace $.Values.global.domain }}/logout/**'
         - 'https://{{ printf "%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace $.Values.global.domain }}/logout/**'
       grant-types: ["authorization_code"]
       credential-types: ["binding-secret", "x509"]
