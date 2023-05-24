@@ -14,7 +14,7 @@ Add custom env variables
 Get list of deployment names
 */}}
 {{- define "cap.deploymentNames" -}}
-{{- $defaultDeployments := (list "srv;router") -}}
+{{- $defaultDeployments := (list "router") -}}
   {{- if .mtx -}}
 {{-   $_ := (append $defaultDeployments "mtx") -}}
   {{- end -}}

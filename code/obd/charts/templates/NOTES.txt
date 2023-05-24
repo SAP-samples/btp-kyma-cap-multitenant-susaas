@@ -4,8 +4,5 @@ The release "{{ .Release.Name }}" is installed in namespace "{{ .Release.Namespa
 
 Your services are available at:
 {{- $root := . }}
-{{- range $name := include "cap.deploymentNames" . | split ";" }}
-  {{- $deployment := (get $root.Values $name) }}
-  {{- $ := merge (dict "name" $name "deployment" $deployment) $root }}
-  - https://{{ include "cap.deploymentHostFull" $ }}
-{{- end }}
+  - https://{{ printf "%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}
+  - https://{{ printf "onboarding-%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}

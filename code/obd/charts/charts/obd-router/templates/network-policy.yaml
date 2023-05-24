@@ -16,10 +16,3 @@ spec:
         namespaceSelector:
           matchLabels:
             name: istio-system
-      - podSelector:
-          matchLabels:
-            app.kubernetes.io/name: oathkeeper
-            app.kubernetes.io/instance: ory
-        namespaceSelector:
-          matchLabels:
-            name: kyma-system

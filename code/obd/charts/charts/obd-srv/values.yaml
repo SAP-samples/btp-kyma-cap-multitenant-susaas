@@ -24,9 +24,6 @@ image: {}
 imagePullSecret: {}
 additionalVolumes: []
 
-expose:
-  enabled: true
-
 # High-Availability Settings
 ha:
   enabled: true
