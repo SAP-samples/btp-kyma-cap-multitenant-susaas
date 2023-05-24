@@ -8,8 +8,8 @@
     "node": "^16.x"
   },
   "dependencies": {
-    "@sap/cds": "^6.6.1",
-    "@sap/cds-mtxs": "^1.6.3",
+    "@sap/cds": "^6.8.1",
+    "@sap/cds-mtxs": "^1.8.1",
     "@sap/cds-odata-v2-adapter-proxy": "^1",
     "@sap/cds-common-content": "^1.0.1",
     "@sap/xsenv": "^3",
