@@ -256,6 +256,8 @@ xsuaa_api:
     scopes:
       - description: Default Plan
         name: $XSAPPNAME.plan_default
+      - description: Trial Plan
+        name: $XSAPPNAME.trial_default
       - description: Premium Plan
         name: $XSAPPNAME.plan_premium
   
@@ -272,6 +274,8 @@ saas_registry:
     appPlans:
       - description: Sustainable SaaS default plan
         name: default
+      - description: Sustainable SaaS trial plan
+        name: trial
       - description: Sustainable SaaS premium plan
         name: premium
     propagateParams: true
