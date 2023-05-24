@@ -4,12 +4,12 @@ global:
   shootName: # see shootName in Config Map kube-system/shoot-info
   gateway: # use default value (kyma-system/kyma-gateway) or custom gateway (e.g. onboarding/demo-gateway)
   platformIdp: # provide the platform IdP details
-    origin: # provide the origin key of the platform Idp
-    url: # # provide the host of the platform Idp
+    origin: # provide the origin key of the platform Idp (e.g. sapdemo-platform)
+    url: # # provide the host of the platform Idp (sap-demo.accounts.ondemand.com)
   # If necessary, override essential dependencies required in subcharts
   # Required in case you e.g., provide a fullNameOverride or a custom exposed host
   srv:
-    fullName: # leave empty to apply default logic - $Release.Name-srv
+    fullName: # leave empty to apply default logic - $Release.Name-srv (e.g. obd-srv)
     port: # leave empty to apply default value - 8080
   router:
     name: # leave empty to apply default logic - router
@@ -29,6 +29,10 @@ srv:
       # SAP IAS binding requires X.509 certificate based credentials
       parameters:
         credential-type: X509_GENERATED
+      credentialsRotationPolicy:
+        enabled: true
+        rotatedBindingTTL: 1h
+        rotationFrequency: 24h
   image:
     # Provide your Backend Service Docker Image repository
     repository: <<namespace>>/obd-srv
@@ -53,6 +57,10 @@ router:
       # SAP IAS binding requires X.509 certificate based credentials
       parameters:
         credential-type: X509_GENERATED
+      credentialsRotationPolicy:
+        enabled: true
+        rotatedBindingTTL: 1h
+        rotationFrequency: 24h
   image:
     # Provide your Application Router Docker Image repository
     repository: <<namespace>>/obd-router
