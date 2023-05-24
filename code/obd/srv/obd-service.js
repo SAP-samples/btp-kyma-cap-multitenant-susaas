@@ -123,6 +123,8 @@ module.exports = cds.service.impl(async function () {
             }
 
             console.log("Info: Start tenant offboarding")
+            const serviceInstanceName = saasHelmRelease + `-api-` + kymaNamespace + `-` + clusterShootname;
+            const serviceBindingName = saasHelmRelease + `-api-` + kymaNamespace + `-` + clusterShootname;
 
             const jobResult = await k8sBatchV1Api.createNamespacedJob(kymaNamespace, {
                 apiVersion: 'batch/v1',
@@ -141,12 +143,17 @@ module.exports = cds.service.impl(async function () {
                                     { name: 'MYEMAIL', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'email'} } },
                                     { name: 'MYPASSWORD', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'password' } } },
                                     { name: 'GLOBALACCOUNT', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'globalaccount' } } },
-                                    { name: 'IASHOST', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'iashost' } } },
+                                    { name: 'IASHOST', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'iashost' } } }
                                 ],
                                 command: [
                                     "/bin/sh", 
                                     "-ec",
-                                    `echo '{ "$schema": "https://raw.githubusercontent.com/SAP-samples/btp-setup-automator/main/libs/btpsa-usecase.json" }' > 'ofbdusecase.json' \
+                                    `echo '{ 
+                                        "executeAfterAccountSetup": [
+                                            { "description": "Delete API Service Binding", "command": "btp delete services/binding --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --name '`+ serviceBindingName + `' --confirm " },
+                                            { "description": "Delete API Service Instance", "command": "btp delete services/instance --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --name '`+ serviceInstanceName + `' --confirm " }
+                                        ]
+                                    }' > 'ofbdusecase.json' \
                                     && echo '{ 
                                             "region": "us20", 
                                             "subaccountname": "`+ tenantId + `", 
@@ -203,6 +210,9 @@ module.exports = cds.service.impl(async function () {
             console.log("Info: Start tenant onboarding")
 
             const idp = platformIdpOrigin ?? 'sap.custom';
+            const serviceInstanceName = saasHelmRelease + `-api-` + kymaNamespace + `-` + clusterShootname;
+            const serviceBindingName = saasHelmRelease + `-api-` + kymaNamespace + `-` + clusterShootname;
+
             const jobResult = await k8sBatchV1Api.createNamespacedJob(kymaNamespace, {
                 apiVersion: 'batch/v1',
                 kind: 'Job',
@@ -231,7 +241,7 @@ module.exports = cds.service.impl(async function () {
                                             "services": [ { 
                                                 "name": "` + saasHelmRelease + '-' + kymaNamespace + '-' + clusterShootname + `", 
                                                 "category": "APPLICATION", 
-                                                "plan": "premium", 
+                                                "plan": "trial", 
                                                 "targetenvironment": "sapbtp", 
                                                 "customerDeveloped": true, 
                                                 "requiredrolecollections": [ { "name": "Susaas Administrator (` + saasHelmRelease + '-' + kymaNamespace + `)", "assignedUserGroupsFromParameterFile": [ "SusaaS_Admins" ], "idp": "sap.custom" } ] 
@@ -245,8 +255,8 @@ module.exports = cds.service.impl(async function () {
                                                 {  "description": "Setup SAP IAS trust", "command": "btp create security/trust --idp $(IASHOST) --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --name sap-ias "  }, 
                                                 {  "description": "Disable Shadow User Creation", "command": "btp update security/trust sap.custom --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --auto-create-shadow-users false "  }, 
                                                 {  "description": "Disable SAP IdP Login", "command": "btp update security/trust sap.default --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --available-for-user-logon false "  },
-                                                {  "description": "Create API Service Instance", "command": "btp create services/instance --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --offering-name '`+ saasHelmRelease + `-api-` + kymaNamespace + '-' + clusterShootname + `' --service '` + saasHelmRelease + `-api-` + kymaNamespace + `-` + clusterShootname + `' --plan-name 'default' " },
-                                                {  "description": "Create API Service Binding", "command": "btp create services/binding --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --instance-name '`+ saasHelmRelease + `-api-` + kymaNamespace + `-` + clusterShootname + `' --binding 'default' " }
+                                                {  "description": "Create API Service Instance", "command": "btp create services/instance --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --offering-name '`+ serviceInstanceName + `' --service '` + serviceInstanceName + `' --plan-name 'trial' " },
+                                                {  "description": "Create API Service Binding", "command": "btp create services/binding --subaccount $(jq -r '.subaccountid' ./log/metadata_log.json) --instance-name '`+ serviceInstanceName + `' --binding '` + serviceBindingName + `' " }
                                             ]  
                                         }' > 'obdusecase.json' \
                                     && echo '{ 
