@@ -27,6 +27,17 @@ router:
       serviceInstanceName: destination
     html5-apps-repo:
       serviceInstanceName: html5-repo-runtime
+    identity:
+      # Only enable if Cloud Identity Service instance is enabled in Umbrella Chart 
+      enabled: false 
+      serviceInstanceName: identity
+      # SAP IAS binding requires X.509 certificate based credentials
+      parameters:
+        credential-type: X509_GENERATED
+      credentialsRotationPolicy:
+        enabled: true
+        rotatedBindingTTL: 1h
+        rotationFrequency: 24h
   image:
     # Provide your Application Router Docker Image repository
     repository: <<namespace>>/susaas-router
