@@ -72,6 +72,10 @@ srv:
       # SAP IAS binding requires X.509 certificate based credentials
       parameters:
         credential-type: X509_GENERATED
+      credentialsRotationPolicy:
+        enabled: true
+        rotatedBindingTTL: 1h
+        rotationFrequency: 24h
   image:
     # Provide your Backend Service Docker Image repository
     repository: <<namespace>>/susaas-srv
