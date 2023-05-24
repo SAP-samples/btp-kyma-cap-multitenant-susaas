@@ -1,0 +1,83 @@
+{
+  "requires": {
+    "[hybrid:srv]": {
+      "uaa": {
+        "kind": "ias"
+      },
+      "html5-apps-repo": {
+        "binding": {
+          "type": "k8s",
+          "cluster": "https://api.<<ClusterId>>.kyma.ondemand.com",
+          "namespace": "<<Namespace>>",
+          "secret": "<<ReleaseName>>-srv-html5-apps-repo",
+          "resolved": false
+        },
+        "vcap": {
+          "name": "html5-apps-repo"
+        },
+        "kind": "html5-apps-repo"
+      },
+      "auth": {
+        "strategy": "JWT" ,
+        "binding": {
+          "type": "k8s",
+          "cluster": "https://api.<<ClusterId>>.kyma.ondemand.com",
+          "namespace": "<<Namespace>>",
+          "secret": "<<ReleaseName>>-srv-identity",
+          "resolved": false
+        },
+        "vcap": {
+          "name": "auth"
+        },
+        "kind": "ias"
+      }
+    },
+    "[hybrid:html5]": {
+      "html5-apps-repo": {
+        "binding": {
+          "type": "k8s",
+          "cluster": "https://api.<<ClusterId>>.kyma.ondemand.com",
+          "secret": "<<ReleaseName>>-html5-apps-deployer-html5-apps-repo",
+          "namespace": "<<Namespace>>",
+          "resolved": false
+        },
+        "vcap": {
+          "name": "html5-apps-repo"
+        },
+        "kind": "html5-apps-repo"
+      }
+    },
+    "[hybrid:router]": {
+      "uaa": {
+        "kind": "ias"
+      },
+      "html5-apps-repo": {
+        "binding": {
+          "type": "k8s",
+          "cluster": "https://api.<<ClusterId>>.kyma.ondemand.com",
+          "namespace": "<<Namespace>>",
+          "secret": "<<ReleaseName>>-router-html5-apps-repo",
+          "resolved": false
+        },
+        "vcap": {
+          "name": "html5-apps-repo"
+        },
+        "kind": "html5-apps-repo"
+      },
+      "auth": {
+        "strategy": "JWT" ,
+        "binding": {
+          "type": "k8s",
+          "cluster": "https://api.<<ClusterId>>.kyma.ondemand.com",
+          "namespace": "<<Namespace>>",
+          "secret": "<<ReleaseName>>-router-ias",
+          "resolved": false
+        },
+        "vcap": {
+          "name": "auth"
+        },
+        "kind": "ias"
+      }
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "name": "obd",
+  "version": "0.0.1",
+  "repository": "https://github.com/sap-samples/btp-kyma-cap-multitenant-susaas",
+  "license": "Apache License 2.0",
+  "description": "SaaS Onboarding",
+  "config": {
+    "imagePrefix": "<<Namespace>>"
+  },
+  "engines": {
+    "node": "^16.x"
+  },
+  "dependencies": {
+    "@sap/cds": "^6.8.1",
+    "@sap/cds-odata-v2-adapter-proxy": "^1",
+    "@sap/xsenv": "^3",
+    "@sap/xssec": "^3.2.17",
+    "@kubernetes/client-node": "^0.18.1",
+    "passport": "^0.6.0",
+    "express":"^4.18.2",    
+    "crypto":"^1.0.1",
+    "cookie-parser": "^1.4.6"
+  },
+  "devDependencies": {
+    "@sap/approuter": "^14.1.1",
+    "@sap/cds-dk": "^6.6.1",
+    "@sap/html5-repo-mock": "^2.1.1",
+    "@sap/ui5-builder-webide-extension": "^1.1.8",
+    "@sap/html5-app-deployer": "^4.2.3",
+    "@sap/ux-specification": "^1.96.4",
+    "@ui5/cli": "^2.14.14",
+    "cross-var": "^1.1.0",
+    "jest": "^29.0.1",
+    "mbt": "^1.2.18",
+    "shx": "^0.3.4",
+    "ui5-task-zipper": "^0.5.1"
+  },
+  "scripts": {
+    "test": "jest",
+    "-----------------------": "",
+    "-Manual HTML5 Deployment-": "",
+    "/---------------------/": "",
+    "deployer:run": "cd app/html5-deployer && node ../../../node_modules/@sap/html5-app-deployer/index.js",
+    "deployer:hybrid": "cds bind --exec --profile hybrid:html5 npm run deployer:run",
+    "------------------------": "",
+    "-Helm Default Scripts-": "",
+    "/----------------------/": "",
+    "helm:install:obd": "helm install onboarding ./charts -n susaas",
+    "helm:upgrade:obd": "helm upgrade onboarding ./charts -n susaas",
+    "helm:uninstall:obd": "helm uninstall onboarding -n susaas",
+    "-------------------------": "",
+    "-UI Build Scripts-": "",
+    "/-----------------------/": "",
+    "ui:apps": "npm run ui:onboarding && npm run ui:home",
+    "ui:onboarding": "npm run build:copy --prefix ./app/ui-onboarding/",
+    "ui:home": "npm run build:copy --prefix ./app/ui-home/",
+    "--------------------------": "",
+    "-Docker Build Scripts-": "",
+    "/------------------------/": "",
+    "build:all": "npm run build:srv && npm run build:router && npm run build:html5-deployer",
+    "build:srv": "cross-var pack build $npm_package_config_imagePrefix/obd-srv --path gen/srv --builder paketobuildpacks/builder:base --buildpack gcr.io/paketo-buildpacks/nodejs --env BP_NODE_RUN_SCRIPTS=",
+    "build:router": "cross-var docker build -t $npm_package_config_imagePrefix/obd-router ./router",
+    "build:html5-deployer": "cross-var docker build -t $npm_package_config_imagePrefix/obd-html5-deployer ./app/html5-deployer",
+    "---------------------------": "",
+    "-Docker Push Scripts-": "",
+    "/-------------------------/": "",
+    "push:all": "cross-var npm run push:srv && npm run push:router && npm run push:html5-deployer",
+    "push:srv": "cross-var docker push $npm_package_config_imagePrefix/obd-srv",
+    "push:router": "cross-var docker push $npm_package_config_imagePrefix/obd-router",
+    "push:html5-deployer": "cross-var docker push $npm_package_config_imagePrefix/obd-html5-deployer",
+    "----------------------------": "",
+    "-MISC Scripts-": "",
+    "/--------------------------/": "",
+    "cleanup": "npx rimraf -r ./gen"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es2020": true,
+      "node": true,
+      "jest": true,
+      "mocha": true
+    },
+    "globals": {
+      "SELECT": true,
+      "INSERT": true,
+      "UPDATE": true,
+      "DELETE": true,
+      "CREATE": true,
+      "DROP": true,
+      "CDL": true,
+      "CQL": true,
+      "CXL": true,
+      "cds": true
+    },
+    "rules": {
+      "no-console": "off",
+      "require-atomic-updates": "off"
+    }
+  },
+  "cds": {
+    "build": {
+      "tasks": [
+        {
+          "for": "nodejs"
+        }
+      ]
+    },
+    "requires": {
+      "auth": {
+        "[development]": {
+          "kind": "mock"
+        }
+      }
+    }
+  },
+  "sapux": [
+    "app/ui-home",
+    "app/ui-onboarding"
+  ]
+}
