@@ -19,6 +19,9 @@ const platformIdpUrl = process.env["PLATFORMIDP_URL"];
 // Release name of SaaS app to be onboarded
 const saasHelmRelease = process.env["SAAS_HELM_RELEASE"];
 
+// Define Kyma Secret Name variable
+const secretName = `${saasHelmRelease}-onboarding-btp-cred`;
+
 module.exports = cds.service.impl(async function () {
 
     // Called after SAP IAS authentication from Home-Screen or when user wants to access tenant from Onboarding-Screen
@@ -110,7 +113,7 @@ module.exports = cds.service.impl(async function () {
             // Return details of the status currently running (on- or offboarding)
             }else{
                 const jobStatus = onboardingStatus ?? offboardingStatus;
-                console.log(`Status: ${JSON.stringify(jobStatus)}`);
+                console.log(`Status: ${JSON.stringify(jobStatus.body)}`);
                 return req.reply({ process: onboardingStatus ? 'onboarding' : 'offboarding' });
             }
         } catch (error) {
@@ -165,17 +168,17 @@ module.exports = cds.service.impl(async function () {
                     template: {
                         metadata: { name: tenantId + '-onboard', annotations: { "sidecar.istio.io/inject": "false" } },
                         spec: {
-                            restartPolicy: 'Never',
+                            restartPolicy: 'Never',   
                             containers: [{
                                 image: 'ghcr.io/sap-samples/btp-setup-automator:btpsa-v1.8.1',
                                 name: 'btpsa',
                                 env: [
-                                    { name: 'MYEMAIL', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'email'} } },
-                                    { name: 'MYPASSWORD', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'password' } } },
-                                    { name: 'GLOBALACCOUNT', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'globalaccount' } } },
-                                    { name: 'PROVSUBACCOUNT', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'provsubaccount' } } },
-                                    { name: 'IASHOST', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'iashost' } } },
-                                    { name: 'ADMINS', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'admins' } } }
+                                    { name: 'MYEMAIL', valueFrom: { secretKeyRef: { name: secretName, key: 'email'} } },
+                                    { name: 'MYPASSWORD', valueFrom: { secretKeyRef: { name: secretName, key: 'password' } } },
+                                    { name: 'GLOBALACCOUNT', valueFrom: { secretKeyRef: { name: secretName, key: 'globalaccount' } } },
+                                    { name: 'PROVSUBACCOUNT', valueFrom: { secretKeyRef: { name: secretName, key: 'provsubaccount' } } },
+                                    { name: 'IASHOST', valueFrom: { secretKeyRef: { name: secretName, key: 'iashost' } } },
+                                    { name: 'ADMINS', valueFrom: { secretKeyRef: { name: secretName, key: 'admins' } } }
                                 ],
                                 command: [
                                     "/bin/sh", 
@@ -283,10 +286,10 @@ module.exports = cds.service.impl(async function () {
                                 image: 'ghcr.io/sap-samples/btp-setup-automator:btpsa-v1.8.1',
                                 name: 'btpsa',
                                 env: [
-                                    { name: 'MYEMAIL', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'email'} } },
-                                    { name: 'MYPASSWORD', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'password' } } },
-                                    { name: 'GLOBALACCOUNT', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'globalaccount' } } },
-                                    { name: 'IASHOST', valueFrom: { secretKeyRef: { name: 'btp-credentials', key: 'iashost' } } }
+                                    { name: 'MYEMAIL', valueFrom: { secretKeyRef: { name: secretName, key: 'email'} } },
+                                    { name: 'MYPASSWORD', valueFrom: { secretKeyRef: { name: secretName, key: 'password' } } },
+                                    { name: 'GLOBALACCOUNT', valueFrom: { secretKeyRef: { name: secretName, key: 'globalaccount' } } },
+                                    { name: 'IASHOST', valueFrom: { secretKeyRef: { name: secretName, key: 'iashost' } } }
                                 ],
                                 command: [
                                     "/bin/sh", 
