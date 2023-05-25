@@ -1,5 +1,7 @@
 (function() {
   "use strict";
+  
+  const customHost = document.cookie.match('(^|;)\\s*' + 'x-custom-host' + '\\s*=\\s*([^;]+)')?.pop() || ''
 
   window["sap-ushell-config"] = {
     defaultRenderer: "fiori2",
@@ -68,7 +70,7 @@
                 id: "SusaasAdmin",
                 title: "Susaas Admin",
                 isPreset: false,
-                isVisible: true,
+                isVisible: !customHost,
                 isGroupLocked: false,
                 tiles: [
                   {
@@ -89,6 +91,34 @@
                       icon:"sap-icon://user-settings"
                     }
                   }
+                ]
+              },
+              {
+                id: "SusaasAdmin",
+                title: "Susaas Admin",
+                isPreset: false,
+                isVisible: !!customHost,
+                isGroupLocked: false,
+                tiles: [
+                  {
+                    id: "ManageProjects",
+                    tileType: "sap.ushell.ui.tile.StaticTile",
+                    properties: {
+                      title: "Manage Projects",
+                      targetURL: "#Projects-manage",
+                      icon: "sap-icon://manager"
+                    }
+                  },
+                  {
+                    id: "ManageTenant",
+                    tileType: "sap.ushell.ui.tile.StaticTile",
+                    properties: {
+                      title: "Manage Tenant",
+                      targetURL: "#Tenant-manage",
+                      icon: "sap-icon://action-settings",
+                      info: 'Opens New Tab'
+                    }
+                  } 
                 ]
               }
             ]
@@ -185,6 +215,19 @@
                   applicationType: "SAPUI5",
                   additionalInformation: "SAPUI5.Component=sap.susaas.ui.admin.users",
                   url: "/sapsusaasuiadminusers/"
+                }
+              },
+              ManageTenant: {
+                semanticObject: "Tenant",
+                action: "manage",
+                title: "Manage Tenant",
+                signature: {
+                  parameters: {},
+                  additionalParameters: "ignored"
+                },
+                resolutionResult: {
+                  applicationType: "URL",
+                  url: window.location.protocol + "//" + window.location.host + '/sapsusaasuionboarding/'
                 }
               }
             }

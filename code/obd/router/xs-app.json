@@ -1,0 +1,25 @@
+{
+    "welcomeFile": "/sapsusaasuihome/",
+    "authenticationMethod": "route",
+    "login": {
+      "callbackEndpoint": "/login/callback"
+    },
+    "routes": [
+      {
+        "source": "^/login$",
+        "target": "/v2/catalog/OnboardService/login()",
+        "destination": "obd-api",
+        "authenticationType": "ias"
+      },
+      {
+        "source": "^(/sapsusaasuihome/.*)$",
+        "service": "html5-apps-repo-rt",
+        "authenticationType": "none"
+      },
+      {
+        "source": "^(/sapsusaasuionboarding/.*)$",
+        "service": "html5-apps-repo-rt",
+        "authenticationType": "ias"
+      }
+    ]
+  }

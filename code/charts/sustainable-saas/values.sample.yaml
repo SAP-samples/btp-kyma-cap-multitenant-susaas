@@ -27,6 +27,17 @@ router:
       serviceInstanceName: destination
     html5-apps-repo:
       serviceInstanceName: html5-repo-runtime
+    identity:
+      # Only enable if Cloud Identity Service instance is enabled in Umbrella Chart 
+      enabled: false 
+      serviceInstanceName: identity
+      # SAP IAS binding requires X.509 certificate based credentials
+      parameters:
+        credential-type: X509_GENERATED
+      credentialsRotationPolicy:
+        enabled: true
+        rotatedBindingTTL: 1h
+        rotationFrequency: 24h
   image:
     # Provide your Application Router Docker Image repository
     repository: <<namespace>>/susaas-router
@@ -72,6 +83,10 @@ srv:
       # SAP IAS binding requires X.509 certificate based credentials
       parameters:
         credential-type: X509_GENERATED
+      credentialsRotationPolicy:
+        enabled: true
+        rotatedBindingTTL: 1h
+        rotationFrequency: 24h
   image:
     # Provide your Backend Service Docker Image repository
     repository: <<namespace>>/susaas-srv
@@ -165,7 +180,12 @@ broker:
         description: Premium Plan
         # Leave empty to generate new ID on Helm installation
         # ! Should be static in productive scenarios !
-        planId:    
+        planId:
+      - name: trial
+        description: Trial Plan
+        # Leave empty to generate new ID on Helm installation
+        # ! Should be static in productive scenarios !
+        planId:
 
 
 # Shared Database Container Deployer Job
@@ -251,6 +271,8 @@ xsuaa_api:
     scopes:
       - description: Default Plan
         name: $XSAPPNAME.plan_default
+      - description: Trial Plan
+        name: $XSAPPNAME.trial_default
       - description: Premium Plan
         name: $XSAPPNAME.plan_premium
   
@@ -264,6 +286,13 @@ saas_registry:
   # Parameters allow us to modify the subscription process 
   # The following setup provides an option to define a custom domain
   parameters:
+    appPlans:
+      - description: Sustainable SaaS default plan
+        name: default
+      - description: Sustainable SaaS trial plan
+        name: trial
+      - description: Sustainable SaaS premium plan
+        name: premium
     propagateParams: true
     paramsSchema: 
       schemas:
@@ -364,7 +393,7 @@ identity:
         - 'https://*.{{ include "cap.deploymentHostFull" ( merge ( dict "name" "router" "deployment" .Values.router ) . ) }}/login/callback?authType=ias'
       post-logout-redirect-uris: 
         - 'https://*.{{ include "cap.deploymentHostFull" ( merge ( dict "name" "router" "deployment" .Values.router ) . ) }}/logout/**'
-      grant-types: []
+      grant-types: ["authorization_code"]
       credential-types: ["binding-secret", "x509"]
     xsuaa-cross-consumption: false
     multi-tenant: false

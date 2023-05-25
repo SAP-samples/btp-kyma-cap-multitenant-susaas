@@ -346,7 +346,7 @@ Besides an API Rate Limit (protecting our SaaS API from DoS attacks), we enhance
 
 [<img src="./images/API_Quota01.png" width="600" />](./images/API_Quota01.png?raw=true)
 
-5.3.2. We use two Subflows called **standardPlanFlow** and **premiumPlanFlow**. These Subflows will be executed right after the generic PreFlow, depending on conditions you define. The PreFlow is executed for **all** requests. 
+5.3.2. We use three Subflows called **standardPlanFlow**, **premiumPlanFlow** and **trialPlanFlow**. These Subflows will be executed right after the generic PreFlow, depending on conditions you define. The PreFlow is executed for **all** requests. 
 
 [<img src="./images/API_Quota02.png" width="200" />](./images/API_Quota02.png?raw=true)
 
@@ -362,13 +362,18 @@ Besides an API Rate Limit (protecting our SaaS API from DoS attacks), we enhance
 
   ```jwt.decodeJwt.claim.scope ~ "*plan_premium"```
 
+5.3.5. For the trialPlanFlow the condition looks as follows.
+
+  ```jwt.decodeJwt.claim.scope ~ "*plan_trial"```
+
+
 > **Hint** - Reading the service plan from the JWT token scopes might be improved by a different approach in the future.
 
-5.3.5. Now requests will be handled by the different Subflows depending on the consumer's service plan selection. In those Subflows, we can define different **Quota** allowances. To add a very simple **Quota limit** to the API, we use the **Quota** feature from the policies toolbox. If you are rebuilding the API Policies from scratch, name the new flow elements **quotaStandard** in the standard and **quotaPremium** in the premium flow. 
+5.3.6. Now requests will be handled by the different Subflows depending on the consumer's service plan selection. In those Subflows, we can define different **Quota** allowances. To add a very simple **Quota limit** to the API, we use the **Quota** feature from the policies toolbox. If you are rebuilding the API Policies from scratch, name the new flow elements **quotaStandard** in the standard, **quotaPremium** in the premium and **quotaTrial** in the trial flow. 
 
 [<img src="./images/API_Quota04.png" width="600" />](./images/API_Quota04.png?raw=true)
 
-5.3.6. For our sample application, the **standard** quota is configure as below. This configuration allows API customers exactly 1200 daily requests to your API. The comprehensive configuration options of the **Quota** policy can be found in the respective documentation [click here](https://docs.apigee.com/api-platform/reference/policies/quota-policy). 
+5.3.7. For our sample application, the **standard** and **trial** quota is configure as below. This configuration allows API customers exactly 1200 daily requests to your API. The comprehensive configuration options of the **Quota** policy can be found in the respective documentation [click here](https://docs.apigee.com/api-platform/reference/policies/quota-policy). 
 
 > **Important** - Please ensure, the **Quota** policy configuration once again contains the **Client Id** identifier as in the following sample.
 
