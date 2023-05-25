@@ -23,6 +23,7 @@ _out
 .DS_Store
 *.sqlite
 *.private.*
+
 # exclude sample file
 !default-*.sample.json
 !APIProxy*.zip
