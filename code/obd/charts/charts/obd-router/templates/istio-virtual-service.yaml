@@ -17,7 +17,7 @@ spec:
   http:
 
     # Handler for the onboarding application ensuring a domain switch
-    # Onboarding UI has to be handled by a different 
+    # Onboarding process has to be handled by the Onboarding application domain for cookie reasons
     - match:
       - uri:
           regex: ^.*(sapsusaasuionboarding).*$
@@ -25,6 +25,16 @@ spec:
           exact: {{ printf "%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}
       redirect:
         authority: {{ printf "onboarding-%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}
+    
+    # Handler for the login process ensuring a domain switch
+    # Login has to be handled on the SaaS application domain for cookie reasons
+    - match:
+      - uri:
+          exact: /login
+        authority:
+          exact: {{ printf "onboarding-%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}
+      redirect:
+        authority: {{ printf "%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}
 
     # Handler for all requests targeting the mulitenant SaaS application
     # Requests require the x-custom-host cookie to determine the tenant host

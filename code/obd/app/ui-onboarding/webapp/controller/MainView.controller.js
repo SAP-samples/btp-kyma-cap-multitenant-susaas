@@ -26,7 +26,7 @@ sap.ui.define([
             },
 
             onPressAccessTenant: function(){
-                URLHelper.redirect(window.location.protocol + "//" + window.location.host.replace('onboarding-', '') + '/login', false);
+                URLHelper.redirect(window.location.protocol + "//" + window.location.host + '/login', false);
             },
 
             onPressAccessPlatform: function(){
