@@ -13,6 +13,15 @@
     "sourceTemplate": {
       "id": "@sap-ux/fiori-freestyle-writer:basic",
       "version": "0.14.9"
+    },
+    "dataSources": {
+      "mainService": {
+          "uri": "catalog/PublicService/",
+          "type": "OData",
+          "settings": {
+              "odataVersion": "4.0"
+          }
+      }
     }
   },
   "sap.ui": {
@@ -49,6 +58,16 @@
       "cozy": true
     },
     "models": {
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+            "synchronizationMode": "None",
+            "operationMode": "Server",
+            "autoExpandSelect": true,
+            "earlyRequests": true
+        }
+      },
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
