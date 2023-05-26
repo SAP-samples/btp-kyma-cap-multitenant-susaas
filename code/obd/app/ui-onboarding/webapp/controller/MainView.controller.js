@@ -26,7 +26,8 @@ sap.ui.define([
             },
 
             onPressAccessTenant: function(){
-                URLHelper.redirect(window.location.protocol + "//" + window.location.host + '/login', false);
+                //window.open(window.location.protocol + "//" + window.location.hostname +'/sapsusaasgateway/redirect', "_self")
+                URLHelper.redirect('/sapsusaasgateway/redirect', false);
             },
 
             onPressAccessPlatform: function(){

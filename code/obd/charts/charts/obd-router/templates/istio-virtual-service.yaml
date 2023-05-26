@@ -17,59 +17,73 @@ spec:
   http:
 
     # Handler for the onboarding application ensuring a domain switch
-    # Onboarding process has to be handled by the Onboarding application domain for cookie reasons
+    # Login and cookies have to be handled on the Onboarding application domain
     - match:
       - uri:
-          regex: ^.*(sapsusaasuionboarding).*$
+          regex: ^.*(uionboarding).*$
         authority:
           exact: {{ printf "%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}
       redirect:
         authority: {{ printf "onboarding-%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}
     
-    # Handler for the login process ensuring a domain switch
-    # Login has to be handled on the SaaS application domain for cookie reasons
+    # Handler for the gateway service calls ensuring a domain switch
+    # Login and cookies have to be handled on the SaaS application domain
     - match:
       - uri:
-          exact: /login
+          regex: ^.*(gateway).*$
         authority:
           exact: {{ printf "onboarding-%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}
       redirect:
         authority: {{ printf "%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}
 
-    # Handler for all requests targeting the mulitenant SaaS application
-    # Requests require the x-custom-host cookie to determine the tenant host
+    # Handler for the gateway service calls containing the x-custom-host already!
     - match:
+        - headers:
+            Cookie:
+              regex: ^.*(?:x-custom-host=).*$
+          uri:
+            regex: ^.*(?:gateway).*$
+          authority:
+            exact: {{ printf "%s-%s.%s" ( default "susaas" .Values.global.saasRelease ) .Release.Namespace .Values.global.domain }}
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: susaas-prod-router.susaas.svc.cluster.local
+            port:
+              number: 5000
+          weight: 100
+      timeout: 30s
+
+    # Handler for all requests targeting the onboarding router/apps
+    - match:
+      - uri:
+          regex: ^.*(gateway|uionboarding|uihome).*$
       - headers:
           Cookie:
-            regex: ^.*(x-custom-host=).*$
+            regex: ^.*locationAfterLogin=.*(?:gateway|uionboarding).*$
         uri:
-          regex: ^.*(sapsusaasuipublic|sapsusaasuiadmin|user-api).*$
-      # Handle all xsuaa logins via the mulitenant SaaS application router
-      - queryParams:
-          authType:
-            exact: xsuaa
-        uri:
-          prefix: /login/callback
+            prefix: /login
       route:
-        # Route targeting the mulitenant SaaS application router 
         - destination:
-            host: {{ $applicationHost }} 
+            host: {{ $onboardingHost }}  
             port:
               number: 5000
           weight: 100
       timeout: 30s
     
-    # Handler for all requests targeting the onboarding router/apps
+    # Handler for all requests targeting the mulitenant SaaS application
+    # Requests require the x-custom-host cookie to determine the tenant host
     - match:
       - uri:
-          regex: ^.*(sapsusaasuihome|sapsusaasuionboarding).*$
-      - uri:
-          prefix: /login/callback
-      - uri:
-          exact: /login
+          regex: ^.*(uipublic|uiadmin|user-api|login).*$
+        headers:
+          Cookie:
+            regex: ^.*(x-custom-host=).*$
       route:
+        # Route targeting the mulitenant SaaS application router 
         - destination:
-            host: {{ $onboardingHost }}  
+            host: {{ $applicationHost }} 
             port:
               number: 5000
           weight: 100

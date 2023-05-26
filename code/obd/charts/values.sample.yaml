@@ -5,7 +5,7 @@ global:
   gateway: # use default value (kyma-system/kyma-gateway) or custom gateway (e.g. onboarding/demo-gateway)
   platformIdp: # provide the platform IdP details
     origin: # provide the origin key of the platform Idp (e.g. sapdemo-platform)
-    url: # # provide the host of the platform Idp (sap-demo.accounts.ondemand.com)
+    url: # # provide the host of the platform Idp (sapdemo.accounts.ondemand.com)
   # If necessary, override essential dependencies required in subcharts
   # Required in case you e.g., provide a fullNameOverride or a custom exposed host
   srv:

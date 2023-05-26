@@ -6,8 +6,14 @@
     },
     "routes": [
       {
-        "source": "^/login$",
-        "target": "/v2/catalog/OnboardService/login()",
+        "source": "^/sapsusaasonboard/(.*)$",
+        "target": "/catalog/OnboardService/$1",
+        "destination": "obd-api",
+        "authenticationType": "ias"
+      },
+      {
+        "source": "^/sapsusaasgateway/(.*)$",
+        "target": "/catalog/GatewayService/$1",
         "destination": "obd-api",
         "authenticationType": "ias"
       },

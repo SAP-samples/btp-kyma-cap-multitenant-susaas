@@ -7,12 +7,9 @@ sap.ui.define([
         const URLHelper = mobileLibrary.URLHelper;
 
         return Controller.extend("sap.susaas.ui.home.controller.MainView", {
-            onInit: async function () { 
-                this.oView = this.getView();
-            },
-
             onPressLoginRegister: function(){
-                URLHelper.redirect(window.location.protocol + "//" + window.location.host + '/login', false);
+                //window.open(window.location.protocol + "//" + window.location.hostname +'/sapsusaasgateway/redirect', "_self")
+                URLHelper.redirect('/sapsusaasgateway/redirect', false);
             }
         });
     }

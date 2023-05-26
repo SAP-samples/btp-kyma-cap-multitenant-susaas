@@ -15,6 +15,10 @@ sap.ui.define([
 
             init: function () {
                 UIComponent.prototype.init.apply(this, arguments);
+
+                // Workaround: If metadata cannot be retrieved, reload the page to re-authenticate
+                // https://www.npmjs.com/package/@sap/approuter#session-handling
+                this.getModel().attachMetadataFailed({}, () => window.open(window.location.href, "_self") );
                 
                 this.getRouter().initialize();
                 this.setModel(models.createDeviceModel(), "device");
