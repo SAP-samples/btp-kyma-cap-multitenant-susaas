@@ -7,7 +7,7 @@ service:
   automaticVersioning: false
   dockerConfigJsonSecretTextCredentialsId: "dockercred"
   stages:
-    BuildSrv:
+    Build:
       credentialVariables:
         - name: "DockerAuth"
           credentialId: "docker-auth-susaas"
