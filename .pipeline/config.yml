@@ -10,7 +10,7 @@ service:
     BuildSrv:
       credentialVariables:
         - name: "DockerAuth"
-          credentialId: "DockerAuthSusaas"
+          credentialId: "docker-auth-susaas"
       runFirst:
         command: "apk update &&\ 
           \ apk add curl sudo docker openrc && rc-update add docker boot &&\
