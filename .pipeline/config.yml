@@ -17,12 +17,10 @@ service:
           \ docker login -u=\"$DockerAuth_user\" -p=\"$DockerAuth_password\" &&\ 
           \ (curl -sSL \"https://github.com/buildpacks/pack/releases/download/v0.29.0/pack-v0.29.0-linux.tgz\"| sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack) &&\ 
           \ cd code && npm i -g @sap/cds-dk --save && npm i @sap/cds-common-content --save &&\ 
-          \ cds build --production "
-      runLast: 
-        command: "pack build $DockerAuth_user/susaas-srv --path gen/srv --builder paketobuildpacks/builder:base --buildpack gcr.io/paketo-buildpacks/nodejs --env BP_NODE_RUN_SCRIPTS= --publish "
-
+          \ cds build --production &&\
+          \ pack build $DockerAuth_user/susaas-srv --path gen/srv --builder paketobuildpacks/builder:base --buildpack gcr.io/paketo-buildpacks/nodejs --env BP_NODE_RUN_SCRIPTS= --publish "
 stages:
-  BuildSrv:
+  Build:
     kanikoExecute: false
   Acceptance:
     kubernetesDeploy: false
