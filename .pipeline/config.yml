@@ -12,7 +12,7 @@ service:
         - name: "DockerAuth"
           credentialId: "docker-auth-susaas"
       runFirst:
-        command: "apk add --update curl sudo podman openrc && sudo mount --make-rshared / && podman system service && export DOCKER_HOST=\"unix:/run/user/0/podman/podman.sock\" && \ 
+        command: "apk add --update curl sudo podman openrc && podman system service && export DOCKER_HOST=\"unix:/run/user/0/podman/podman.sock\" && \ 
           \ docker login -u=\"$DockerAuth_user\" -p=\"$DockerAuth_password\" &&\ 
           \ (curl -sSL \"https://github.com/buildpacks/pack/releases/download/v0.29.0/pack-v0.29.0-linux.tgz\"| sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack) &&\ 
           \ cd code && npm i -g @sap/cds-dk --save && npm i @sap/cds-common-content --save &&\ 
