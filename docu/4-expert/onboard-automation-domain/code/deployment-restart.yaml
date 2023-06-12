@@ -4,7 +4,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: restart-susaas-prod-onboarding-router
+  name: restart-susaas-onboarding-router
   namespace: default
 spec:
   concurrencyPolicy: Forbid
@@ -30,7 +30,7 @@ spec:
                 - 'kubectl'
                 - 'rollout'
                 - 'restart'
-                - 'deployment/susaas-prod-onboarding-router'
+                - 'deployment/susaas-onboarding-router'
 ---
 kind: ServiceAccount
 apiVersion: v1
