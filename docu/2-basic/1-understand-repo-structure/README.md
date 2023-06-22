@@ -12,10 +12,11 @@ This part of the tutorial will briefly outline the structure of **code** directo
   - [7. Shared data model](#7-shared-data-model)
   - [8. Extension Files](#8-extension-files)
   - [9. HTTP Test Files](#9-http-test-files)
-  - [10. Application Router](#10-application-router)
-  - [11. Annotation Files](#11-annotation-files)
-  - [12. Business Application Service](#12-business-application-service)
-  - [13. Test objects](#13-test-objects)
+  - [10. Onboarding Service](#10-onboarding-service)
+  - [11. Application Router](#11-application-router)
+  - [12. Annotation Files](#12-annotation-files)
+  - [13. Business Application Service](#13-business-application-service)
+  - [14. Test objects](#14-test-objects)
 
 Also, check out our **Explore the components** chapter ([click here](../9-explore-the-components/README.md)), which describes the various SaaS application components and their tasks in greater detail ([click here](../7-explore-the-components/README.md)). For now, let us start with a brief overview, before deep-diving into the different sub-directories. 
 
@@ -26,7 +27,7 @@ The **code** directory of our GitHub repository consists of several sub-director
 
 | | |
 |:--: | :--- |
-| [<img src="./images/Repo_Structure_All.png" width="350"/>](./images/Repo_Structure_All.png?raw=true) | <br> <br> **api -** CAP-based API service <br> **app -** SAP Fiori Elements UI modules <br> **broker -** API Service Broker <br> **charts -** Helm charts <br> **db -** Tenant data model <br> **db-com -** Shared/Common data model <br> **ext -** CAP-based SaaS extension <br> **http -** HTTP files for testing purposes <br> **router -** Application Router <br> **srv -** CAP-based Business Application service <br> **test -** Unit tests and sample data <br> <br> **.cdscr-private.sample.json -** K8S binding samples for local testing <br> **default-env.sample.json -** Environment variables for local testing  <br> **package.json -** CDS configs and dependencies for local testing |
+| [<img src="./images/Repo_Structure_All.png" width="350"/>](./images/Repo_Structure_All.png?raw=true) | <br> <br> **api -** CAP-based API service <br> **app -** SAP Fiori Elements UI modules <br> **broker -** API Service Broker <br> **charts -** Helm charts <br> **db -** Tenant data model <br> **db-com -** Shared/Common data model <br> **ext -** CAP-based SaaS extension <br> **http -** HTTP files for testing purposes <br> **obd -** Onboarding Service (Expert Feature) <br> **router -** Application Router <br> **srv -** CAP-based Business Application service <br> **test -** Unit tests and sample data <br> <br> **.cdscr-private.sample.json -** K8S binding samples for local testing <br> **default-env.sample.json -** Environment variables for local testing  <br> **package.json -** CDS configs and dependencies for local testing |
 
 > **Hint** - Each of our CAP-based application components like the SaaS Backend Service or the API Service contain a dedicated *package.json* file. Instead of using the root-level *package.json* file we decided to provide component specific dependencies and CDS production profile configurations.
 
@@ -137,7 +138,14 @@ The **http** directory contains HTTP files allowing you to test the SaaS API end
 | [<img src="./images/Repo_Structure_Http.png" width="350"/>](./images/Repo_Structure_Http.png?raw=true) |  **api\*.http -** HTTP files for API testing <br> **tenantUpgrade.http -** Sample HTTP call for Tenant upgrades |
 
 
-## 10. Application Router
+## 10. Onboarding Service
+
+The **obd** directory contains a separate user interfaces and workloads, including a CAP Service and an Application Router, used to offer a Self-Onboarding Service to customers interested in signing-up for a SaaS solution. Further details on how to deploy the respective Helm chart to your own Kyma Cluster after setting up the SaaS application, can be found in the respective Expert Feature chapter [click here](../../4-expert/onboard-automation-domain/README.md).
+
+[<img src="./images/Repo_Structure_Onboarding.png" width="350"/>](./images/Repo_Structure_Onboarding.png?raw=true)
+
+
+## 11. Application Router
 
 The **router** directory contains all files of the Application Router required by our SaaS sample application. In this case, only the *xs-app.json* file and a health-check is required. 
 
@@ -148,7 +156,7 @@ The **router** directory contains all files of the Application Router required b
 | [<img src="./images/Repo_Structure_Router.png" width="350"/>](./images/Repo_Structure_Router.png?raw=true) |  **.dockerignore -** Ignore package.json for docker build <br> **Dockerfile -** Docker image based on sapse/approuter <br> **health.html -** Used for pod health checks <br> **package.json -** Required for local testing only  <br> **xs-app.json -** Route definitions for productive usage <br>  |
 
 
-## 11. Annotation Files
+## 12. Annotation Files
 
 The **annotations** folder in the **srv** directory contains all service annotations required to generate the Fiori Elements UIs of our sample application. These annotations define the capabilities of the OData Services but also set the layouts of the SAP Fiori Elements user interfaces. 
 
@@ -161,7 +169,7 @@ The **annotations** folder in the **srv** directory contains all service annotat
 > **Hint** - Yes, these annotation files can also be part of your UI modules as you can see in other tutorials. Feel free to move them around if you feel more comfortable storing the annotations among your actual UI components. 
 
 
-## 12. Business Application Service
+## 13. Business Application Service
 
 The rest of the **srv** directory contains the implementation of our Business Application or central SaaS Backend Service. This includes OData-Services (*admin-service.js/cds* and *user-service.js/cds*) for our Fiori Elements UIs, as well as the automation logic executed on the subscription of new consumer-tenants (*provisioning.js*). The corresponding subscription service endpoints are exposed by using the **CAP mtxs** ([click here](https://cap.cloud.sap/docs/guides/multitenancy/mtxs) for further details). 
 
@@ -184,7 +192,7 @@ A lot of the Tenant onboarding steps have been automated using platform APIs and
 | [<img src="./images/Repo_Structure_Service.png" width="350"/>](./images/Repo_Structure_Service.png?raw=true) | **i18n -** Language files <br> **utils -** Utilities (mainly for automation purposes) <br><p style='padding-left:1em'> **alertNotification.js -** Alert Notification utilities <br> **apiRule.js -** Kyma API Rule utilities <br> **automator.js -** Tenant onboarding automation <br>**cis-central.js -** Cloud Management Service utilities <br>**destination.js -** Destination Service utilities <br>**service-manager.js -** Service Manager utilities <br>**token-utils.js -** Token handler utilities <br>**user-management.js -** User management utilities </p> **admin-service.cds -** CAP Admin Service definition <br>**admin-service.js -** CAP Admin Service handler <br> **annotations.cds -** Annotation CDS file references <br>**provisioning.js -** Tenant provisioning handler <br> **public-service.cds -** CAP User Service definition <br> **public-service.js -** CAP User Service handler <br> **server.js -** Health endpoints and custom provisioning  |
 
 
-## 13. Test objects
+## 14. Test objects
 
 The **test** directory contains sample data for local development and testing purposes as well as sample unit tests. 
 
