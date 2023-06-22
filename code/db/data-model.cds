@@ -26,14 +26,18 @@ context susaas.db {
       };
 
       
-      @assert.unique : {user : [user, project]}
+      @assert.unique: {
+            membersUserProject: [user, project]
+      }
       entity Members : cuid, managed {
             // associations
             user  : Association to Users;
             project : Association to Projects;
       }
 
-      @assert.unique : {email : [email]}
+      @assert.unique : { 
+            usersEmail : [ email ] 
+      }
       entity Users : cuid, managed {
             @Core.Computed:true
             fullName : String;

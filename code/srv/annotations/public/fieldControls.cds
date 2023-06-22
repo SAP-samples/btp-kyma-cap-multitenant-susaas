@@ -56,7 +56,7 @@ annotate PublicService.SalesSplits {
     traditionalProductSales @UI.HiddenFilter;
     repairServicesSales     @UI.HiddenFilter;
     reSellSales             @UI.HiddenFilter;
-    currencyCode            @mandatory;
+    currency                @mandatory;
     country                 @mandatory;
 };
 

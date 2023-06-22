@@ -31,8 +31,6 @@ annotate db.Assessments with @title : '{i18n>assessment.typeNamePlural}' {
     ID               @title          : '{i18n>assessment}';
     description      @title          : '{i18n>description}';
     eolProductDesign @title          : '{i18n>eolProductDesign}';
-    validFrom        @title          : '{i18n>validFrom}';
-    validTo          @title          : '{i18n>validTo}';
     // associations
     product          @title          : '{i18n>product}'  @Common.Text : product.text  @Common.TextArrangement        : #TextOnly;
     project          @title          : '{i18n>project}'  @Common.Text : project.description  @Common.TextArrangement : #TextOnly;
@@ -72,8 +70,7 @@ annotate db.SalesSplits with @title : '{i18n>salesSplit.typeNamePlural}' {
 
 annotate db.Products with @title : '{i18n>product.typeNamePlural}' {
     ID                    @title : '{i18n>product}'  @Common.Text : text  @Common.TextArrangement : #TextFirst;
-    productId             @title : '{i18n>productId}';
-    description           @title : '{i18n>description}';
+    text                  @title : '{i18n>text}';
     eolProductDesign      @title : '{i18n>eolProductDesign}';
     traditionalSalesShare @title : '{i18n>traditionalProductSales}';
     repairSalesShare      @title : '{i18n>repairServicesSales}';
