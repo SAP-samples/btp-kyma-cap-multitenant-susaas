@@ -11,7 +11,7 @@
     "node": "^16.x"
   },
   "dependencies": {
-    "@sap/cds": "^6.8.1",
+    "@sap/cds": "^6.8.4",
     "@sap/cds-odata-v2-adapter-proxy": "^1",
     "@sap/xsenv": "^3",
     "@sap/xssec": "^3.2.17",
@@ -58,7 +58,7 @@
     "-Docker Build Scripts-": "",
     "/------------------------/": "",
     "build:all": "npm run build:srv && npm run build:router && npm run build:html5-deployer",
-    "build:srv": "cross-var pack build $npm_package_config_imagePrefix/obd-srv --path gen/srv --builder paketobuildpacks/builder:base --buildpack gcr.io/paketo-buildpacks/nodejs --env BP_NODE_RUN_SCRIPTS=",
+    "build:srv": "cross-var pack build $npm_package_config_imagePrefix/obd-srv --path gen/srv --builder paketobuildpacks/builder:base --buildpack gcr.io/paketo-buildpacks/nodejs --env BP_LAUNCHPOINT=./node_modules/@sap/cds/bin/cds-serve.js",
     "build:router": "cross-var docker build -t $npm_package_config_imagePrefix/obd-router ./router",
     "build:html5-deployer": "cross-var docker build -t $npm_package_config_imagePrefix/obd-html5-deployer ./app/html5-deployer",
     "---------------------------": "",

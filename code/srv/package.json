@@ -8,8 +8,8 @@
     "node": "^16.x"
   },
   "dependencies": {
-    "@sap/cds": "^6.8.1",
-    "@sap/cds-mtxs": "^1.8.1",
+    "@sap/cds": "^6.8.4",
+    "@sap/cds-mtxs": "^1.8.4",
     "@sap/cds-odata-v2-adapter-proxy": "^1",
     "@sap/cds-common-content": "^1.0.1",
     "@sap/xsenv": "^3",
@@ -22,7 +22,7 @@
     "express":"^4.18.2"
   },
   "scripts": {
-    "start": "cds run --production"
+    "start": "cds-serve"
   },
   "cds": {
     "requires": {
