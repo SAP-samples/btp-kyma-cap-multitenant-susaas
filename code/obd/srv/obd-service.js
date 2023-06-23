@@ -39,8 +39,6 @@ module.exports = cds.service.impl(async function () {
             // If no API Rule exists, an empty response is returned
             if (!result.body.items || result.body.items?.length == 0){ return req.reply() }
 
-            console.log(`Tenants: ${JSON.stringify(result.body)}`);
-
             // Tenant subdomain and platform IdP Url returned for forwarding in Onboarding-Screen
             return req.reply({ tenantSubdomain : result.body.items[0]?.spec?.host, platformIdpUrl : platformIdpUrl });
         } catch(error) {
@@ -74,8 +72,6 @@ module.exports = cds.service.impl(async function () {
                 return req.reply({ process: null });
             // Return details of the status currently running (on- or offboarding)
             }else{
-                const jobStatus = onboardingStatus ?? offboardingStatus;
-                console.log(`Status: ${JSON.stringify(jobStatus.body)}`);
                 return req.reply({ process: onboardingStatus ? 'onboarding' : 'offboarding' });
             }
         } catch (error) {
