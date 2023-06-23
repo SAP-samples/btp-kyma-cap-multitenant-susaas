@@ -43,6 +43,11 @@
     "sqlite3": "^5.1.6",
     "ui5-task-zipper": "^0.5.1"
   },
+  "overrides": {
+    "cross-var": {
+      "json5": "^2.2.3"
+    }
+  },
   "scripts": {
     "test": "jest",
     "----------------------": "",
